@@ -1,7 +1,18 @@
 
+![Gemini Generated](images/Gemini_Generated_Image_w3bq5zw3bq5zw3bq.png)
+
+![Links Map](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/links_c098184f.png)
+
+![Constellation Map](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/mercwar_constellation_map_9164e8f5.png)
+
+![Node Graph](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/nodes_fc20fe8a.png)
+
+![Starfield A](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/starfield_5b3c34c7.png)
+
+![Starfield B](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/starfield_9bcb8c9e.png)
+
 ---
 
-```md
 # Constellation — The AVIS Intelligence Pipeline
 
 Constellation is the central intelligence pipeline of the Mercwar ecosystem.  
