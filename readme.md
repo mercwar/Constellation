@@ -1,15 +1,4 @@
-
-![Gemini Generated](images/Gemini_Generated_Image_w3bq5zw3bq5zw3bq.png)
-
-![Links Map](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/links_c098184f.png)
-
-![Constellation Map](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/mercwar_constellation_map_9164e8f5.png)
-
-![Node Graph](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/nodes_fc20fe8a.png)
-
-![Starfield A](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/starfield_5b3c34c7.png)
-
-![Starfield B](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%205/starfield_9bcb8c9e.png)
+![Gemini Generated](https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%205/Gemini_Generated_Image_w3bq5zw3bq5zw3bq.png)
 
 ---
 
@@ -29,6 +18,8 @@ Constellation is:
 - A universal intelligence builder  
 
 It is the root of all intelligence flow in the AVIS‑2026 architecture.
+![Links Map](https://raw.githubusercontent.com/mercwar/Constellation/main/images/links_c098184f.png)
+
 
 ---
 
@@ -77,6 +68,9 @@ future‑absorbing, ensuring that Constellation can ingest, interpret, and
 publish intelligence from any repo in the Mercwar ecosystem.
 
 ---
+
+![Constellation Map](https://raw.githubusercontent.com/mercwar/Constellation/main/images/mercwar_constellation_map_9164e8f5.png)
+
 
 # Constellation Pipeline
 
@@ -236,6 +230,8 @@ This ensures robots and external systems can index the entire repo.
 ---
 
 # Purpose
+![Node Graph](https://raw.githubusercontent.com/mercwar/Constellation/main/images/nodes_fc20fe8a.png)
+
 
 Constellation exists to:
 
@@ -288,6 +284,8 @@ It is the central nervous system of the Mercwar ecosystem.
 ---
 
 # Next Steps
+![Starfield A](https://raw.githubusercontent.com/mercwar/Constellation/main/images/starfield_5b3c34c7.png)
+
 
 ## 1. Repo Packs
 Located in `Constellation/universal/custom`.
@@ -346,7 +344,7 @@ Cyborg Language is modeled after:
 - Structured ABI alignment  
 
 ### Practical Evolution Steps
-
+![Starfield B](https://raw.githubusercontent.com/mercwar/Constellation/main/images/starfield_9bcb8c9e.png)
 - Add ABI alignment to Cyborg binding  
 - Map Cyborg opcodes to WinAPI signatures  
 - Enforce calling conventions (stdcall, fastcall, thiscall)  
@@ -356,4 +354,3 @@ Cyborg Language is modeled after:
 
 ---
 
-```
