@@ -18,8 +18,8 @@ Constellation is:
 - A universal intelligence builder  
 
 It is the root of all intelligence flow in the AVIS‑2026 architecture.
-![Links Map](https://raw.githubusercontent.com/mercwar/Constellation/main/images/links_c098184f.png)
 
+![Constellation Map](https://raw.githubusercontent.com/mercwar/Constellation/main/images/mercwar_constellation_map_9164e8f5.png)
 
 ---
 
@@ -68,8 +68,9 @@ future‑absorbing, ensuring that Constellation can ingest, interpret, and
 publish intelligence from any repo in the Mercwar ecosystem.
 
 ---
+![Starfield B](https://raw.githubusercontent.com/mercwar/Constellation/main/images/starfield_9bcb8c9e.png)
 
-![Constellation Map](https://raw.githubusercontent.com/mercwar/Constellation/main/images/mercwar_constellation_map_9164e8f5.png)
+
 
 
 # Constellation Pipeline
@@ -331,7 +332,7 @@ Includes:
 - Full Mercwar Constellation map  
 
 Used by robots, humans, AVIS‑Datalake, and external AI systems.
-
+![Links Map](https://raw.githubusercontent.com/mercwar/Constellation/main/images/links_c098184f.png)
 ---
 
 ## 4. Cyborg Language Integration
@@ -344,7 +345,7 @@ Cyborg Language is modeled after:
 - Structured ABI alignment  
 
 ### Practical Evolution Steps
-![Starfield B](https://raw.githubusercontent.com/mercwar/Constellation/main/images/starfield_9bcb8c9e.png)
+
 - Add ABI alignment to Cyborg binding  
 - Map Cyborg opcodes to WinAPI signatures  
 - Enforce calling conventions (stdcall, fastcall, thiscall)  
