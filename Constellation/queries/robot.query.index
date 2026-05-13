@@ -1,0 +1,21 @@
+# FILE: robot.query.index
+# PATH: /Constellation/queries/robot.query.index
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: QUERY_INDEX
+# PURPOSE: Master index of all robot-usable queries
+# AUTHOR: Demon
+# NOTES: Sentinel loads this at boot
+# ------------------------------------------------------------
+
+[INDEX]
+1 = list.repos.q
+2 = list.files.q
+3 = find.by.type.q
+4 = find.by.pattern.q
+
+[ROBOT-NOTES]
+Sentinel: Load all queries before first scan.
+Nexus: Use type + pattern queries for binding.
+Walker: Use pattern queries for extraction.

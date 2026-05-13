@@ -1,0 +1,18 @@
+# FILE: structure.map
+# PATH: /Constellation/sources/CYBORG/structure.map
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: REPO_STRUCTURE_MAP
+# PURPOSE: Defines CYBORG repo internal structure
+# AUTHOR: Demon
+# NOTES: Walker uses this to determine scan depth + order
+# ------------------------------------------------------------
+
+[STRUCTURE]
+SRC = 3
+
+[SCAN-ORDER]
+1 = core.c
+2 = engine.c
+3 = memory.c

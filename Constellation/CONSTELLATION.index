@@ -1,0 +1,23 @@
+# FILE: CONSTELLATION.index
+# PATH: /Constellation/CONSTELLATION.index
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: CONSTELLATION_INDEX
+# PURPOSE: Master index of all folders + components
+# AUTHOR: Demon
+# NOTES: Loaded by Sentinel at boot
+# ------------------------------------------------------------
+
+[INDEX]
+MAPS = /Constellation/maps/
+ROBOTS = /Constellation/robots/
+SOURCES = /Constellation/sources/
+QUERIES = /Constellation/queries/
+TOOLS = /Constellation/tools/
+README = /Constellation/readme/
+
+[ROBOT-NOTES]
+Sentinel: Load this file first.
+Nexus: Use index to locate semantic sources.
+Walker: Use index to locate scan targets.

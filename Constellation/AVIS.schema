@@ -1,0 +1,23 @@
+# FILE: AVIS.schema
+# PATH: /Constellation/AVIS.schema
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: SCHEMA_LAW
+# PURPOSE: Defines AVIS datalake schema + intelligence unit types
+# AUTHOR: Demon
+# NOTES: All robots must comply with schema law
+# ------------------------------------------------------------
+
+[TYPES]
+BLOCK = STRUCTURED_CODE_UNIT
+NODE = CONSTELLATION_REPO
+LINK = GRAPH_EDGE
+MODEL = INTELLIGENCE_LAYER
+COMMENT = AVIS_SCHEMA_OBJECT
+
+[VALIDATION]
+REQUIRE_TYPES = TRUE
+REQUIRE_LINKS = TRUE
+REQUIRE_META = TRUE
+REQUIRE_STRUCTURE = TRUE

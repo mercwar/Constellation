@@ -1,0 +1,18 @@
+# FILE: structure.map
+# PATH: /Constellation/sources/FIRE-GEM/structure.map
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: REPO_STRUCTURE_MAP
+# PURPOSE: Defines FIRE-GEM repo internal structure
+# AUTHOR: Demon
+# NOTES: Walker uses this to determine scan depth + order
+# ------------------------------------------------------------
+
+[STRUCTURE]
+SRC = 3
+
+[SCAN-ORDER]
+1 = ui.js
+2 = renderer.js
+3 = theme.css

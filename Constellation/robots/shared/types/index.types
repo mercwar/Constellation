@@ -1,0 +1,17 @@
+# FILE: index.types
+# PATH: /Constellation/robots/shared/types/index.types
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: TYPE_DEFINITIONS
+# PURPOSE: Defines core types used by Sentinel + Nexus + Walker
+# AUTHOR: Demon
+# NOTES: Shared across all robot modules
+# ------------------------------------------------------------
+
+[TYPES]
+BLOCK = STRUCTURED_CODE_UNIT
+NODE = CONSTELLATION_REPO
+LINK = GRAPH_EDGE
+MODEL = INTELLIGENCE_LAYER
+COMMENT = AVIS_SCHEMA_OBJECT

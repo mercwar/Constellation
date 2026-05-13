@@ -1,0 +1,20 @@
+# FILE: build.sync
+# PATH: /Constellation/tools/build/build.sync
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: BUILD_SYNC_SCRIPT
+# PURPOSE: Syncs repo mirrors into /Constellation/sources
+# AUTHOR: Demon
+# NOTES: Used before ingestion to ensure mirrors are fresh
+# ------------------------------------------------------------
+
+[SYNC]
+SOURCE = GITHUB_MERCWAR
+DEST = /Constellation/sources/
+MODE = MIRROR
+VERIFY = TRUE
+
+[ROBOT-NOTES]
+Sentinel: Run before autoscan.
+Walker: Only scan after sync completes.

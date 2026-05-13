@@ -1,0 +1,18 @@
+# FILE: verify.models
+# PATH: /Constellation/tools/verify/verify.models
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: MODEL_VERIFICATION
+# PURPOSE: Ensures Nexus-generated models are valid + stackable
+# AUTHOR: Demon
+# NOTES: Prevents corrupted intelligence layers
+# ------------------------------------------------------------
+
+[VERIFY]
+CHECK_SCHEMA = TRUE
+CHECK_LINKS = TRUE
+CHECK_SEMANTICS = TRUE
+
+[OUTPUT]
+STATUS = PASS | FAIL

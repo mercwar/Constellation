@@ -1,0 +1,18 @@
+# FILE: verify.graph
+# PATH: /Constellation/tools/verify/verify.graph
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: GRAPH_VERIFICATION
+# PURPOSE: Validates constellation graph integrity
+# AUTHOR: Demon
+# NOTES: Ensures no broken links or missing nodes
+# ------------------------------------------------------------
+
+[VERIFY]
+CHECK_NODES = TRUE
+CHECK_EDGES = TRUE
+CHECK_WEIGHTS = TRUE
+
+[OUTPUT]
+STATUS = PASS | FAIL

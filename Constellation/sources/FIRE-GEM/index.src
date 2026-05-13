@@ -1,0 +1,20 @@
+# FILE: index.src
+# PATH: /Constellation/sources/FIRE-GEM/index.src
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: SOURCE_INDEX
+# PURPOSE: Entry point for FIRE-GEM repo mirror
+# AUTHOR: Demon
+# NOTES: Used by Walker + Sentinel during ingestion
+# ------------------------------------------------------------
+
+[REPO]
+NAME = FIRE-GEM
+TYPE = UI
+ROLE = INTERFACE_LAYER
+
+[FILES]
+ui.js
+renderer.js
+theme.css

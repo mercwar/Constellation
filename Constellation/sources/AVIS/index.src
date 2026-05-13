@@ -1,0 +1,21 @@
+# FILE: index.src
+# PATH: /Constellation/sources/AVIS/index.src
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: SOURCE_INDEX
+# PURPOSE: Entry point for AVIS repo mirror
+# AUTHOR: Demon
+# NOTES: Used by Walker + Sentinel during ingestion
+# ------------------------------------------------------------
+
+[REPO]
+NAME = AVIS
+TYPE = CORE
+ROLE = DATA-LAKE_ENGINE
+
+[FILES]
+main.c
+schema.avs
+parser.c
+normalizer.c

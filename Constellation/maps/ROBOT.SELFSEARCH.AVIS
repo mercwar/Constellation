@@ -1,0 +1,30 @@
+# FILE: ROBOT.SELFSEARCH.AVIS
+# PATH: /Constellation/maps/ROBOT.SELFSEARCH.AVIS
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: ROBOT_SEARCH_RULES
+# PURPOSE: Rules for autonomous robot self-search behavior
+# AUTHOR: Demon
+# NOTES: Sentinel + Nexus use this to classify repos
+# ------------------------------------------------------------
+
+[SEARCH-MODES]
+SCAN = FULL_REPO_SCAN
+PATTERN = CODE_PATTERN_MATCH
+META = METADATA_EXTRACTION
+GRAPH = CONSTELLATION_GRAPH_WALK
+
+[CLASSIFICATION]
+AVIS = CORE
+CYBORG = ENGINE
+FIRE-GEM = UI
+ROBO-KNIGHT = PLAYER
+DARKSTAR = SYSTEM
+BROWSERX = BROWSER
+SENTINEL = ROBOT
+NEXUS = ROBOT
+
+[ROBOT-NOTES]
+Sentinel: Use SCAN + GRAPH modes for traversal
+Nexus: Use PATTERN + META modes for semantic binding

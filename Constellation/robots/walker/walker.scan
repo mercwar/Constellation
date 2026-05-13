@@ -1,0 +1,22 @@
+# FILE: walker.scan
+# PATH: /Constellation/robots/walker/walker.scan
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: WALKER_SCAN_ENGINE
+# PURPOSE: Defines how Walker performs deep repo scans
+# AUTHOR: Demon
+# NOTES: Walker is the low-level scanner under Sentinel
+# ------------------------------------------------------------
+
+[SCAN]
+DEPTH = FULL
+PATTERN-MATCH = ENABLED
+METADATA = ENABLED
+
+[OUTPUT]
+FORMAT = BLOCKS
+DEST = /Constellation/datalake/ingest/
+
+[ROBOT-NOTES]
+Walker: Produce normalized units for AVIS ingestion.

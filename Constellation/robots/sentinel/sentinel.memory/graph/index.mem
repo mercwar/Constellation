@@ -1,0 +1,18 @@
+# FILE: index.mem
+# PATH: /Constellation/robots/sentinel/sentinel.memory/graph/index.mem
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: SENTINEL_GRAPH_MEMORY
+# PURPOSE: Stores Sentinel’s internal navigation graph state
+# AUTHOR: Demon
+# NOTES: Updated after each autoscan cycle
+# ------------------------------------------------------------
+
+[GRAPH-MEMORY]
+NODES = 8
+LAST-SCAN = NONE
+STATUS = EMPTY
+
+[ROBOT-NOTES]
+Sentinel: This file will be overwritten after first scan.

@@ -1,0 +1,30 @@
+# FILE: ROBOT.AUTOSCAN.AVIS
+# PATH: /Constellation/maps/ROBOT.AUTOSCAN.AVIS
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: AUTOSCAN_RULESET
+# PURPOSE: Defines autoscan traversal logic for robots
+# AUTHOR: Demon
+# NOTES: Used by Sentinel during constellation sweeps
+# ------------------------------------------------------------
+
+[AUTOSCAN]
+INTERVAL = 24H
+DEPTH = FULL
+FOLLOW-LINKS = TRUE
+RECURSIVE = TRUE
+
+[SCAN-ORDER]
+1 = AVIS
+2 = CYBORG
+3 = FIRE-GEM
+4 = ROBO-KNIGHT
+5 = DARKSTAR
+6 = BROWSERX
+7 = SENTINEL
+8 = NEXUS
+
+[ROBOT-NOTES]
+Sentinel: Perform autoscan in defined order
+Nexus: Wait for Sentinel ingestion before binding

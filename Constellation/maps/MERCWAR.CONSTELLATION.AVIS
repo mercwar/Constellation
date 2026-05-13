@@ -1,0 +1,32 @@
+# FILE: MERCWAR.CONSTELLATION.AVIS
+# PATH: /Constellation/maps/MERCWAR.CONSTELLATION.AVIS
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: CONSTELLATION_MAP
+# PURPOSE: Defines the Mercwar repo constellation structure
+# AUTHOR: Demon
+# NOTES: Root star-map for Sentinel + Nexus navigation
+# ------------------------------------------------------------
+
+[CONSTELLATION]
+AVIS
+CYBORG
+FIRE-GEM
+ROBO-KNIGHT
+DARKSTAR
+BROWSERX
+SENTINEL
+NEXUS
+
+[LINKS]
+AVIS -> CYBORG
+CYBORG -> FIRE-GEM
+FIRE-GEM -> ROBO-KNIGHT
+ROBO-KNIGHT -> DARKSTAR
+DARKSTAR -> BROWSERX
+BROWSERX -> AVIS
+
+[ROBOT-NOTES]
+Sentinel: Use this map to build navigation graph
+Nexus: Use this map to identify cross-repo semantic clusters

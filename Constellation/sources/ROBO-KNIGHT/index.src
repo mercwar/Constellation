@@ -1,0 +1,20 @@
+# FILE: index.src
+# PATH: /Constellation/sources/ROBO-KNIGHT/index.src
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: SOURCE_INDEX
+# PURPOSE: Entry point for ROBO-KNIGHT repo mirror
+# AUTHOR: Demon
+# NOTES: Used by Walker + Sentinel during ingestion
+# ------------------------------------------------------------
+
+[REPO]
+NAME = ROBO-KNIGHT
+TYPE = PLAYER
+ROLE = GAME_ENGINE
+
+[FILES]
+player.c
+movement.c
+combat.c

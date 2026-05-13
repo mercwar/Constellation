@@ -1,0 +1,22 @@
+# FILE: build.verify
+# PATH: /Constellation/tools/build/build.verify
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: BUILD_VERIFICATION
+# PURPOSE: Ensures all repo mirrors follow AVIS schema law
+# AUTHOR: Demon
+# NOTES: Prevents corrupted or malformed repo structures
+# ------------------------------------------------------------
+
+[VERIFY]
+CHECK_STRUCTURE = TRUE
+CHECK_META = TRUE
+CHECK_TYPES = TRUE
+CHECK_MAPS = TRUE
+
+[OUTPUT]
+STATUS = PASS | FAIL
+
+[ROBOT-NOTES]
+Nexus: Only bind data after verification passes.

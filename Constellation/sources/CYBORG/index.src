@@ -1,0 +1,20 @@
+# FILE: index.src
+# PATH: /Constellation/sources/CYBORG/index.src
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: SOURCE_INDEX
+# PURPOSE: Entry point for CYBORG repo mirror
+# AUTHOR: Demon
+# NOTES: Used by Walker + Sentinel during ingestion
+# ------------------------------------------------------------
+
+[REPO]
+NAME = CYBORG
+TYPE = ENGINE
+ROLE = SYSTEM_CORE
+
+[FILES]
+core.c
+engine.c
+memory.c

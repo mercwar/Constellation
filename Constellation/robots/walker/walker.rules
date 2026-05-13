@@ -1,0 +1,19 @@
+# FILE: walker.rules
+# PATH: /Constellation/robots/walker/walker.rules
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: WALKER_RULESET
+# PURPOSE: Rules for Walker’s scanning and extraction behavior
+# AUTHOR: Demon
+# NOTES: Defines what Walker considers a valid intelligence unit
+# ------------------------------------------------------------
+
+[RULES]
+BLOCK = CODE_FRAGMENT
+NODE = REPO_ENTITY
+LINK = RELATIONSHIP
+COMMENT = AVIS_OBJECT
+
+[ROBOT-NOTES]
+Walker: Only extract units that match AVIS schema law.

@@ -1,0 +1,22 @@
+# FILE: sentinel.nav
+# PATH: /Constellation/robots/sentinel/sentinel.nav
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: SENTINEL_NAVIGATION_LOGIC
+# PURPOSE: Defines how Sentinel traverses the repo constellation
+# AUTHOR: Demon
+# NOTES: Used during autoscan + manual scan cycles
+# ------------------------------------------------------------
+
+[NAVIGATION]
+MODE = GRAPH_WALK
+FOLLOW_LINKS = TRUE
+RECURSIVE = TRUE
+
+[ROUTES]
+PRIMARY = AVIS -> CYBORG -> FIRE-GEM -> ROBO-KNIGHT
+SECONDARY = DARKSTAR -> BROWSERX -> AVIS
+
+[ROBOT-NOTES]
+Sentinel: Use PRIMARY route for standard scans.

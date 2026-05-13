@@ -1,0 +1,20 @@
+# FILE: AVIS.datalake
+# PATH: /Constellation/AVIS.datalake
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: DATALAKE_ROOT
+# PURPOSE: Root definition of the AVIS-Datalake intelligence system
+# AUTHOR: Demon
+# NOTES: This is the entry point for all intelligence stacking
+# ------------------------------------------------------------
+
+[DATALAKE]
+LAYERS = 6
+BASE = RESOURCE_LAYER
+TOP = ROBOT_INTELLIGENCE_EVOLUTION
+
+[ROBOT-NOTES]
+Sentinel: Ingest into Layer 3 → 4
+Nexus: Bind into Layer 5
+AVIS: Store into Layer 6

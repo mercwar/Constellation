@@ -1,0 +1,18 @@
+# FILE: structure.map
+# PATH: /Constellation/sources/ROBO-KNIGHT/structure.map
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: REPO_STRUCTURE_MAP
+# PURPOSE: Defines ROBO-KNIGHT repo internal structure
+# AUTHOR: Demon
+# NOTES: Walker uses this to determine scan depth + order
+# ------------------------------------------------------------
+
+[STRUCTURE]
+SRC = 3
+
+[SCAN-ORDER]
+1 = player.c
+2 = movement.c
+3 = combat.c

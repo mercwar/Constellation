@@ -1,0 +1,18 @@
+# FILE: sync.repos
+# PATH: /Constellation/tools/sync/sync.repos
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: REPO_SYNC_TOOL
+# PURPOSE: Syncs individual repos on demand
+# AUTHOR: Demon
+# NOTES: Used when only one repo needs updating
+# ------------------------------------------------------------
+
+[SYNC]
+MODE = SINGLE
+PARAM = REPO_NAME
+
+[EXAMPLE]
+INPUT = CYBORG
+OUTPUT = /Constellation/sources/CYBORG/*

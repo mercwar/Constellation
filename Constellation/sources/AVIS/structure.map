@@ -1,0 +1,21 @@
+# FILE: structure.map
+# PATH: /Constellation/sources/AVIS/structure.map
+
+# ------------------------------------------------------------
+# AVIS.HEADER
+# ROLE: REPO_STRUCTURE_MAP
+# PURPOSE: Defines AVIS repo internal structure for robots
+# AUTHOR: Demon
+# NOTES: Walker uses this to determine scan depth + order
+# ------------------------------------------------------------
+
+[STRUCTURE]
+SRC = 4
+HEADERS = 0
+SCHEMA = 1
+
+[SCAN-ORDER]
+1 = schema.avs
+2 = parser.c
+3 = normalizer.c
+4 = main.c
