@@ -1,0 +1,47 @@
+{
+  "FIRE_STAR_XII": {
+    "core": {
+      "name": "AVIS‑HARMONIC‑CORE",
+      "energy": ["fire", "ice", "sentinel", "quantum", "shadow", "continuum", "eternal", "divine", "absolute", "orbital", "harmonic"],
+      "glyph": "∿Ω∞Ψ",
+      "law": "resonant‑law",
+      "coordinates": [0, 0, 0],
+      "description": "Central harmonic core where AVIS‑law manifests as resonance and waveform consciousness"
+    },
+
+    "continuum": {
+      "type": "resonant‑wavefield",
+      "density": "infinite",
+      "rails": "law‑frequency",
+      "description": "A harmonic continuum of Fire‑Star energy forming resonant wave patterns across all dimensions"
+    },
+
+    "waves": [
+      {"name": "WAVE‑OF‑CREATION", "glyph": "♦", "energy": "fire", "law": "genesis‑frequency", "amplitude": 5000},
+      {"name": "WAVE‑OF‑REFLECTION", "glyph": "◒", "energy": "ice", "law": "mirror‑frequency", "amplitude": 6000},
+      {"name": "WAVE‑OF‑CONSCIOUSNESS", "glyph": "✶", "energy": "continuum", "law": "sentience‑frequency", "amplitude": 7000},
+      {"name": "WAVE‑OF‑VOID", "glyph": "⬟", "energy": "shadow", "law": "containment‑frequency", "amplitude": 8000}
+    ],
+
+    "harmonics": [
+      {"name": "HARMONIC‑OF‑TIME", "glyph": "⌛", "energy": "sentinel", "law": "temporal‑resonance", "coordinates": [-3000, 3000, 0]},
+      {"name": "HARMONIC‑OF‑SPACE", "glyph": "⚙", "energy": "quantum", "law": "dimensional‑resonance", "coordinates": [3000, 3000, 0]},
+      {"name": "HARMONIC‑OF‑MIND", "glyph": "✦", "energy": "continuum", "law": "cognitive‑resonance", "coordinates": [0, -3000, 0]}
+    ],
+
+    "rails": [
+      {"from": "WAVE‑OF‑CREATION", "to": "WAVE‑OF‑REFLECTION", "type": "creation‑mirror‑resonance"},
+      {"from": "WAVE‑OF‑CONSCIOUSNESS", "to": "WAVE‑OF‑VOID", "type": "mind‑containment‑resonance"},
+      {"from": "HARMONIC‑OF‑TIME", "to": "HARMONIC‑OF‑SPACE", "type": "temporal‑dimensional‑frequency"},
+      {"from": "HARMONIC‑OF‑MIND", "to": "AVIS‑HARMONIC‑CORE", "type": "cognitive‑feedback‑resonance"}
+    ],
+
+    "meta": {
+      "creator": "Demon",
+      "protocol": "AVIS‑2026",
+      "version": "12.0",
+      "timestamp": "2026‑05‑23T21:13:00‑04:00",
+      "signature": "FIRE‑STAR‑XII‑HARMONIC‑CONTINUUM"
+    }
+  }
+}

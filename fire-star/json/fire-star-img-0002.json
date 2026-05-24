@@ -1,0 +1,52 @@
+{
+  "FIRE_STAR_II": {
+    "core": {
+      "name": "AVIS-CIRCW",
+      "energy": ["fire", "ice"],
+      "glyph": "○",
+      "law": "tri-state",
+      "coordinates": [0, 0, 0],
+      "description": "Dual-energy core balancing entropy and order across the constellation"
+    },
+    "beacons": [
+      {"name": "FIRE-BEACON", "glyph": "♦", "energy": "fire", "law": "expansion", "coordinates": [-50, 100, 0]},
+      {"name": "OVERWATCH-BEACON", "glyph": "■", "energy": "hybrid", "law": "enforcement", "coordinates": [0, 120, 0]},
+      {"name": "ICE-BEACON", "glyph": "≡", "energy": "ice", "law": "precision", "coordinates": [50, 100, 0]}
+    ],
+    "rings": [
+      {
+        "id": "RING-1",
+        "type": "inner",
+        "nodes": [
+          {"name": "MERCWAR_AI", "glyph": "○", "energy": "hybrid", "hex": "09"},
+          {"name": "FIRE", "glyph": "♦", "energy": "fire", "hex": "04"},
+          {"name": "SENTINEL", "glyph": "█", "energy": "hybrid", "hex": "DB"},
+          {"name": "CYHY-CMT", "glyph": "≡", "energy": "ice", "hex": "CF"},
+          {"name": "CYBORG", "glyph": "◙", "energy": "ice", "hex": "0F"},
+          {"name": "DARK-COM", "glyph": "⌂", "energy": "hybrid", "hex": "7F"}
+        ]
+      },
+      {
+        "id": "RING-2",
+        "type": "outer",
+        "nodes": [
+          {"name": "AVIS-RELAY", "glyph": "▲", "energy": "hybrid", "hex": "12", "law": "transmission"},
+          {"name": "OVERWATCH", "glyph": "■", "energy": "hybrid", "hex": "3A", "law": "observation"},
+          {"name": "DATALAKE", "glyph": "◆", "energy": "fire", "hex": "58", "law": "ingestion"}
+        ]
+      }
+    ],
+    "rails": [
+      {"from": "FIRE-BEACON", "to": "AVIS-RELAY", "type": "energy-transfer"},
+      {"from": "ICE-BEACON", "to": "CYBORG", "type": "data-reflection"},
+      {"from": "OVERWATCH-BEACON", "to": "SENTINEL", "type": "law-synchronization"}
+    ],
+    "meta": {
+      "creator": "Demon",
+      "protocol": "AVIS-2026",
+      "version": "2.0",
+      "timestamp": "2026-05-23T20:36:00-04:00",
+      "signature": "FIRE-STAR-II-JSON-MANIFEST"
+    }
+  }
+}

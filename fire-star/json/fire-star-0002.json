@@ -1,0 +1,140 @@
+{
+  "constellation_maps": [
+    {
+      "id": "map_001",
+      "name": "MERCWAR Robotic Source Grid - Initial Shine Map",
+      "description": "Initial constellation map with fire, ice, and mixed nodes arranged radially around MERCWAR AI core.",
+      "canvas": {
+        "aspect_ratio": "16:9",
+        "resolution_px": [3840, 2160],
+        "background": {
+          "type": "black_glass",
+          "hex_grid": { "visible": true, "opacity": 0.05, "color": "#222222", "spacing_px": 100 }
+        }
+      },
+      "nodes": [
+        {
+          "id": "node_mercwar_ai",
+          "label": "MERCWAR AI",
+          "role": "mixed",
+          "color": { "left": "#FF6A00", "right": "#00BFFF" },
+          "size_px": 300,
+          "position": { "x_norm": 0.5, "y_norm": 0.5 },
+          "glow": { "intensity": 0.8, "radius_px": 120, "bloom": true },
+          "reflection": { "enabled": true, "opacity": 0.6 }
+        },
+        {
+          "id": "node_avis",
+          "label": "AVIS",
+          "role": "mixed",
+          "color": "#800080",
+          "size_px": 70,
+          "position": { "x_norm": 0.5, "y_norm": 0.18 },
+          "glow": { "intensity": 0.6, "radius_px": 60, "bloom": true }
+        },
+        {
+          "id": "node_avis_datalake",
+          "label": "AVIS-DATALAKE",
+          "role": "ice",
+          "color": "#00BFFF",
+          "size_px": 60,
+          "position": { "x_norm": 0.72, "y_norm": 0.22 },
+          "glow": { "intensity": 0.6, "radius_px": 50, "bloom": true }
+        }
+        // ... other nodes similarly detailed
+      ],
+      "rails": [
+        {
+          "id": "rail_mercwaravis",
+          "from_node_id": "node_mercwar_ai",
+          "to_node_id": "node_avis",
+          "color": "#800080",
+          "gradient": false,
+          "glow_intensity": 0.7,
+          "width_px": 2
+        },
+        {
+          "id": "rail_mercwardatalake",
+          "from_node_id": "node_mercwar_ai",
+          "to_node_id": "node_avis_datalake",
+          "color": "#00BFFF",
+          "gradient": false,
+          "glow_intensity": 0.7,
+          "width_px": 2
+        }
+        // ... other rails similarly detailed
+      ],
+      "ui_elements": {
+        "banners": [
+          {
+            "id": "banner_rku",
+            "position_px": { "x": 100, "y": 100 },
+            "size_px": { "width": 300, "height": 100 },
+            "graphic": "assets/rku_banner.png",
+            "opacity": 0.9
+          },
+          {
+            "id": "banner_rru",
+            "position_px": { "x": 3540, "y": 100 },
+            "size_px": { "width": 300, "height": 100 },
+            "graphic": "assets/rru_banner.png",
+            "opacity": 0.9
+          }
+        ],
+        "info_panels": [
+          {
+            "id": "legend_panel",
+            "position_px": { "x": 100, "y": 1800 },
+            "size_px": { "width": 400, "height": 300 },
+            "content": [
+              { "symbol": "circle", "label": "MERCWAR AI" },
+              { "symbol": "flame", "label": "Fire" },
+              { "symbol": "shield", "label": "Sentinel" },
+              { "symbol": "bars", "label": "CYHY-CMT" },
+              { "symbol": "crystal", "label": "Cyborg" },
+              { "symbol": "house", "label": "Dark-Com" }
+            ],
+            "style": {
+              "font_family": "Eurostile Bold",
+              "font_size_px": 24,
+              "color": "#00BFFF",
+              "background_color": "rgba(0,0,0,0.5)",
+              "border_radius_px": 10,
+              "padding_px": 20
+            }
+          }
+        ]
+      },
+      "effects": {
+        "bloom": { "enabled": true, "intensity": 0.5, "radius_px": 100 },
+        "reflection": { "enabled": true, "opacity": 0.4, "blur_radius_px": 20 },
+        "sfx": { "enabled": true, "types": ["lens_flare", "energy_pulse", "digital_rain"], "intensity": 0.3 }
+      },
+      "metadata": {
+        "created_by": "Opera AI Assistant",
+        "creation_date": "2026-05-23",
+        "version": "1.0",
+        "description": "Initial constellation map with fire, ice, and mixed nodes arranged radially around MERCWAR AI core."
+      }
+    }
+    // Additional constellation maps can be appended here with similar structure
+  ],
+  "index": {
+    "nodes_by_id": {
+      "node_mercwar_ai": { "label": "MERCWAR AI", "role": "mixed" },
+      "node_avis": { "label": "AVIS", "role": "mixed" },
+      "node_avis_datalake": { "label": "AVIS-DATALAKE", "role": "ice" }
+      // ... all nodes indexed
+    },
+    "rails_by_id": {
+      "rail_mercwaravis": { "from": "node_mercwar_ai", "to": "node_avis" },
+      "rail_mercwardatalake": { "from": "node_mercwar_ai", "to": "node_avis_datalake" }
+      // ... all rails indexed
+    },
+    "ui_elements_by_id": {
+      "banner_rku": { "type": "banner" },
+      "banner_rru": { "type": "banner" },
+      "legend_panel": { "type": "info_panel" }
+    }
+  }
+}

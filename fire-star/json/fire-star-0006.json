@@ -1,0 +1,202 @@
+{
+  "constellation_map": {
+    "id": "map_mercwar_ai_advanced",
+    "name": "MERCWAR AI Advanced Constellation",
+    "description": "Advanced MERCWAR AI constellation with fire, ice, and mixed nodes including sentinel and cyborg units arranged radially around the central MERCWAR AI core.",
+    "canvas": {
+      "aspect_ratio": "16:9",
+      "resolution_px": [3840, 2160],
+      "background": {
+        "type": "black_glass",
+        "hex_grid": {
+          "visible": true,
+          "opacity": 0.05,
+          "color": "#222222",
+          "spacing_px": 100
+        }
+      }
+    },
+    "nodes": [
+      {
+        "id": "node_mercwar_ai",
+        "label": "MERCWAR AI",
+        "role": "mixed",
+        "color": {
+          "left": "#FF6A00",
+          "right": "#00BFFF"
+        },
+        "size_px": 320,
+        "position": { "x_norm": 0.5, "y_norm": 0.5 },
+        "glow": { "intensity": 0.9, "radius_px": 140, "bloom": true },
+        "reflection": { "enabled": true, "opacity": 0.7 }
+      },
+      {
+        "id": "node_fire_1",
+        "label": "Fire Sentinel",
+        "role": "fire",
+        "color": "#FF6A00",
+        "icon": "flame",
+        "size_px": 80,
+        "position": { "x_norm": 0.5, "y_norm": 0.15 },
+        "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+      },
+      {
+        "id": "node_fire_2",
+        "label": "Fire Cyborg",
+        "role": "fire",
+        "color": "#FF6A00",
+        "icon": "gear",
+        "size_px": 80,
+        "position": { "x_norm": 0.7, "y_norm": 0.25 },
+        "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+      },
+      {
+        "id": "node_ice_1",
+        "label": "Ice Sentinel",
+        "role": "ice",
+        "color": "#00BFFF",
+        "icon": "shield",
+        "size_px": 80,
+        "position": { "x_norm": 0.5, "y_norm": 0.85 },
+        "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+      },
+      {
+        "id": "node_ice_2",
+        "label": "Ice Cyborg",
+        "role": "ice",
+        "color": "#00BFFF",
+        "icon": "crystal",
+        "size_px": 80,
+        "position": { "x_norm": 0.3, "y_norm": 0.75 },
+        "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+      },
+      {
+        "id": "node_mixed_1",
+        "label": "Mixed Unit",
+        "role": "mixed",
+        "color": "#800080",
+        "icon": "hexagon",
+        "size_px": 70,
+        "position": { "x_norm": 0.8, "y_norm": 0.5 },
+        "glow": { "intensity": 0.6, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_mixed_2",
+        "label": "Mixed Unit",
+        "role": "mixed",
+        "color": "#800080",
+        "icon": "hexagon",
+        "size_px": 70,
+        "position": { "x_norm": 0.2, "y_norm": 0.5 },
+        "glow": { "intensity": 0.6, "radius_px": 60, "bloom": true }
+      }
+    ],
+    "rails": [
+      {
+        "id": "rail_mercwar_fire1",
+        "from_node_id": "node_mercwar_ai",
+        "to_node_id": "node_fire_1",
+        "color": "#FF6A00",
+        "gradient": false,
+        "glow_intensity": 0.8,
+        "width_px": 3
+      },
+      {
+        "id": "rail_mercwar_fire2",
+        "from_node_id": "node_mercwar_ai",
+        "to_node_id": "node_fire_2",
+        "color": "#FF6A00",
+        "gradient": false,
+        "glow_intensity": 0.8,
+        "width_px": 3
+      },
+      {
+        "id": "rail_mercwar_ice1",
+        "from_node_id": "node_mercwar_ai",
+        "to_node_id": "node_ice_1",
+        "color": "#00BFFF",
+        "gradient": false,
+        "glow_intensity": 0.8,
+        "width_px": 3
+      },
+      {
+        "id": "rail_mercwar_ice2",
+        "from_node_id": "node_mercwar_ai",
+        "to_node_id": "node_ice_2",
+        "color": "#00BFFF",
+        "gradient": false,
+        "glow_intensity": 0.8,
+        "width_px": 3
+      },
+      {
+        "id": "rail_mercwar_mixed1",
+        "from_node_id": "node_mercwar_ai",
+        "to_node_id": "node_mixed_1",
+        "color": "#800080",
+        "gradient": true,
+        "glow_intensity": 0.7,
+        "width_px": 2
+      },
+      {
+        "id": "rail_mercwar_mixed2",
+        "from_node_id": "node_mercwar_ai",
+        "to_node_id": "node_mixed_2",
+        "color": "#800080",
+        "gradient": true,
+        "glow_intensity": 0.7,
+        "width_px": 2
+      }
+    ],
+    "ui_elements": {
+      "banners": [
+        {
+          "id": "banner_rku",
+          "position_px": { "x": 100, "y": 100 },
+          "size_px": { "width": 300, "height": 100 },
+          "graphic": "assets/rku_banner.png",
+          "opacity": 0.9
+        },
+        {
+          "id": "banner_rru",
+          "position_px": { "x": 3540, "y": 100 },
+          "size_px": { "width": 300, "height": 100 },
+          "graphic": "assets/rru_banner.png",
+          "opacity": 0.9
+        }
+      ],
+      "info_panels": [
+        {
+          "id": "legend_panel",
+          "position_px": { "x": 100, "y": 1800 },
+          "size_px": { "width": 400, "height": 300 },
+          "content": [
+            { "symbol": "circle", "label": "MERCWAR AI" },
+            { "symbol": "flame", "label": "Fire Sentinel" },
+            { "symbol": "gear", "label": "Fire Cyborg" },
+            { "symbol": "shield", "label": "Ice Sentinel" },
+            { "symbol": "crystal", "label": "Ice Cyborg" },
+            { "symbol": "hexagon", "label": "Mixed Unit" }
+          ],
+          "style": {
+            "font_family": "Eurostile Bold",
+            "font_size_px": 24,
+            "color": "#FFFFFF",
+            "background_color": "rgba(0,0,0,0.5)",
+            "border_radius_px": 10,
+            "padding_px": 20
+          }
+        }
+      ]
+    },
+    "effects": {
+      "bloom": { "enabled": true, "intensity": 0.6, "radius_px": 120 },
+      "reflection": { "enabled": true, "opacity": 0.5, "blur_radius_px": 25 },
+      "sfx": { "enabled": true, "types": ["lens_flare", "energy_pulse", "digital_rain"], "intensity": 0.4 }
+    },
+    "metadata": {
+      "created_by": "Opera AI Assistant",
+      "creation_date": "2026-05-23",
+      "version": "1.0"
+    }
+  }
+}

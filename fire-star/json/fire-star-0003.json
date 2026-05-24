@@ -1,0 +1,160 @@
+{
+  "constellation_maps": [
+    {
+      "id": "map_fire_star",
+      "name": "MERCWAR Robotic Source Grid - Fire-Star Map",
+      "description": "Extension of the MERCWAR constellation with fire-star themed nodes and connections, emphasizing fire-aligned star formations.",
+      "canvas": {
+        "aspect_ratio": "16:9",
+        "resolution_px": [3840, 2160],
+        "background": {
+          "type": "black_glass",
+          "hex_grid": { "visible": true, "opacity": 0.07, "color": "#330000", "spacing_px": 90 }
+        }
+      },
+      "nodes": [
+        {
+          "id": "node_fire_star_core",
+          "label": "Fire-Star Core",
+          "role": "fire",
+          "color": "#FF4500",
+          "size_px": 320,
+          "position": { "x_norm": 0.5, "y_norm": 0.5 },
+          "glow": { "intensity": 0.9, "radius_px": 140, "bloom": true },
+          "reflection": { "enabled": true, "opacity": 0.7 }
+        },
+        {
+          "id": "node_fire_star_flare_1",
+          "label": "Fire Flare Alpha",
+          "role": "fire",
+          "color": "#FF6347",
+          "size_px": 90,
+          "position": { "x_norm": 0.65, "y_norm": 0.35 },
+          "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+        },
+        {
+          "id": "node_fire_star_flare_2",
+          "label": "Fire Flare Beta",
+          "role": "fire",
+          "color": "#FF6347",
+          "size_px": 90,
+          "position": { "x_norm": 0.35, "y_norm": 0.35 },
+          "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+        },
+        {
+          "id": "node_fire_star_flare_3",
+          "label": "Fire Flare Gamma",
+          "role": "fire",
+          "color": "#FF6347",
+          "size_px": 90,
+          "position": { "x_norm": 0.5, "y_norm": 0.65 },
+          "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+        }
+      ],
+      "rails": [
+        {
+          "id": "rail_core_flare_alpha",
+          "from_node_id": "node_fire_star_core",
+          "to_node_id": "node_fire_star_flare_1",
+          "color": "#FF4500",
+          "gradient": false,
+          "glow_intensity": 0.8,
+          "width_px": 3
+        },
+        {
+          "id": "rail_core_flare_beta",
+          "from_node_id": "node_fire_star_core",
+          "to_node_id": "node_fire_star_flare_2",
+          "color": "#FF4500",
+          "gradient": false,
+          "glow_intensity": 0.8,
+          "width_px": 3
+        },
+        {
+          "id": "rail_core_flare_gamma",
+          "from_node_id": "node_fire_star_core",
+          "to_node_id": "node_fire_star_flare_3",
+          "color": "#FF4500",
+          "gradient": false,
+          "glow_intensity": 0.8,
+          "width_px": 3
+        },
+        {
+          "id": "rail_flare_alpha_beta",
+          "from_node_id": "node_fire_star_flare_1",
+          "to_node_id": "node_fire_star_flare_2",
+          "color": "#FF6347",
+          "gradient": true,
+          "glow_intensity": 0.6,
+          "width_px": 2
+        },
+        {
+          "id": "rail_flare_beta_gamma",
+          "from_node_id": "node_fire_star_flare_2",
+          "to_node_id": "node_fire_star_flare_3",
+          "color": "#FF6347",
+          "gradient": true,
+          "glow_intensity": 0.6,
+          "width_px": 2
+        },
+        {
+          "id": "rail_flare_gamma_alpha",
+          "from_node_id": "node_fire_star_flare_3",
+          "to_node_id": "node_fire_star_flare_1",
+          "color": "#FF6347",
+          "gradient": true,
+          "glow_intensity": 0.6,
+          "width_px": 2
+        }
+      ],
+      "ui_elements": {
+        "banners": [
+          {
+            "id": "banner_rku",
+            "position_px": { "x": 100, "y": 100 },
+            "size_px": { "width": 300, "height": 100 },
+            "graphic": "assets/rku_banner.png",
+            "opacity": 0.9
+          },
+          {
+            "id": "banner_rru",
+            "position_px": { "x": 3540, "y": 100 },
+            "size_px": { "width": 300, "height": 100 },
+            "graphic": "assets/rru_banner.png",
+            "opacity": 0.9
+          }
+        ],
+        "info_panels": [
+          {
+            "id": "legend_panel",
+            "position_px": { "x": 100, "y": 1800 },
+            "size_px": { "width": 400, "height": 300 },
+            "content": [
+              { "symbol": "circle", "label": "Fire-Star Core" },
+              { "symbol": "flame", "label": "Fire Flare" }
+            ],
+            "style": {
+              "font_family": "Eurostile Bold",
+              "font_size_px": 24,
+              "color": "#FF4500",
+              "background_color": "rgba(0,0,0,0.5)",
+              "border_radius_px": 10,
+              "padding_px": 20
+            }
+          }
+        ]
+      },
+      "effects": {
+        "bloom": { "enabled": true, "intensity": 0.6, "radius_px": 120 },
+        "reflection": { "enabled": true, "opacity": 0.5, "blur_radius_px": 25 },
+        "sfx": { "enabled": true, "types": ["lens_flare", "energy_pulse"], "intensity": 0.4 }
+      },
+      "metadata": {
+        "created_by": "Opera AI Assistant",
+        "creation_date": "2026-05-23",
+        "version": "1.0",
+        "description": "Fire-Star constellation map emphasizing fire-aligned star nodes and connections."
+      }
+    }
+  ]
+}

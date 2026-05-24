@@ -1,0 +1,75 @@
+{
+  "FIRE_STAR_IV": {
+    "core": {
+      "name": "AVIS-CIRCW",
+      "energy": ["fire", "ice", "sentinel"],
+      "glyph": "○",
+      "law": "tri-law",
+      "coordinates": [0, 0, 0],
+      "description": "Galactic tri-law core governing lattice-scale AVIS operations"
+    },
+
+    "lattice": {
+      "type": "hex-tri-galactic",
+      "density": "high",
+      "rails": "multi-spectrum",
+      "description": "A fractal lattice of fire, ice, and sentinel conduits spanning the galactic plane"
+    },
+
+    "beacon_clusters": [
+      {
+        "cluster": "FIRE-CLUSTER",
+        "glyph": "♦",
+        "energy": "fire",
+        "nodes": [
+          {"name": "FIRE-BEACON", "hex": "04", "coordinates": [-50, 100, 0]},
+          {"name": "FIRE-GEM", "hex": "D4", "coordinates": [-120, 180, 20]},
+          {"name": "FIRE-ARC", "hex": "E1", "coordinates": [-200, 260, 40]}
+        ]
+      },
+      {
+        "cluster": "ICE-CLUSTER",
+        "glyph": "≡",
+        "energy": "ice",
+        "nodes": [
+          {"name": "ICE-BEACON", "hex": "CF", "coordinates": [50, 100, 0]},
+          {"name": "CRYSTAL-NODE", "hex": "C3", "coordinates": [140, 200, -10]},
+          {"name": "FROST-ARC", "hex": "C9", "coordinates": [220, 280, -30]}
+        ]
+      },
+      {
+        "cluster": "SENTINEL-CLUSTER",
+        "glyph": "█",
+        "energy": "hybrid",
+        "nodes": [
+          {"name": "OVERWATCH-BEACON", "hex": "3A", "coordinates": [0, 120, 0]},
+          {"name": "SENTINEL-OUTPOST", "hex": "A1", "coordinates": [-80, -200, 0]},
+          {"name": "SENTINEL-PREDICTOR", "hex": "A7", "coordinates": [80, -260, 0]}
+        ]
+      }
+    ],
+
+    "deep_space_relays": [
+      {"name": "GALACTIC-RELAY-ALPHA", "glyph": "▲", "hex": "B2", "coordinates": [-400, 600, 120]},
+      {"name": "GALACTIC-RELAY-BETA", "glyph": "▲", "hex": "B3", "coordinates": [420, 580, -140]},
+      {"name": "GALACTIC-RELAY-GAMMA", "glyph": "▲", "hex": "B4", "coordinates": [0, 900, 200]}
+    ],
+
+    "rails": [
+      {"from": "FIRE-CLUSTER", "to": "ICE-CLUSTER", "type": "energy-balance"},
+      {"from": "ICE-CLUSTER", "to": "SENTINEL-CLUSTER", "type": "law-transfer"},
+      {"from": "SENTINEL-CLUSTER", "to": "FIRE-CLUSTER", "type": "predictive-loop"},
+      {"from": "GALACTIC-RELAY-ALPHA", "to": "AVIS-CIRCW", "type": "deep-link"},
+      {"from": "GALACTIC-RELAY-BETA", "to": "FIRE-GEM", "type": "ignition-feed"},
+      {"from": "GALACTIC-RELAY-GAMMA", "to": "SENTINEL-PREDICTOR", "type": "future-cast"}
+    ],
+
+    "meta": {
+      "creator": "Demon",
+      "protocol": "AVIS-2026",
+      "version": "4.0",
+      "timestamp": "2026-05-23T20:41:00-04:00",
+      "signature": "FIRE-STAR-IV-GALACTIC-LATTICE"
+    }
+  }
+}

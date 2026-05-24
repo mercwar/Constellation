@@ -1,0 +1,249 @@
+{
+  "constellations": [
+    {
+      "name": "MERCWAR Robotic Source Grid - Initial Shine Map",
+      "canvas": {
+        "aspect_ratio": "16:9",
+        "resolution_px": [3840, 2160]
+      },
+      "nodes": [
+        { "name": "MERCWAR AI", "role": "mixed", "color": "mixed", "size": 1.00, "pos": [0.50, 0.50] },
+        { "name": "AVIS", "role": "mixed", "color": "purple", "size": 0.18, "pos": [0.50, 0.18] },
+        { "name": "AVIS-DATALAKE", "role": "ice", "color": "blue", "size": 0.14, "pos": [0.72, 0.22] },
+        { "name": "Sentinel", "role": "ice", "color": "blue", "size": 0.14, "pos": [0.86, 0.42] },
+        { "name": "CYHY-CMT", "role": "ice", "color": "blue", "size": 0.14, "pos": [0.80, 0.65] },
+        { "name": "NEXUS", "role": "mixed", "color": "purple", "size": 0.16, "pos": [0.62, 0.80] },
+        { "name": "Cyborg", "role": "mixed", "color": "purple", "size": 0.14, "pos": [0.38, 0.80] },
+        { "name": "CYBORG-PROJECT-EXPLORER", "role": "ice", "color": "blue", "size": 0.14, "pos": [0.20, 0.68] },
+        { "name": "Constellation", "role": "mixed", "color": "purple", "size": 0.14, "pos": [0.14, 0.46] },
+        { "name": "AVIS-AI-INI-DIR-MK-SCAN", "role": "ice", "color": "blue", "size": 0.12, "pos": [0.26, 0.24] },
+        { "name": "Fire-Gem", "role": "fire", "color": "orange", "size": 0.14, "pos": [0.38, 0.18] },
+        { "name": "Dark-Com", "role": "fire", "color": "orange", "size": 0.12, "pos": [0.62, 0.18] }
+      ],
+      "rails": [
+        { "from": "MERCWAR AI", "to": "AVIS", "type": "mixedIfNeeded" },
+        { "from": "MERCWAR AI", "to": "Fire-Gem", "type": "fire" },
+        { "from": "MERCWAR AI", "to": "AVIS-DATALAKE", "type": "ice" },
+        { "from": "MERCWAR AI", "to": "NEXUS", "type": "mixed" },
+        { "from": "MERCWAR AI", "to": "Sentinel", "type": "ice" },
+        { "from": "NEXUS", "to": "Cyborg", "type": "mixed" },
+        { "from": "CYHY-CMT", "to": "Cyborg", "type": "ice" },
+        { "from": "CYBORG-PROJECT-EXPLORER", "to": "Constellation", "type": "ice" },
+        { "from": "Fire-Gem", "to": "Dark-Com", "type": "fire" }
+      ],
+      "visual_rules": {
+        "node_label_font": "Inter/Eurostile/Roboto Condensed (clean futuristic)",
+        "label_color": "pure white or very light grey for contrast",
+        "label_size_relative": "scale by node.size",
+        "rail_thickness_px_at_3840": 2,
+        "node_bloom_strength": "low",
+        "reflection_strength": "low",
+        "hex_grid_visibility": "very faint"
+      },
+      "export": { "format": "PNG", "transparent_background": false, "dpi": 300 }
+    },
+    {
+      "name": "MERCWAR Robotic Source Grid - Ultra Shine 3D Battle Holo",
+      "canvas": {
+        "aspect_ratio": "16:9",
+        "resolution_px": [3840, 2160]
+      },
+      "nodes": [
+        { "name": "MERCWAR AI", "role": "mixed", "color": "mixed", "size": 1.00, "pos": [0.50, 0.50] },
+        { "name": "AVIS", "role": "fire", "color": "orange", "size": 0.18, "pos": [0.50, 0.18] },
+        { "name": "AVIS-DATALAKE", "role": "fire", "color": "orange", "size": 0.14, "pos": [0.72, 0.22] },
+        { "name": "Sentinel", "role": "fire", "color": "orange", "size": 0.14, "pos": [0.86, 0.42] },
+        { "name": "CYHY-CMT", "role": "ice", "color": "blue", "size": 0.14, "pos": [0.80, 0.65] },
+        { "name": "NEXUS", "role": "ice", "color": "blue", "size": 0.16, "pos": [0.62, 0.80] },
+        { "name": "Cyborg", "role": "mixed", "color": "purple", "size": 0.14, "pos": [0.38, 0.80] },
+        { "name": "CYBORG-PROJECT-EXPLORER", "role": "ice", "color": "blue", "size": 0.14, "pos": [0.20, 0.68] },
+        { "name": "Constellation", "role": "mixed", "color": "purple", "size": 0.14, "pos": [0.14, 0.46] },
+        { "name": "AVIS-AI-INI-DIR-MK-SCAN", "role": "ice", "color": "blue", "size": 0.12, "pos": [0.26, 0.24] },
+        { "name": "Fire-Gem", "role": "fire", "color": "orange", "size": 0.14, "pos": [0.38, 0.18] },
+        { "name": "Dark-Com", "role": "fire", "color": "orange", "size": 0.12, "pos": [0.62, 0.18] }
+      ],
+      "rails": [
+        { "from": "MERCWAR AI", "to": "AVIS", "type": "fire" },
+        { "from": "MERCWAR AI", "to": "Fire-Gem", "type": "fire" },
+        { "from": "MERCWAR AI", "to": "AVIS-DATALAKE", "type": "fire" },
+        { "from": "MERCWAR AI", "to": "NEXUS", "type": "ice" },
+        { "from": "MERCWAR AI", "to": "Sentinel", "type": "fire" },
+        { "from": "NEXUS", "to": "Cyborg", "type": "mixed" },
+        { "from": "CYHY-CMT", "to": "Cyborg", "type": "ice" },
+        { "from": "CYBORG-PROJECT-EXPLORER", "to": "Constellation", "type": "ice" },
+        { "from": "Fire-Gem", "to": "Dark-Com", "type": "fire" }
+      ],
+      "visual_rules": {
+        "node_label_font": "Inter/Eurostile/Roboto Condensed (clean futuristic)",
+        "label_color": "pure white or very light grey for contrast",
+        "label_size_relative": "scale by node.size",
+        "rail_thickness_px_at_3840": 2,
+        "node_bloom_strength": "medium",
+        "reflection_strength": "medium",
+        "hex_grid_visibility": "faint"
+      },
+      "export": { "format": "PNG", "transparent_background": false, "dpi": 300 }
+    },
+    {
+      "name": "MERCWAR Robotic Source Grid - Ultra Detailed JSON",
+      "canvas": {
+        "width_px": 3840,
+        "height_px": 2160,
+        "background": {
+          "type": "black_glass",
+          "hex_grid": {
+            "visible": true,
+            "opacity": 0.05,
+            "color": "#222222",
+            "spacing_px": 100
+          },
+          "reflection": {
+            "enabled": true,
+            "intensity": 0.3,
+            "blur_radius_px": 15
+          }
+        }
+      },
+      "nodes": [
+        {
+          "id": "MERCWAR AI",
+          "label": "MERCWAR AI",
+          "role": "mixed",
+          "color": {
+            "left": "#FF6A00",
+            "right": "#00BFFF"
+          },
+          "position": {
+            "x": 1920,
+            "y": 1080,
+            "z": 10
+          },
+          "size_px": 300,
+          "glow": {
+            "intensity": 0.8,
+            "radius_px": 120,
+            "bloom": true
+          },
+          "reflection": {
+            "enabled": true,
+            "opacity": 0.6
+          }
+        },
+        {
+          "id": "AVIS",
+          "label": "AVIS",
+          "role": "fire",
+          "color": "#FF6A00",
+          "position": {
+            "x": 1920,
+            "y": 600,
+            "z": 5
+          },
+          "size_px": 120,
+          "glow": {
+            "intensity": 0.6,
+            "radius_px": 60,
+            "bloom": true
+          }
+        },
+        {
+          "id": "AVIS-DATALAKE",
+          "label": "AVIS-DATALAKE",
+          "role": "ice",
+          "color": "#00BFFF",
+          "position": {
+            "x": 2300,
+            "y": 650,
+            "z": 5
+          },
+          "size_px": 100,
+          "glow": {
+            "intensity": 0.6,
+            "radius_px": 50,
+            "bloom": true
+          }
+        }
+      ],
+      "rails": [
+        {
+          "from": "MERCWAR AI",
+          "to": "AVIS",
+          "color": "#FF6A00",
+          "gradient": false,
+          "glow_intensity": 0.7,
+          "width_px": 3,
+          "start_pos": { "x": 1920, "y": 1080, "z": 10 },
+          "end_pos": { "x": 1920, "y": 600, "z": 5 }
+        },
+        {
+          "from": "MERCWAR AI",
+          "to": "AVIS-DATALAKE",
+          "color": "#00BFFF",
+          "gradient": false,
+          "glow_intensity": 0.7,
+          "width_px": 3,
+          "start_pos": { "x": 1920, "y": 1080, "z": 10 },
+          "end_pos": { "x": 2300, "y": 650, "z": 5 }
+        }
+      ],
+      "ui_elements": {
+        "banners": [
+          {
+            "id": "RKU",
+            "position": { "x": 100, "y": 100 },
+            "size_px": { "width": 300, "height": 100 },
+            "graphic_path": "assets/rku_banner.png",
+            "opacity": 0.9
+          },
+          {
+            "id": "RRU",
+            "position": { "x": 3540, "y": 100 },
+            "size_px": { "width": 300, "height": 100 },
+            "graphic_path": "assets/rru_banner.png",
+            "opacity": 0.9
+          }
+        ],
+        "info_panels": [
+          {
+            "id": "legend",
+            "position": { "x": 100, "y": 1800 },
+            "size_px": { "width": 400, "height": 300 },
+            "content": [
+              { "symbol": "circle", "label": "MERCWAR AI" },
+              { "symbol": "flame", "label": "Fire" },
+              { "symbol": "shield", "label": "Sentinel" },
+              { "symbol": "bars", "label": "CYHY-CMT" },
+              { "symbol": "crystal", "label": "Cyborg" },
+              { "symbol": "house", "label": "Dark-Com" }
+            ],
+            "style": {
+              "font": "Eurostile Bold",
+              "font_size_px": 24,
+              "color": "#00BFFF",
+              "background_color": "rgba(0,0,0,0.5)",
+              "border_radius_px": 10,
+              "padding_px": 20
+            }
+          }
+        ]
+      },
+      "effects": {
+        "bloom": {
+          "enabled": true,
+          "intensity": 0.5,
+          "radius_px": 100
+        },
+        "reflection": {
+          "enabled": true,
+          "opacity": 0.4,
+          "blur_radius_px": 20
+        },
+        "sfx": {
+          "enabled": true,
+          "types": ["lens_flare", "energy_pulse", "digital_rain"],
+          "intensity": 0.3
+        }
+      }
+    }
+  ]
+}

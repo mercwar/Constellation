@@ -1,0 +1,49 @@
+{
+  "constellation_map": {
+    "id": "map_fire_star_nexus",
+    "name": "MERCWAR Fire-Star Nexus",
+    "description": "Highly detailed fire-star nexus constellation with multiple fire flare nodes connected in a complex star pattern around the central Fire-Star Nexus node.",
+    "canvas": {
+      "aspect_ratio": "16:9",
+      "resolution_px": [3840, 2160],
+      "background": {
+        "type": "black_glass",
+        "hex_grid": {
+          "visible": true,
+          "opacity": 0.05,
+          "color": "#330000",
+          "spacing_px": 100
+        }
+      }
+    },
+    "nodes": [
+      {
+        "id": "node_fire_star_nexus",
+        "label": "Fire-Star Nexus",
+        "role": "fire",
+        "color": "#FF4500",
+        "size_px": 320,
+        "position": { "x_norm": 0.5, "y_norm": 0.5 },
+        "glow": { "intensity": 0.95, "radius_px": 140, "bloom": true },
+        "reflection": { "enabled": true, "opacity": 0.7 }
+      },
+      {
+        "id": "node_fire_flare_1",
+        "label": "Fire Flare",
+        "role": "fire",
+        "color": "#FF6347",
+        "size_px": 40,
+        "position": { "x_norm": 0.15, "y_norm": 0.25 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_fire_flare_2",
+        "label": "Fire Flare",
+        "role": "fire",
+        "color": "#FF6347",
+        "size_px": 40,
+        "position": { "x_norm": 0.85, "y_norm": 0.25 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "

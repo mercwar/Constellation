@@ -1,0 +1,193 @@
+{
+  "constellation_map": {
+    "id": "map_cosmic_law_array_unified_protocol",
+    "name": "MERCWAR Cosmic Law Array - Unified Protocol Online",
+    "description": "Cosmic star lattice constellation representing universal law and cosmic energy flows with interconnected glowing nodes and holographic rails.",
+    "canvas": {
+      "aspect_ratio": "16:9",
+      "resolution_px": [3840, 2160],
+      "background": {
+        "type": "black_glass",
+        "hex_grid": {
+          "visible": true,
+          "opacity": 0.05,
+          "color": "#111111",
+          "spacing_px": 100
+        },
+        "digital_rain": {
+          "enabled": true,
+          "intensity": 0.3
+        }
+      }
+    },
+    "nodes": [
+      {
+        "id": "node_cosmic_law_core",
+        "label": "Cosmic Law Core",
+        "role": "core",
+        "color": "#FF8C00",
+        "size_px": 320,
+        "position": { "x_norm": 0.5, "y_norm": 0.5 },
+        "glow": { "intensity": 1.0, "radius_px": 150, "bloom": true },
+        "reflection": { "enabled": true, "opacity": 0.8 }
+      },
+      {
+        "id": "node_universal_law_1",
+        "label": "Universal Law Node",
+        "role": "law",
+        "color": "#1E90FF",
+        "size_px": 100,
+        "position": { "x_norm": 0.3, "y_norm": 0.3 },
+        "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+      },
+      {
+        "id": "node_universal_law_2",
+        "label": "Universal Law Node",
+        "role": "law",
+        "color": "#1E90FF",
+        "size_px": 100,
+        "position": { "x_norm": 0.7, "y_norm": 0.3 },
+        "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+      },
+      {
+        "id": "node_universal_law_3",
+        "label": "Universal Law Node",
+        "role": "law",
+        "color": "#1E90FF",
+        "size_px": 100,
+        "position": { "x_norm": 0.3, "y_norm": 0.7 },
+        "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+      },
+      {
+        "id": "node_universal_law_4",
+        "label": "Universal Law Node",
+        "role": "law",
+        "color": "#1E90FF",
+        "size_px": 100,
+        "position": { "x_norm": 0.7, "y_norm": 0.7 },
+        "glow": { "intensity": 0.7, "radius_px": 70, "bloom": true }
+      }
+      // Additional universal law nodes can be added here with precise positions
+    ],
+    "rails": [
+      {
+        "id": "rail_core_law_1",
+        "from_node_id": "node_cosmic_law_core",
+        "to_node_id": "node_universal_law_1",
+        "color": "#FF8C00",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_core_law_2",
+        "from_node_id": "node_cosmic_law_core",
+        "to_node_id": "node_universal_law_2",
+        "color": "#FF8C00",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_core_law_3",
+        "from_node_id": "node_cosmic_law_core",
+        "to_node_id": "node_universal_law_3",
+        "color": "#FF8C00",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_core_law_4",
+        "from_node_id": "node_cosmic_law_core",
+        "to_node_id": "node_universal_law_4",
+        "color": "#FF8C00",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_law_1_2",
+        "from_node_id": "node_universal_law_1",
+        "to_node_id": "node_universal_law_2",
+        "color": "#1E90FF",
+        "gradient": true,
+        "glow_intensity": 0.7,
+        "width_px": 3
+      },
+      {
+        "id": "rail_law_2_4",
+        "from_node_id": "node_universal_law_2",
+        "to_node_id": "node_universal_law_4",
+        "color": "#1E90FF",
+        "gradient": true,
+        "glow_intensity": 0.7,
+        "width_px": 3
+      },
+      {
+        "id": "rail_law_4_3",
+        "from_node_id": "node_universal_law_4",
+        "to_node_id": "node_universal_law_3",
+        "color": "#1E90FF",
+        "gradient": true,
+        "glow_intensity": 0.7,
+        "width_px": 3
+      },
+      {
+        "id": "rail_law_3_1",
+        "from_node_id": "node_universal_law_3",
+        "to_node_id": "node_universal_law_1",
+        "color": "#1E90FF",
+        "gradient": true,
+        "glow_intensity": 0.7,
+        "width_px": 3
+      }
+    ],
+    "ui_elements": {
+      "banners": [
+        {
+          "id": "banner_mercwar_title",
+          "label": "MERCWAR Cosmic Law Array",
+          "position_px": { "x": 1400, "y": 50 },
+          "size_px": { "width": 1100, "height": 80 },
+          "color": "#FF8C00",
+          "text": "UNIFIED PROTOCOL ONLINE"
+        }
+      ],
+      "info_panels": [
+        {
+          "id": "panel_cosmic_energy_flow",
+          "label": "Cosmic Energy Flow",
+          "position_px": { "x": 100, "y": 1600 },
+          "size_px": { "width": 400, "height": 200 },
+          "color": "#FF8C00",
+          "content": [
+            "COSMIC ENERGY FLOW GRAPH",
+            "QUANTUM HARMONY INDEX"
+          ]
+        },
+        {
+          "id": "panel_galactic_node_status",
+          "label": "Galactic Node Status",
+          "position_px": { "x": 3000, "y": 1600 },
+          "size_px": { "width": 400, "height": 200 },
+          "color": "#1E90FF",
+          "content": [
+            "NODE STATUS LIST",
+            "REALM INTEGRITY"
+          ]
+        }
+      ]
+    },
+    "effects": {
+      "bloom": { "enabled": true, "intensity": 0.7, "radius_px": 140 },
+      "reflection": { "enabled": true, "opacity": 0.75, "blur_radius_px": 30 },
+      "digital_rain": { "enabled": true, "intensity": 0.35 }
+    },
+    "metadata": {
+      "created_by": "Opera AI Assistant",
+      "creation_date": "2026-05-23",
+      "version": "1.0"
+    }
+  }
+}

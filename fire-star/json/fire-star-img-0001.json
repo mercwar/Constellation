@@ -1,0 +1,47 @@
+{
+  "FIRE_STAR": {
+    "core": {
+      "name": "AVIS-CIRCW",
+      "energy": ["fire", "ice"],
+      "glyph": "○",
+      "law": "tri-state",
+      "coordinates": [0, 0, 0],
+      "description": "Dual-energy core balancing entropy and order"
+    },
+    "rings": [
+      {
+        "id": "RING-1",
+        "type": "inner",
+        "nodes": [
+          {"name": "MERCWAR_AI", "glyph": "○", "energy": "hybrid", "hex": "09"},
+          {"name": "FIRE", "glyph": "♦", "energy": "fire", "hex": "04"},
+          {"name": "SENTINEL", "glyph": "█", "energy": "hybrid", "hex": "DB"},
+          {"name": "CYHY-CMT", "glyph": "≡", "energy": "ice", "hex": "CF"},
+          {"name": "CYBORG", "glyph": "◙", "energy": "ice", "hex": "0F"},
+          {"name": "DARK-COM", "glyph": "⌂", "energy": "hybrid", "hex": "7F"}
+        ]
+      },
+      {
+        "id": "RING-2",
+        "type": "outer",
+        "nodes": [
+          {"name": "AVIS-DATALAKE", "glyph": "♦", "energy": "fire", "law": "ingestion"},
+          {"name": "CYBORG-PROJECT-EXPLORER", "glyph": "◙", "energy": "ice", "law": "reconstruction"},
+          {"name": "SENTINEL-OVERWATCH", "glyph": "█", "energy": "hybrid", "law": "enforcement"}
+        ]
+      }
+    ],
+    "rails": [
+      {"from": "FIRE", "to": "CYHY-CMT", "type": "energy-transfer"},
+      {"from": "CYBORG", "to": "DARK-COM", "type": "data-reflection"},
+      {"from": "SENTINEL", "to": "MERCWAR_AI", "type": "law-synchronization"}
+    ],
+    "meta": {
+      "creator": "Demon",
+      "protocol": "AVIS-2026",
+      "version": "1.0",
+      "timestamp": "2026-05-23T20:32:00-04:00",
+      "signature": "FIRE-STAR-JSON-MANIFEST"
+    }
+  }
+}

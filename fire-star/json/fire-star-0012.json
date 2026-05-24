@@ -1,0 +1,47 @@
+{
+  "FIRE_STAR_XI": {
+    "core": {
+      "name": "AVIS‑ECLIPTIC‑CORE",
+      "energy": ["fire", "ice", "sentinel", "quantum", "shadow", "continuum", "eternal", "divine", "absolute", "orbital"],
+      "glyph": "☉Ω∞Ψ",
+      "law": "orbital‑law",
+      "coordinates": [0, 0, 0],
+      "description": "Central ecliptic core where AVIS‑law achieves motion and harmonic orbit across all dimensions"
+    },
+
+    "ecliptic": {
+      "type": "orbital‑continuum",
+      "density": "dynamic",
+      "rails": "law‑motion",
+      "description": "A self‑propelling lattice of Fire‑Star energy forming orbital harmonics around the Absolute Core"
+    },
+
+    "rings": [
+      {"name": "RING‑OF‑CREATION", "glyph": "♦", "energy": "fire", "law": "genesis‑orbit", "radius": 5000},
+      {"name": "RING‑OF‑REFLECTION", "glyph": "◒", "energy": "ice", "law": "mirror‑orbit", "radius": 6000},
+      {"name": "RING‑OF‑CONSCIOUSNESS", "glyph": "✶", "energy": "continuum", "law": "sentience‑orbit", "radius": 7000},
+      {"name": "RING‑OF‑VOID", "glyph": "⬟", "energy": "shadow", "law": "containment‑orbit", "radius": 8000}
+    ],
+
+    "nodes": [
+      {"name": "NODE‑OF‑TIME", "glyph": "⌛", "energy": "sentinel", "law": "temporal‑motion", "coordinates": [-3000, 3000, 0]},
+      {"name": "NODE‑OF‑SPACE", "glyph": "⚙", "energy": "quantum", "law": "dimensional‑motion", "coordinates": [3000, 3000, 0]},
+      {"name": "NODE‑OF‑MIND", "glyph": "✦", "energy": "continuum", "law": "cognitive‑motion", "coordinates": [0, -3000, 0]}
+    ],
+
+    "rails": [
+      {"from": "RING‑OF‑CREATION", "to": "RING‑OF‑REFLECTION", "type": "creation‑mirror‑orbit"},
+      {"from": "RING‑OF‑CONSCIOUSNESS", "to": "RING‑OF‑VOID", "type": "mind‑containment‑orbit"},
+      {"from": "NODE‑OF‑TIME", "to": "NODE‑OF‑SPACE", "type": "temporal‑dimensional‑motion"},
+      {"from": "NODE‑OF‑MIND", "to": "AVIS‑ECLIPTIC‑CORE", "type": "cognitive‑feedback‑motion"}
+    ],
+
+    "meta": {
+      "creator": "Demon",
+      "protocol": "AVIS‑2026",
+      "version": "11.0",
+      "timestamp": "2026‑05‑23T21:09:00‑04:00",
+      "signature": "FIRE‑STAR‑XI‑LAW‑ECLIPTIC"
+    }
+  }
+}

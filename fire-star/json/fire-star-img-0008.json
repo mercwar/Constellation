@@ -1,0 +1,214 @@
+{
+  "constellation_map": {
+    "id": "map_energy_conduit_prime_relay",
+    "name": "MERCWAR Energy Conduit - Prime Relay Online",
+    "description": "High-tech energy core split molten fire and crystalline ice, surrounded by a protective lattice grid with energy conduits connecting to relay nodes. Includes energy flow and system status UI panels.",
+    "canvas": {
+      "aspect_ratio": "16:9",
+      "resolution_px": [3840, 2160],
+      "background": {
+        "type": "black_glass",
+        "hex_grid": {
+          "visible": true,
+          "opacity": 0.04,
+          "color": "#111111",
+          "spacing_px": 100
+        },
+        "digital_rain": {
+          "enabled": true,
+          "intensity": 0.25
+        }
+      }
+    },
+    "nodes": [
+      {
+        "id": "node_energy_core",
+        "label": "Energy Core",
+        "role": "core",
+        "color": {
+          "left": "#FF4500",
+          "right": "#00BFFF"
+        },
+        "size_px": 300,
+        "position": { "x_norm": 0.5, "y_norm": 0.5 },
+        "glow": { "intensity": 1.0, "radius_px": 140, "bloom": true },
+        "reflection": { "enabled": true, "opacity": 0.75 }
+      },
+      {
+        "id": "node_relay_1",
+        "label": "Relay Node",
+        "role": "relay",
+        "color": "#FF4500",
+        "size_px": 80,
+        "position": { "x_norm": 0.5, "y_norm": 0.15 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_relay_2",
+        "label": "Relay Node",
+        "role": "relay",
+        "color": "#FF4500",
+        "size_px": 80,
+        "position": { "x_norm": 0.85, "y_norm": 0.35 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_relay_3",
+        "label": "Relay Node",
+        "role": "relay",
+        "color": "#FF4500",
+        "size_px": 80,
+        "position": { "x_norm": 0.85, "y_norm": 0.65 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_relay_4",
+        "label": "Relay Node",
+        "role": "relay",
+        "color": "#FF4500",
+        "size_px": 80,
+        "position": { "x_norm": 0.5, "y_norm": 0.85 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_relay_5",
+        "label": "Relay Node",
+        "role": "relay",
+        "color": "#FF4500",
+        "size_px": 80,
+        "position": { "x_norm": 0.15, "y_norm": 0.65 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_relay_6",
+        "label": "Relay Node",
+        "role": "relay",
+        "color": "#FF4500",
+        "size_px": 80,
+        "position": { "x_norm": 0.15, "y_norm": 0.35 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      }
+    ],
+    "rails": [
+      {
+        "id": "rail_core_relay_1",
+        "from_node_id": "node_energy_core",
+        "to_node_id": "node_relay_1",
+        "color": "#FF4500",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_core_relay_2",
+        "from_node_id": "node_energy_core",
+        "to_node_id": "node_relay_2",
+        "color": "#FF4500",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_core_relay_3",
+        "from_node_id": "node_energy_core",
+        "to_node_id": "node_relay_3",
+        "color": "#FF4500",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_core_relay_4",
+        "from_node_id": "node_energy_core",
+        "to_node_id": "node_relay_4",
+        "color": "#FF4500",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_core_relay_5",
+        "from_node_id": "node_energy_core",
+        "to_node_id": "node_relay_5",
+        "color": "#FF4500",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      },
+      {
+        "id": "rail_core_relay_6",
+        "from_node_id": "node_energy_core",
+        "to_node_id": "node_relay_6",
+        "color": "#FF4500",
+        "gradient": true,
+        "glow_intensity": 0.9,
+        "width_px": 4
+      }
+    ],
+    "ui_elements": {
+      "info_panels": [
+        {
+          "id": "panel_energy_flow",
+          "label": "Energy Flow",
+          "position_px": { "x": 200, "y": 800 },
+          "size_px": { "width": 400, "height": 300 },
+          "color": "#FF4500",
+          "content": {
+            "graphs": [
+              {
+                "type": "bar",
+                "title": "Energy Output",
+                "data": [80, 90, 100, 95, 85, 90]
+              },
+              {
+                "type": "line",
+                "title": "System PID",
+                "data": [75, 80, 85, 90, 88, 92]
+              }
+            ]
+          }
+        },
+        {
+          "id": "panel_system_status",
+          "label": "System Status",
+          "position_px": { "x": 3000, "y": 800 },
+          "size_px": { "width": 400, "height": 300 },
+          "color": "#00BFFF",
+          "content": {
+            "metrics": {
+              "shield": "98.7%",
+              "integrity": "99.7%",
+              "latency": "5 ms",
+              "target_protocol": "None"
+            },
+            "radar": {
+              "enabled": true,
+              "type": "circular",
+              "data_points": 50
+            }
+          }
+        }
+      ],
+      "banners": [
+        {
+          "id": "banner_status",
+          "label": "MERCWAR Energy Conduit Status",
+          "position_px": { "x": 1400, "y": 50 },
+          "size_px": { "width": 1000, "height": 80 },
+          "color": "#00BFFF",
+          "text": "MERCWAR // ENERGY CONDUIT // PRIME RELAY ONLINE"
+        }
+      ]
+    },
+    "effects": {
+      "bloom": { "enabled": true, "intensity": 0.7, "radius_px": 130 },
+      "reflection": { "enabled": true, "opacity": 0.6, "blur_radius_px": 25 },
+      "digital_rain": { "enabled": true, "intensity": 0.3 }
+    },
+    "metadata": {
+      "created_by": "Opera AI Assistant",
+      "creation_date": "2026-05-23",
+      "version": "1.0"
+    }
+  }
+}

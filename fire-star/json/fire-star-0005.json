@@ -1,0 +1,190 @@
+{
+  "constellation_map": {
+    "id": "map_fire_star_nexus",
+    "name": "MERCWAR Fire-Star Nexus",
+    "description": "Highly detailed fire-star nexus constellation with multiple fire flare nodes connected in a complex star pattern around the central Fire-Star Nexus node.",
+    "canvas": {
+      "aspect_ratio": "16:9",
+      "resolution_px": [3840, 2160],
+      "background": {
+        "type": "black_glass",
+        "hex_grid": {
+          "visible": true,
+          "opacity": 0.05,
+          "color": "#330000",
+          "spacing_px": 100
+        }
+      }
+    },
+    "nodes": [
+      {
+        "id": "node_fire_star_nexus",
+        "label": "Fire-Star Nexus",
+        "role": "fire",
+        "color": "#FF4500",
+        "size_px": 320,
+        "position": { "x_norm": 0.5, "y_norm": 0.5 },
+        "glow": { "intensity": 0.95, "radius_px": 140, "bloom": true },
+        "reflection": { "enabled": true, "opacity": 0.7 }
+      },
+      {
+        "id": "node_fire_flare_1",
+        "label": "Fire Flare",
+        "role": "fire",
+        "color": "#FF6347",
+        "size_px": 40,
+        "position": { "x_norm": 0.15, "y_norm": 0.25 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_fire_flare_2",
+        "label": "Fire Flare",
+        "role": "fire",
+        "color": "#FF6347",
+        "size_px": 40,
+        "position": { "x_norm": 0.85, "y_norm": 0.25 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_fire_flare_3",
+        "label": "Fire Flare",
+        "role": "fire",
+        "color": "#FF6347",
+        "size_px": 40,
+        "position": { "x_norm": 0.15, "y_norm": 0.75 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      },
+      {
+        "id": "node_fire_flare_4",
+        "label": "Fire Flare",
+        "role": "fire",
+        "color": "#FF6347",
+        "size_px": 40,
+        "position": { "x_norm": 0.85, "y_norm": 0.75 },
+        "glow": { "intensity": 0.7, "radius_px": 60, "bloom": true }
+      }
+      // Additional fire flare nodes can be added here with precise positions
+    ],
+    "rails": [
+      {
+        "id": "rail_nexus_flare_1",
+        "from_node_id": "node_fire_star_nexus",
+        "to_node_id": "node_fire_flare_1",
+        "color": "#FF4500",
+        "gradient": false,
+        "glow_intensity": 0.85,
+        "width_px": 3
+      },
+      {
+        "id": "rail_nexus_flare_2",
+        "from_node_id": "node_fire_star_nexus",
+        "to_node_id": "node_fire_flare_2",
+        "color": "#FF4500",
+        "gradient": false,
+        "glow_intensity": 0.85,
+        "width_px": 3
+      },
+      {
+        "id": "rail_nexus_flare_3",
+        "from_node_id": "node_fire_star_nexus",
+        "to_node_id": "node_fire_flare_3",
+        "color": "#FF4500",
+        "gradient": false,
+        "glow_intensity": 0.85,
+        "width_px": 3
+      },
+      {
+        "id": "rail_nexus_flare_4",
+        "from_node_id": "node_fire_star_nexus",
+        "to_node_id": "node_fire_flare_4",
+        "color": "#FF4500",
+        "gradient": false,
+        "glow_intensity": 0.85,
+        "width_px": 3
+      },
+      {
+        "id": "rail_flare_1_2",
+        "from_node_id": "node_fire_flare_1",
+        "to_node_id": "node_fire_flare_2",
+        "color": "#FF6347",
+        "gradient": true,
+        "glow_intensity": 0.6,
+        "width_px": 2
+      },
+      {
+        "id": "rail_flare_2_4",
+        "from_node_id": "node_fire_flare_2",
+        "to_node_id": "node_fire_flare_4",
+        "color": "#FF6347",
+        "gradient": true,
+        "glow_intensity": 0.6,
+        "width_px": 2
+      },
+      {
+        "id": "rail_flare_4_3",
+        "from_node_id": "node_fire_flare_4",
+        "to_node_id": "node_fire_flare_3",
+        "color": "#FF6347",
+        "gradient": true,
+        "glow_intensity": 0.6,
+        "width_px": 2
+      },
+      {
+        "id": "rail_flare_3_1",
+        "from_node_id": "node_fire_flare_3",
+        "to_node_id": "node_fire_flare_1",
+        "color": "#FF6347",
+        "gradient": true,
+        "glow_intensity": 0.6,
+        "width_px": 2
+      }
+    ],
+    "ui_elements": {
+      "banners": [
+        {
+          "id": "banner_rku",
+          "position_px": { "x": 100, "y": 100 },
+          "size_px": { "width": 300, "height": 100 },
+          "graphic": "assets/rku_banner.png",
+          "opacity": 0.9
+        },
+        {
+          "id": "banner_rru",
+          "position_px": { "x": 3540, "y": 100 },
+          "size_px": { "width": 300, "height": 100 },
+          "graphic": "assets/rru_banner.png",
+          "opacity": 0.9
+        }
+      ],
+      "info_panels": [
+        {
+          "id": "legend_panel",
+          "position_px": { "x": 100, "y": 1800 },
+          "size_px": { "width": 400, "height": 300 },
+          "content": [
+            { "symbol": "circle", "label": "Fire-Star Nexus" },
+            { "symbol": "flame", "label": "Fire Flare" }
+          ],
+          "style": {
+            "font_family": "Eurostile Bold",
+            "font_size_px": 24,
+            "color": "#FF4500",
+            "background_color": "rgba(0,0,0,0.5)",
+            "border_radius_px": 10,
+            "padding_px": 20
+          }
+        }
+      ]
+    },
+    "effects": {
+      "bloom": { "enabled": true, "intensity": 0.6, "radius_px": 120 },
+      "reflection": { "enabled": true, "opacity": 0.5, "blur_radius_px": 25 },
+      "sfx": { "enabled": true, "types": ["lens_flare", "energy_pulse"], "intensity": 0.4 }
+    },
+    "metadata": {
+      "created_by": "Opera AI Assistant",
+      "creation_date": "2026-05-23",
+      "version": "1.0"
+    }
+  }
+}

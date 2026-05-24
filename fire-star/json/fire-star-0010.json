@@ -1,0 +1,99 @@
+{
+  "constellation_map": {
+    "id": "map_mercwar_command_center_holographic",
+    "name": "MERCWAR Command Center Holographic Interface",
+    "description": "Futuristic command center holographic interface with MERCWAR AI core split molten fire and crystalline ice halves, surrounded by holographic data panels showing system diagnostics, tactical maps, and energy flow.",
+    "canvas": {
+      "aspect_ratio": "16:9",
+      "resolution_px": [3840, 2160],
+      "background": {
+        "type": "black_glass",
+        "hex_grid": {
+          "visible": true,
+          "opacity": 0.06,
+          "color": "#111111",
+          "spacing_px": 100
+        },
+        "digital_rain": {
+          "enabled": true,
+          "intensity": 0.3
+        }
+      }
+    },
+    "nodes": [
+      {
+        "id": "node_mercwar_ai_core",
+        "label": "MERCWAR AI Core",
+        "role": "core",
+        "color": {
+          "left": "#FF4500",
+          "right": "#00BFFF"
+        },
+        "size_px": 320,
+        "position": { "x_norm": 0.5, "y_norm": 0.5 },
+        "glow": { "intensity": 1.0, "radius_px": 140, "bloom": true },
+        "reflection": { "enabled": true, "opacity": 0.7 }
+      }
+    ],
+    "ui_elements": {
+      "data_panels": [
+        {
+          "id": "panel_left_1",
+          "position_norm": { "x": 0.25, "y": 0.3 },
+          "size_px": { "width": 320, "height": 180 },
+          "content": "System Diagnostics",
+          "color": "#FF4500"
+        },
+        {
+          "id": "panel_left_2",
+          "position_norm": { "x": 0.15, "y": 0.5 },
+          "size_px": { "width": 280, "height": 160 },
+          "content": "Tactical Map",
+          "color": "#FF4500"
+        },
+        {
+          "id": "panel_right_1",
+          "position_norm": { "x": 0.75, "y": 0.3 },
+          "size_px": { "width": 320, "height": 180 },
+          "content": "Energy Flow",
+          "color": "#00BFFF"
+        },
+        {
+          "id": "panel_right_2",
+          "position_norm": { "x": 0.85, "y": 0.5 },
+          "size_px": { "width": 280, "height": 160 },
+          "content": "Mission Status",
+          "color": "#00BFFF"
+        }
+      ],
+      "banners": [
+        {
+          "id": "banner_rku",
+          "label": "RKU Command Network",
+          "position_px": { "x": 100, "y": 50 },
+          "size_px": { "width": 300, "height": 80 },
+          "color": "#FF4500",
+          "text": "SECTOR 07-GAMMA"
+        },
+        {
+          "id": "banner_rru",
+          "label": "RRU Tactical Grid",
+          "position_px": { "x": 3500, "y": 50 },
+          "size_px": { "width": 300, "height": 80 },
+          "color": "#00BFFF",
+          "text": "ZONE 19-DELTA"
+        }
+      ]
+    },
+    "effects": {
+      "bloom": { "enabled": true, "intensity": 0.65, "radius_px": 130 },
+      "reflection": { "enabled": true, "opacity": 0.6, "blur_radius_px": 25 },
+      "digital_rain": { "enabled": true, "intensity": 0.35 }
+    },
+    "metadata": {
+      "created_by": "Opera AI Assistant",
+      "creation_date": "2026-05-23",
+      "version": "1.0"
+    }
+  }
+}

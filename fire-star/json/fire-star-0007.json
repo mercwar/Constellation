@@ -1,0 +1,153 @@
+{
+  "constellation_map": {
+    "id": "map_mercwar_command_interface",
+    "name": "MERCWAR Command Interface",
+    "description": "Dynamic battle command interface with MERCWAR AI core split molten fire and crystalline ice, surrounded by advanced sentinel, cyborg operative, and dark-com units with detailed status and tactical info.",
+    "canvas": {
+      "aspect_ratio": "16:9",
+      "resolution_px": [3840, 2160],
+      "background": {
+        "type": "black_glass",
+        "hex_grid": {
+          "visible": true,
+          "opacity": 0.07,
+          "color": "#222222",
+          "spacing_px": 100
+        },
+        "digital_rain": {
+          "enabled": true,
+          "intensity": 0.3
+        }
+      }
+    },
+    "nodes": [
+      {
+        "id": "node_mercwar_ai_core",
+        "label": "MERCWAR AI",
+        "role": "core",
+        "color": {
+          "left": "#FF6A00",
+          "right": "#00BFFF"
+        },
+        "size_px": 350,
+        "position": { "x_px": 1920, "y_px": 1080 },
+        "glow": { "intensity": 1.0, "radius_px": 150, "bloom": true },
+        "reflection": { "enabled": true, "opacity": 0.7 }
+      },
+      {
+        "id": "node_advanced_sentinel",
+        "label": "Advanced Sentinel",
+        "role": "fire",
+        "color": "#FF6A00",
+        "size_px": 150,
+        "position": { "x_px": 600, "y_px": 700 },
+        "glow": { "intensity": 0.8, "radius_px": 80, "bloom": true },
+        "status": {
+          "online": true,
+          "armor": "98%",
+          "weapons_active": true
+        }
+      },
+      {
+        "id": "node_cyborg_operative",
+        "label": "Cyborg Operative",
+        "role": "ice",
+        "color": "#00BFFF",
+        "size_px": 150,
+        "position": { "x_px": 900, "y_px": 1400 },
+        "glow": { "intensity": 0.8, "radius_px": 80, "bloom": true },
+        "status": {
+          "ready": true,
+          "augments": "enhanced",
+          "mission_set": true
+        }
+      },
+      {
+        "id": "node_dark_com_unit_1",
+        "label": "Dark-Com Unit",
+        "role": "dark-com",
+        "color": "#800080",
+        "size_px": 150,
+        "position": { "x_px": 2900, "y_px": 700 },
+        "glow": { "intensity": 0.8, "radius_px": 80, "bloom": true },
+        "status": {
+          "engaged": true,
+          "stealth_mode": true,
+          "enemy_lock": true
+        }
+      },
+      {
+        "id": "node_dark_com_unit_2",
+        "label": "Dark-Com Unit",
+        "role": "dark-com",
+        "color": "#800080",
+        "size_px": 150,
+        "position": { "x_px": 2700, "y_px": 1400 },
+        "glow": { "intensity": 0.8, "radius_px": 80, "bloom": true },
+        "status": {
+          "engaged": true,
+          "stealth_mode": true,
+          "drone_lock": true
+        }
+      }
+    ],
+    "ui_elements": {
+      "banners": [
+        {
+          "id": "banner_rku_command_network",
+          "label": "RKU Command Network",
+          "position_px": { "x": 50, "y": 50 },
+          "size_px": { "width": 400, "height": 80 },
+          "color": "#FF6A00",
+          "text": "SECTOR 04-A"
+        },
+        {
+          "id": "banner_rru_tactical_grid",
+          "label": "RRU Tactical Grid",
+          "position_px": { "x": 3500, "y": 50 },
+          "size_px": { "width": 400, "height": 80 },
+          "color": "#00BFFF",
+          "text": "ZONE 12-B"
+        }
+      ],
+      "info_panels": [
+        {
+          "id": "panel_rku_war_protocols",
+          "label": "RKU War Protocols",
+          "position_px": { "x": 50, "y": 1800 },
+          "size_px": { "width": 400, "height": 150 },
+          "color": "#FF6A00",
+          "content": [
+            "DATA FEED",
+            "MISSION OBJECTIVES",
+            "TARGET LOCK",
+            "DRONE SCAN"
+          ]
+        },
+        {
+          "id": "panel_rru_code_black_ops",
+          "label": "RRU Code Black Ops",
+          "position_px": { "x": 3000, "y": 1800 },
+          "size_px": { "width": 400, "height": 150 },
+          "color": "#800080",
+          "content": [
+            "RRU INTEL REPORT",
+            "THREAT ANALYSIS",
+            "CLOAKING FIELD",
+            "SYSTEM DECRYPT"
+          ]
+        }
+      ]
+    },
+    "effects": {
+      "bloom": { "enabled": true, "intensity": 0.7, "radius_px": 130 },
+      "reflection": { "enabled": true, "opacity": 0.6, "blur_radius_px": 30 },
+      "digital_rain": { "enabled": true, "intensity": 0.4 }
+    },
+    "metadata": {
+      "created_by": "Opera AI Assistant",
+      "creation_date": "2026-05-23",
+      "version": "1.0"
+    }
+  }
+}

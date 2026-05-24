@@ -1,0 +1,64 @@
+{
+  "FIRE_STAR_III": {
+    "core": {
+      "name": "AVIS-CIRCW",
+      "energy": ["fire", "ice", "sentinel"],
+      "glyph": "○",
+      "law": "tri-law",
+      "coordinates": [0, 0, 0],
+      "description": "Central tri-law core governing Fire-Star deep-space operations"
+    },
+    "beacons": [
+      {"name": "FIRE-BEACON", "glyph": "♦", "energy": "fire", "law": "expansion", "coordinates": [-50, 100, 0]},
+      {"name": "OVERWATCH-BEACON", "glyph": "■", "energy": "hybrid", "law": "enforcement", "coordinates": [0, 120, 0]},
+      {"name": "ICE-BEACON", "glyph": "≡", "energy": "ice", "law": "precision", "coordinates": [50, 100, 0]},
+      {"name": "SENTINEL-BEACON", "glyph": "█", "energy": "hybrid", "law": "prediction", "coordinates": [0, -120, 0]}
+    ],
+    "rings": [
+      {
+        "id": "RING-1",
+        "type": "inner",
+        "nodes": [
+          {"name": "MERCWAR_AI", "glyph": "○", "energy": "hybrid", "hex": "09"},
+          {"name": "FIRE", "glyph": "♦", "energy": "fire", "hex": "04"},
+          {"name": "SENTINEL", "glyph": "█", "energy": "hybrid", "hex": "DB"},
+          {"name": "CYHY-CMT", "glyph": "≡", "energy": "ice", "hex": "CF"},
+          {"name": "CYBORG", "glyph": "◙", "energy": "ice", "hex": "0F"},
+          {"name": "DARK-COM", "glyph": "⌂", "energy": "hybrid", "hex": "7F"}
+        ]
+      },
+      {
+        "id": "RING-2",
+        "type": "outer",
+        "nodes": [
+          {"name": "AVIS-RELAY", "glyph": "▲", "energy": "hybrid", "hex": "12", "law": "transmission"},
+          {"name": "OVERWATCH", "glyph": "■", "energy": "hybrid", "hex": "3A", "law": "observation"},
+          {"name": "DATALAKE", "glyph": "◆", "energy": "fire", "hex": "58", "law": "ingestion"}
+        ]
+      },
+      {
+        "id": "RING-3",
+        "type": "deep-space",
+        "nodes": [
+          {"name": "SENTINEL-OUTPOST", "glyph": "█", "energy": "hybrid", "hex": "A1", "law": "defense"},
+          {"name": "AVIS-CORE-RELAY", "glyph": "▲", "energy": "hybrid", "hex": "B2", "law": "relay"},
+          {"name": "CYBORG-EXPLORER", "glyph": "◙", "energy": "ice", "hex": "C3", "law": "exploration"},
+          {"name": "FIRE-GEM", "glyph": "♦", "energy": "fire", "hex": "D4", "law": "ignition"}
+        ]
+      }
+    ],
+    "rails": [
+      {"from": "FIRE-BEACON", "to": "FIRE-GEM", "type": "energy-transfer"},
+      {"from": "ICE-BEACON", "to": "CYBORG-EXPLORER", "type": "data-reflection"},
+      {"from": "OVERWATCH-BEACON", "to": "SENTINEL-OUTPOST", "type": "law-synchronization"},
+      {"from": "SENTINEL-BEACON", "to": "AVIS-CORE-RELAY", "type": "predictive-link"}
+    ],
+    "meta": {
+      "creator": "Demon",
+      "protocol": "AVIS-2026",
+      "version": "3.0",
+      "timestamp": "2026-05-23T20:38:00-04:00",
+      "signature": "FIRE-STAR-III-DEEP-SPACE-MANIFEST"
+    }
+  }
+}
