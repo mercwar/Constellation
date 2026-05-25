@@ -271,6 +271,12 @@
     <loc>https://github.com/mercwar/Constellation/blob/main/readme.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/desktop.js</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/images/Copilot_20260523_204959.png</loc>
   </url>
   <url>
@@ -370,6 +376,18 @@
     <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/images/mercwar_robotic_source_grid_ultra_detailed_json_next_d65c1f84.png</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/ui.css</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/index.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/desktop.css</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/index.css</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/json/fire-star-0012.json</loc>
   </url>
   <url>
@@ -443,6 +461,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/json/fire-star-img-0003.json</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/desktop.html</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/CVBOD</loc>
