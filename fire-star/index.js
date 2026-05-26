@@ -6,7 +6,7 @@ const imageExts   = ["jpg","jpeg","png","gif","webp","bmp"];
 let currentVersion = null;
 let files = [];
 let page  = 1;
-const pageSize = 5;   // ONLY SHOW 7 IMAGES
+const pageSize = 5;   // ONLY SHOW 5 IMAGES (Updated from comment mismatches)
 
 function ghList(path=""){
     const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
@@ -27,9 +27,17 @@ function isVersionDir(name){
 
 function buildVersionBar(){
     const bar = document.getElementById("versionBar");
+    if (!bar) return; // Prevent errors if DOM isn't ready
     bar.textContent = "Loading versions…";
 
-    ghList("").then(items=>{
+    // CHANGE: If your "Images X" folders are inside the "fire-star" folder on GitHub, 
+    // change ghList("") below to ghList("fire-star")
+    ghList("fire-star").then(items=>{
+        if (!Array.isArray(items)) {
+            bar.textContent = "Failed to parse repository structure.";
+            return;
+        }
+
         const versions = items
             .filter(i => i.type==="dir" && isVersionDir(i.name))
             .sort((a,b)=>{
@@ -54,7 +62,12 @@ function buildVersionBar(){
 
         if(versions[0]){
             bar.querySelector("button").click();
+        } else {
+            bar.textContent = "No Image version directories found.";
         }
+    }).catch(err => {
+        bar.textContent = "Error connecting to GitHub API.";
+        console.error(err);
     });
 }
 
@@ -69,6 +82,7 @@ function loadImages(){
 
 function renderGrid(){
     const grid = document.getElementById("grid");
+    if (!grid) return;
     grid.innerHTML = "";
 
     const start = (page-1)*pageSize;
@@ -84,24 +98,43 @@ function renderGrid(){
     });
 
     const totalPages = Math.max(1, Math.ceil(files.length/pageSize));
-    document.getElementById("pageInfo").textContent = `${page} OF ${totalPages}`;
+    const pageInfo = document.getElementById("pageInfo");
+    if (pageInfo) {
+        pageInfo.textContent = `${page} OF ${totalPages}`;
+    }
 }
 
 function openLightbox(src){
     const lb = document.getElementById("lightbox");
-    document.getElementById("lbImg").src = src;
-    lb.style.display = "flex";
+    const lbImg = document.getElementById("lbImg");
+    if (lb && lbImg) {
+        lbImg.src = src;
+        lb.style.display = "flex";
+    }
 }
 
-document.getElementById("lightbox").onclick = () => {
-    document.getElementById("lightbox").style.display = "none";
-};
+// Safely attach event listeners after the document finishes loading
+document.addEventListener("DOMContentLoaded", () => {
+    const lightbox = document.getElementById("lightbox");
+    if (lightbox) {
+        lightbox.onclick = () => {
+            lightbox.style.display = "none";
+        };
+    }
 
-document.getElementById("prevBtn").onclick = () => {
-    if(page>1){ page--; renderGrid(); }
-};
-document.getElementById("nextBtn").onclick = () => {
-    if(page < Math.ceil(files.length/pageSize)){ page++; renderGrid(); }
-};
+    const prevBtn = document.getElementById("prevBtn");
+    if (prevBtn) {
+        prevBtn.onclick = () => {
+            if(page>1){ page--; renderGrid(); }
+        };
+    }
 
-buildVersionBar();
+    const nextBtn = document.getElementById("nextBtn");
+    if (nextBtn) {
+        nextBtn.onclick = () => {
+            if(page < Math.ceil(files.length/pageSize)){ page++; renderGrid(); }
+        };
+    }
+
+    buildVersionBar();
+});
