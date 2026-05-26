@@ -1,591 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Constellation Home</title>
-  <meta
-    name="description"
-    content="Constellation portal — a refined launch menu for constellation experiences."
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Cormorant+Garamond:wght@600;700&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    :root {
-      --bg: #070a12;
-      --bg-2: #0e1424;
-      --surface: rgba(16, 22, 38, 0.72);
-      --surface-strong: rgba(21, 29, 48, 0.9);
-      --line: rgba(145, 168, 220, 0.18);
-      --text: #edf3ff;
-      --muted: #9aa8c7;
-      --accent: #89f7e3;
-      --accent-2: #7aa8ff;
-      --glow: rgba(137, 247, 227, 0.28);
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
-      --radius: 24px;
-      --radius-sm: 14px;
-      --max: 1120px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constellation</title>
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+<style>
     body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Space Grotesk", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 15% 20%, rgba(122, 168, 255, 0.14), transparent 28%),
-        radial-gradient(circle at 82% 18%, rgba(137, 247, 227, 0.1), transparent 26%),
-        radial-gradient(circle at 50% 100%, rgba(126, 88, 255, 0.08), transparent 30%),
-        linear-gradient(180deg, #05070d 0%, #0a1020 52%, #070a12 100%);
-      overflow-x: hidden;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000000;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        overflow: hidden;
     }
 
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
+    /* Gold ambient glow */
     body::before {
-      background-image:
-        radial-gradient(2px 2px at 12% 18%, rgba(255,255,255,0.85) 40%, transparent 45%),
-        radial-gradient(1.5px 1.5px at 22% 72%, rgba(255,255,255,0.7) 40%, transparent 45%),
-        radial-gradient(2px 2px at 78% 26%, rgba(255,255,255,0.8) 40%, transparent 45%),
-        radial-gradient(1.5px 1.5px at 64% 64%, rgba(255,255,255,0.6) 40%, transparent 45%),
-        radial-gradient(2px 2px at 88% 78%, rgba(255,255,255,0.8) 40%, transparent 45%),
-        radial-gradient(1.5px 1.5px at 40% 32%, rgba(255,255,255,0.6) 40%, transparent 45%),
-        radial-gradient(1.5px 1.5px at 56% 12%, rgba(255,255,255,0.65) 40%, transparent 45%),
-        radial-gradient(2px 2px at 8% 86%, rgba(255,255,255,0.75) 40%, transparent 45%);
-      opacity: 0.8;
+        content: "";
+        position: absolute;
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(255,215,0,0.12), transparent 70%);
+        filter: blur(90px);
+        z-index: -1;
+        animation: goldPulse 7s ease-in-out infinite alternate;
     }
 
-    body::after {
-      background:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(circle at center, black 45%, transparent 85%);
-      opacity: 0.25;
+    @keyframes goldPulse {
+        from { opacity: 0.4; transform: scale(1); }
+        to   { opacity: 0.8; transform: scale(1.15); }
     }
 
-    .page {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: clamp(20px, 4vw, 48px);
-    }
+    .menu-container {
+        width: 340px;
+        height: 480px;
+        padding: 30px 25px;
+        border-radius: 10px;
+		
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(10px);
 
-    .shell {
-      width: min(100%, var(--max));
-      display: grid;
-      gap: clamp(20px, 3vw, 28px);
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: stretch;
-    }
+        border: 2px solid rgba(255, 215, 0, 0.35);
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
 
-    .intro,
-    .panel {
-      position: relative;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(18, 24, 41, 0.82), rgba(11, 16, 29, 0.74));
-      backdrop-filter: blur(14px) saturate(130%);
-      -webkit-backdrop-filter: blur(14px) saturate(130%);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .intro {
-      border-radius: calc(var(--radius) + 6px);
-      padding: clamp(28px, 5vw, 56px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 560px;
-      isolation: isolate;
-    }
-
-    .intro::before {
-      content: "";
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      right: -90px;
-      top: -90px;
-      background: radial-gradient(circle, rgba(122, 168, 255, 0.22), transparent 68%);
-      filter: blur(8px);
-      z-index: -1;
-    }
-
-    .intro::after {
-      content: "";
-      position: absolute;
-      left: -80px;
-      bottom: -90px;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(137, 247, 227, 0.16), transparent 70%);
-      filter: blur(10px);
-      z-index: -1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.76rem;
-      margin-bottom: 18px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent));
-      box-shadow: 0 0 16px var(--glow);
-    }
-
-    h1 {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 700;
-      font-size: clamp(3rem, 9vw, 6.25rem);
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-      max-width: 8ch;
-      text-wrap: balance;
-    }
-
-    .headline-accent {
-      display: block;
-      color: var(--accent);
-      text-shadow: 0 0 24px rgba(137, 247, 227, 0.12);
-    }
-
-    .lead {
-      max-width: 52ch;
-      margin: 22px 0 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 1.4vw, 1.08rem);
-      line-height: 1.75;
-    }
-
-    .constellation-map {
-      margin-top: clamp(28px, 4vw, 42px);
-      width: 100%;
-      min-height: 180px;
-      border-radius: 18px;
-      border: 1px solid rgba(145, 168, 220, 0.14);
-      background:
-        radial-gradient(circle at 12% 24%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-        radial-gradient(circle at 28% 52%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
-        radial-gradient(circle at 46% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-        radial-gradient(circle at 58% 60%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
-        radial-gradient(circle at 76% 34%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-        radial-gradient(circle at 86% 68%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
-        linear-gradient(120deg, transparent 0 18%, rgba(137,247,227,0.16) 18% 18.6%, transparent 19% 34%, rgba(122,168,255,0.16) 34% 34.6%, transparent 35% 52%, rgba(137,247,227,0.16) 52% 52.6%, transparent 53% 70%, rgba(122,168,255,0.16) 70% 70.6%, transparent 71%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .constellation-map::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-      transform: translateX(-100%);
-      animation: drift 8s linear infinite;
-    }
-
-    .meta {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 20px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .meta span::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 14px var(--glow);
-      flex: 0 0 auto;
-    }
-
-    .panel {
-      border-radius: var(--radius);
-      padding: clamp(22px, 4vw, 34px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .panel-title {
-      margin: 0;
-      font-size: clamp(1.35rem, 2vw, 1.7rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .panel-subtitle {
-      margin: 8px 0 0;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 34ch;
-    }
-
-    .status {
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(137, 247, 227, 0.22);
-      color: var(--accent);
-      background: rgba(137, 247, 227, 0.06);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .menu-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 14px;
-    }
-
-    .menu-item {
-      opacity: 0;
-      transform: translateY(16px);
-      animation: reveal 0.8s ease forwards;
-    }
-
-    .menu-item:nth-child(1) { animation-delay: 0.18s; }
-    .menu-item:nth-child(2) { animation-delay: 0.28s; }
-    .menu-item:nth-child(3) { animation-delay: 0.38s; }
-
-    .menu-link {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
-      align-items: center;
-      width: 100%;
-      padding: 18px 18px 18px 20px;
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid rgba(145, 168, 220, 0.16);
-      border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      transition:
-        transform 0.28s ease,
-        border-color 0.28s ease,
-        background-color 0.28s ease,
-        box-shadow 0.28s ease;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .menu-link::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(115deg, rgba(137,247,227,0.08), rgba(122,168,255,0.08), transparent 58%);
-      opacity: 0;
-      transition: opacity 0.28s ease;
-      z-index: -1;
-    }
-
-    .menu-link:hover,
-    .menu-link:focus-visible {
-      transform: translateY(-3px) scale(1.01);
-      border-color: rgba(137, 247, 227, 0.34);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(137, 247, 227, 0.08) inset;
-      outline: none;
-    }
-
-    .menu-link:hover::before,
-    .menu-link:focus-visible::before {
-      opacity: 1;
-    }
-
-    .menu-link:active {
-      transform: translateY(0) scale(0.995);
-    }
-
-    .link-copy {
-      display: grid;
-      gap: 6px;
-    }
-
-    .link-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .link-desc {
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.5;
-    }
-
-    .link-arrow {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      border: 1px solid rgba(145, 168, 220, 0.18);
-      background: rgba(255,255,255,0.02);
-      color: var(--accent);
-      transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease;
-      font-size: 1.15rem;
-    }
-
-    .menu-link:hover .link-arrow,
-    .menu-link:focus-visible .link-arrow {
-      transform: translateX(4px);
-      background: rgba(137, 247, 227, 0.08);
-      border-color: rgba(137, 247, 227, 0.28);
-    }
-
-    .panel-note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.65;
-    }
-
-    .footer-mark {
-      margin-top: 28px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .footer-mark::before {
-      content: "";
-      width: 42px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-    }
-
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @keyframes reveal {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes drift {
-      to {
-        transform: translateX(100%);
-      }
-    }
-
-    @media (max-width: 900px) {
-      .shell {
-        grid-template-columns: 1fr;
-      }
-
-      .intro {
-        min-height: auto;
-      }
-
-      .panel-header {
-        align-items: start;
+        display: flex;
         flex-direction: column;
-      }
+        align-items: center;
+
+        background-image: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%206/image_af28b3aa.png');
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: overlay;
     }
 
-    @media (max-width: 560px) {
-      .page {
-        padding: 16px;
-      }
-
-      .intro,
-      .panel {
-        border-radius: 20px;
-      }
-
-      .menu-link {
-        grid-template-columns: 1fr;
-      }
-
-      .link-arrow {
-        width: 38px;
-        height: 38px;
-      }
+    .menu-header {
+	margin-top:100px;
+        color: #ffd700;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 25px;
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.9);
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
-
-      .menu-item,
-      .reveal-on-scroll {
-        opacity: 1 !important;
-        transform: none !important;
-      }
+    .menu-scroller-placeholder {
+        width: 100%;
+        flex-grow: 1;
+        overflow-y: auto;
+        padding-right: 6px;
     }
-  </style>
+
+    .menu-scroller-placeholder::-webkit-scrollbar {
+        width: 6px;
+    }
+    .menu-scroller-placeholder::-webkit-scrollbar-thumb {
+        background: linear-gradient(#ffd700, #b8860b);
+        border-radius: 3px;
+    }
+
+    .menu-btn {
+        margin-bottom: 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 215, 0, 0.55);
+        background: rgba(0, 0, 0, 0.55);
+        transition: 0.25s ease;
+    }
+
+    .menu-btn:hover {
+        background: rgba(255, 215, 0, 0.15);
+        box-shadow: 0 0 18px rgba(255, 215, 0, 0.55);
+        transform: translateY(-2px);
+    }
+
+    .text-link {
+        display: block;
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffd700;
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 15px;
+        text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+    }
+</style>
 </head>
+
 <body>
-  <main class="page">
-    <section class="shell" aria-label="Constellation navigation">
-      <article class="intro reveal-on-scroll">
-        <div>
-          <div class="eyebrow">Navigation Portal</div>
-          <h1>
-            Enter the
-            <span class="headline-accent">Constellation</span>
-          </h1>
-          <p class="lead">
-            A cleaner, more polished home screen for your project. This version
-            fixes the original file by improving structure, typography,
-            responsiveness, visual hierarchy, and accessibility while keeping the
-            purpose simple: launch into available destinations.
-          </p>
 
-          <div class="constellation-map" aria-hidden="true"></div>
+<div class="menu-container">
+    <div class="menu-header">Constellation</div>
 
-          <div class="meta" aria-label="Project details">
-            <span>Responsive layout</span>
-            <span>Accessible navigation</span>
-            <span>Future-ready menu</span>
-          </div>
+    <div class="menu-scroller-placeholder">
+
+        <div class="menu-btn">
+            <a href="fire-star/index.html" class="text-link">Fire-Star</a>
         </div>
 
-        <div class="footer-mark">Constellation Home</div>
-      </article>
+        <div class="menu-btn">
+            <a href="#" class="text-link">Ice-Star</a>
+        </div>
 
-      <aside class="panel reveal-on-scroll">
-        <header class="panel-header">
-          <div>
-            <h2 class="panel-title">Available Destinations</h2>
-            <p class="panel-subtitle">
-              Select a module below. Add future sections by duplicating a list
-              item and updating its title, description, and link target.
-            </p>
-          </div>
-          <div class="status">1 Active</div>
-        </header>
+        <div class="menu-btn">
+            <a href="#" class="text-link">Void-Star</a>
+        </div>
 
-        <nav aria-label="Main menu">
-          <ul class="menu-list">
-            <li class="menu-item">
-              <a class="menu-link" href="fire-star/index.html">
-                <span class="link-copy">
-                  <span class="link-title">Fire-Star</span>
-                  <span class="link-desc">
-                    Launch the first available experience from the Constellation suite.
-                  </span>
-                </span>
-                <span class="link-arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
+        <div class="menu-btn">
+            <a href="#" class="text-link">Nova-Core</a>
+        </div>
 
-            <!-- Future menu items example:
-            <li class="menu-item">
-              <a class="menu-link" href="new-section/index.html">
-                <span class="link-copy">
-                  <span class="link-title">New Section</span>
-                  <span class="link-desc">Short explanation for this destination.</span>
-                </span>
-                <span class="link-arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-            -->
-          </ul>
-        </nav>
+    </div>
+</div>
 
-        <p class="panel-note">
-          Tip: if you expect many destinations later, this panel can expand into
-          a full index page without changing the visual language.
-        </p>
-      </aside>
-    </section>
-  </main>
-
-  <script>
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.16 }
-    );
-
-    document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
-      observer.observe(el);
-    });
-  </script>
 </body>
 </html>
