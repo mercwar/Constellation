@@ -1,0 +1,159 @@
+/* ============================================================
+   GLOBAL PAGE SETTINGS
+============================================================ */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  background-color: #000;
+  background-image: url("https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/holo-glass-tile.png");
+  background-repeat: repeat;
+  background-size: 512px 512px;
+  background-position: center top;
+}
+
+/* ============================================================
+   HEADER + AVIS BUTTON
+============================================================ */
+
+
+/* ============================================================
+   DIVIDERS
+============================================================ */
+.divider {
+  width: 950px;
+  height: 750px;
+  margin: 40px auto;
+  overflow: visible;
+  background-image: url("https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/avitar7.png?v=1");
+  background-size: 950px 750px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  border: 1px solid rgba(201,162,39,0.35);
+  box-shadow: 0 0 2px rgba(0,255,255,0.25);
+  border-radius: 1px;
+}
+
+/* ============================================================
+   🔥 FINAL AVIS CONTROL FIX — SMALL THUMBS + NO SCROLLBAR HELL
+============================================================ */
+
+/* 1. FIX THE GRID — STOP FORCED HORIZONTAL STRIP */
+#grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    overflow: visible !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: 10px !important;
+    max-width: 900px !important;
+    margin: 20px auto !important;
+}
+
+/* 2. REAL SMALL THUMBNAILS — GUARANTEED */
+.thumb {
+    width: 90px !important;
+    height: 90px !important;
+    object-fit: cover !important;
+    border: 1px solid #c9a227 !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    flex: 0 0 auto !important;
+    transition: transform .2s ease-out, box-shadow .2s ease-out !important;
+}
+
+/* 3. HOVER EFFECT */
+.thumb:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 0 10px rgba(0,255,255,0.6) !important;
+}
+
+
+/* ============================================================
+   FIX: PROTECT LIGHTBOX IMAGE FROM THUMBNAIL RULES
+============================================================ */
+
+/* Lightbox image must NEVER inherit thumbnail size */
+#lbImg {
+    width: auto !important;
+    height: auto !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    object-fit: contain !important;
+    border: 2px solid #c9a227 !important;
+    border-radius: 6px !important;
+}
+
+/* Thumbnails must ONLY apply to .thumb */
+#grid img:not(#lbImg) {
+    width: 90px !important;
+    height: 90px !important;
+    object-fit: cover !important;
+    cursor: pointer !important;
+}
+#pager{
+		margin-left:320px;
+    margin-top:220px;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+header {
+    position: relative;
+    top: 120px;
+	
+    width: 100%;
+    text-align: left;
+    z-index: 10;
+}
+#jump_scroll{
+	
+}
+/* 4. FIX AVIS BUTTON POSITION */
+#avisBtn {
+	margin-left:270px;
+    
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+h1{
+	margin-left:445px;
+    margin-top:80px;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+main {
+    position: relative;
+    top: 115px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+/* ===== WEBKIT (Chrome, Edge, Safari, Opera) ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c9a227; /* Matches your gold theme tint */
+    border-radius: 5px;
+    border: 2px solid #000000; /* Creates a clean gap effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f5d76e; /* Bright gold on hover */
+}
+
+/* ===== FIREFOX ===== */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #c9a227 #000000; /* thumb | track */
+}
+

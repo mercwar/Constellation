@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Fire-Star</title>
+
+  <link rel="stylesheet" href="index.css?v=11">
+  <link rel="stylesheet" href="ui.css?v=11">
+
+  <!-- ===== AVIS / CONSTELLATION META CORE ===== -->
+  <meta name="meta" content="AVIS-CONSTELLATION">
+  <meta name="ACK" content="core,system,viewer,rru,avis26">
+  <meta name="AVIS" content="protocol=26; layer=frontend; mode=viewer">
+  <meta name="CONSTELLATION" content="engine=active; index=enabled; backend=github">
+  <meta name="RRU" content="compat=true; theme=cyborg-blackglass">
+  <meta name="VERSION" content="dynamic; source=github; filter=Version*">
+  <meta name="IMAGES" content="types=jpg,jpeg,png,webp,gif,bmp; mode=thumb+viewer">
+  <meta name="WINDOWS" content="os=Cyborg-Desktop; stacking=front; draggable=true">
+  <meta name="AUTHOR" content="Demon + Copilot">
+</head>
+
+<body>
+
+  <!-- WRAPPER DIVIDER -->
+  <div class="divider" id="topDivider">
+  
+ <div id="versionBar"></div>
+ <a id="jump_scroll"></a>
+      <!-- PAGINATION -->
+      <div id="pager">
+	  
+        <button id="prevBtn">Prev</button>
+        
+        <button id="nextBtn">Next</button>
+		<span id="pageInfo"></span>
+      </div>
+    <!-- VERSION BAR -->
+   
+<header>
+
+<script>
+function openPortal() {
+    const in_a_frame = (window.self !== window.top);
+
+    const portal_tron = in_a_frame
+        ? "https://mercwar.github.io/Constellation/index.html"
+        : "https://github.com/mercwar";
+
+    // 🔥 ALWAYS break out of iframe
+    window.top.location.href = portal_tron;
+}
+</script>
+
+<!-- AVIS BUTTON -->
+<button class="holoBtn" id="avisBtn" onclick="location.href='desktop.html'">AVIS</button>
+
+<!-- PORTAL BUTTON -->
+<button class="holoBtn" id="port"  onclick="openPortal()">Portal</button>
+
+<!-- TITLE -->
+<h1>Fire Star</h1>
+
+</header>
+
+ 
+
+  <main>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox">
+      <div id="lightboxInner">
+        <img id="lbImg" alt="">
+      </div>
+    </div>
+
+    <!-- IMAGE GRID -->
+    <div id="grid"></div>
+
+  </main>
+ </div>
+  <!-- BOTTOM DIVIDER -->
+  <div id="bottomDivider"></div>
+
+  <script src="index.js?v=8"></script>
+<script>
+window.addEventListener("load", () => {
+    const anchor = document.getElementById("jump_scroll");
+    if (!anchor) return;
+
+    // 1. Scroll to anchor
+    anchor.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    // 2. Track scroll until it stops moving
+    let lastPos = -1;
+    let sameCount = 0;
+
+    function trackScroll() {
+        const currentPos = window.scrollY;
+
+        // If scroll position hasn't changed for 3 checks → scrolling is done
+        if (currentPos === lastPos) {
+            sameCount++;
+            if (sameCount >= 3) {
+                // 3. Now scroll further down
+                window.scrollBy({
+                    top: 140,
+                    behavior: "smooth"
+                });
+                return; // stop tracking
+            }
+        } else {
+            sameCount = 0; // reset if movement detected
+        }
+
+        lastPos = currentPos;
+        requestAnimationFrame(trackScroll);
+    }
+
+    requestAnimationFrame(trackScroll);
+});
+</script>
+
+
+</body>
+</html>
