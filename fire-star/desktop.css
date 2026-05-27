@@ -305,3 +305,31 @@ a.holoLink:active {
     scrollbar-width: thin;
     scrollbar-color: #c9a227 #000000; /* thumb | track */
 }
+/* === FIRE‑PUNK FIXED FRAME (950 × 750) === */
+.firepunk-frame {
+    width: 950px;
+    height: 750px;
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 25px var(--neon-blue), inset 0 0 15px rgba(0,234,255,0.25);
+
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+
+    overflow: hidden; /* cockpit stays locked inside */
+    position: relative;
+}
+
+
+.firepunk-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+}
+.control-panel { overflow-y: auto; }
+.display-panel { overflow-y: auto; }

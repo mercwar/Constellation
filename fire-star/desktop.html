@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>The Cyborg Fire Star</title>
-  <link rel="stylesheet" href="desktop.css?v=7">
+ 
+  <script>
+  // Generates "YYYY-MM-DD"
+  const d = new Date();
+  const v = d.toISOString().split('T')[0]; 
+  document.write(`<link rel="stylesheet" href="desktop.css??v=${v}">`);
+
+</script>
+
 </head>
 
 <body>
