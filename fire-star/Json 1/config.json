@@ -1,0 +1,7 @@
+{
+  "file_pattern": "fire-star-*.json",
+  "start_index": 1,
+  "end_index": 12,
+  "padding": 4,
+  "exclude_keywords": ["img"]
+}
