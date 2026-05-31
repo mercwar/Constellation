@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap');
+
+:root {
+  --gold: #ffd54a;
+  --gold-strong: #ffdf72;
+  --bg: #000;
+  --glass: rgba(0,0,0,0.55);
+  --glass-2: rgba(0,0,0,0.35);
+  --line: rgba(255,215,0,0.35);
+  --line-strong: rgba(255,215,0,0.55);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  background-image: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%207/mercwar_portal_bg.jpg');
+  background-repeat: repeat;
+  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--gold);
+}
+
+.screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/mercwar_portal.jpg')
+              no-repeat center center;
+  background-size: contain;
+  height: 875px;
+  width: 1220px;
+  overflow: hidden;
+  
+  /* Smoothly animates both the movement shift and the background removal */
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), background 0.45s ease;
+}
+
+.screen.sidebar-mode {
+	
+  /* keep it centered, just remove the frame background */
+  transform: translate(-88%, -70%);
+  background: transparent;
+ 
+}
+
+
+/* ============================
+   CENTERPIECE PANEL
+   ============================ */
+.centerpiece {
+  width: 304px;
+  min-height: 260px;
+  position: absolute;
+  top: 209px;
+  left: 609px;
+  transform: translateX(-50%);
+  background: var(--glass-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 30px rgba(255,212,0,0.15),
+    inset 0 0 20px rgba(0,0,0,0.8);
+  overflow: hidden;
+  transition:
+    left 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    top 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.4s ease;
+}
+
+.centerpiece.sidebar-mode {
+  top: 10px;
+  left: 10px;              /* REAL left docking */
+  transform: none !important;  /* OVERRIDES translateX(-50%) */
+}
+
+/* INNER LAYOUT */
+.center-inner {
+  padding: 18px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* TITLE */
+.center-title {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px var(--gold-strong);
+}
+
+/* MENU GROUP */
+.menu-group {
+  position: relative;
+  z-index: 2;
+}
+
+/* MAIN BUTTON */
+.rk-btn {
+  width: 100%;
+  padding: 4px;
+  height:30px;
+  background: var(--glass);
+  border: 1px solid var(--line);
+  color: var(--gold);
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: 0.2s;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.rk-btn:hover {
+  background: rgba(0,0,0,0.85);
+  box-shadow:
+    0 0 14px rgba(0,0,0,0.9),
+    0 0 12px var(--line-strong);
+}
+
+/* DROPDOWN WRAPPER */
+.has-dropdown > .rk-btn {
+  margin-bottom: 0;
+}
+
+.dropdown {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    margin 0.25s ease;
+  border-left: 1px solid var(--line);
+  margin-left: 10px;
+  padding-left: 10px;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+/* OPEN STATE */
+.menu-group.open .dropdown {
+  max-height: 160px;
+  overflow-y: auto;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 6px;
+}
+
+/* CUSTOM SCROLLBAR */
+.dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+}
+
+/* SUB ITEMS */
+.sub-btn {
+  width:220px;
+  padding-left: 10px;
+padding-top: 6px;
+padding-bottom: 6px;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(255,212,0,0.2);
+  color: #ffe88a;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.18s;
+  border-radius: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.sub-btn:hover {
+  transform: translateX(4px);
+  background: rgba(0,0,0,0.95);
+  box-shadow:
+    0 0 12px rgba(0,0,0,0.9),
+    0 0 10px rgba(255,215,0,0.45);
+}
+
+/* CARET */
+.caret {
+  float: right;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+}
+
+/* STATUS */
+.status-line {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.8;
+}
+/* ============================
+   BLACK GLASS FLASH EFFECT
+   ============================ */
+
+@keyframes glassFlash {
+  0%   { opacity: 0; }
+  40%  { opacity: 0.35; }
+  55%  { opacity: 0.55; }
+  70%  { opacity: 0.35; }
+  100% { opacity: 0; }
+}
+
+/* FLASH LAYER FOR MAIN BUTTONS */
+.rk-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.45),
+    transparent
+  );
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 6px;
+}
+
+/* FLASH ON HOVER */
+.rk-btn:hover::after {
+  animation: glassFlash 0.45s ease-out;
+}
+
+
+/* FLASH LAYER FOR SUB BUTTONS */
+.sub-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.45),
+    transparent
+  );
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+/* FLASH ON HOVER */
+.sub-btn:hover::after {
+  animation: glassFlash 0.45s ease-out;
+}
+.screen {
+  /* ... keep your existing screen styles ... */
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}

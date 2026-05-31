@@ -1,140 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Constellation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mercwar AI Portal</title>
 
-<style>
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #000000;
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        overflow: hidden;
-    }
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="css/index.css"/>
 
-    /* Gold ambient glow */
-    body::before {
-        content: "";
-        position: absolute;
-        width: 700px;
-        height: 700px;
-        background: radial-gradient(circle, rgba(255,215,0,0.12), transparent 70%);
-        filter: blur(90px);
-        z-index: -1;
-        animation: goldPulse 7s ease-in-out infinite alternate;
-    }
-
-    @keyframes goldPulse {
-        from { opacity: 0.4; transform: scale(1); }
-        to   { opacity: 0.8; transform: scale(1.15); }
-    }
-
-    .menu-container {
-        width: 340px;
-        height: 480px;
-        padding: 30px 25px;
-        border-radius: 10px;
-		
-        background: rgba(0, 0, 0, 0.65);
-        backdrop-filter: blur(10px);
-
-        border: 2px solid rgba(255, 215, 0, 0.35);
-        box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        background-image: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%206/image_af28b3aa.png');
-        background-size: cover;
-        background-position: center;
-        background-blend-mode: overlay;
-    }
-
-    .menu-header {
-	margin-top:100px;
-        color: #ffd700;
-        font-size: 26px;
-        font-weight: 700;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        margin-bottom: 25px;
-        text-shadow: 0 0 12px rgba(255, 215, 0, 0.9);
-    }
-
-    .menu-scroller-placeholder {
-        width: 100%;
-        flex-grow: 1;
-        overflow-y: auto;
-        padding-right: 6px;
-    }
-
-    .menu-scroller-placeholder::-webkit-scrollbar {
-        width: 6px;
-    }
-    .menu-scroller-placeholder::-webkit-scrollbar-thumb {
-        background: linear-gradient(#ffd700, #b8860b);
-        border-radius: 3px;
-    }
-
-    .menu-btn {
-        margin-bottom: 16px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 215, 0, 0.55);
-        background: rgba(0, 0, 0, 0.55);
-        transition: 0.25s ease;
-    }
-
-    .menu-btn:hover {
-        background: rgba(255, 215, 0, 0.15);
-        box-shadow: 0 0 18px rgba(255, 215, 0, 0.55);
-        transform: translateY(-2px);
-    }
-
-    .text-link {
-        display: block;
-        padding: 15px;
-        text-align: center;
-        text-decoration: none;
-        color: #ffd700;
-        font-weight: 600;
-        letter-spacing: 1px;
-        font-size: 15px;
-        text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
-    }
-</style>
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="menu-container">
-    <div class="menu-header">Constellation</div>
+<main class="screen">
 
-    <div class="menu-scroller-placeholder">
+  <section class="centerpiece">
 
-        <div class="menu-btn">
-            <a href="fire-star/index.html" class="text-link">Fire-Star</a>
+    <div class="center-inner">
+
+      <div class="center-title">Mercwar AI Portal</div>
+
+      <!-- NORMAL BUTTON -->
+      <div class="menu-group">
+        <button class="rk-btn" onclick="window.open('https://roborook.fanclub.rocks', '_self')">
+          ENTER GATEWAY
+        </button>
+      </div>
+
+      <!-- CONSTELLATION (AUTO-POPULATED FROM GITHUB) -->
+      <div class="menu-group has-dropdown">
+        <button class="rk-btn dropdown-toggle">
+          CONSTELLATION <span class="caret"></span>
+        </button>
+
+        <div class="dropdown" id="constellation-menu">
+          <!-- GitHub repos will be injected here -->
         </div>
+      </div>
 
-        <div class="menu-btn">
-            <a href="#" class="text-link">Ice-Star</a>
-        </div>
+<!-- SYSTEM HUB -->
+<div class="menu-group has-dropdown">
+  <button class="rk-btn dropdown-toggle">
+    SYSTEM HUB <span class="caret"></span>
+  </button>
 
-        <div class="menu-btn">
-            <a href="#" class="text-link">Void-Star</a>
-        </div>
+ <div class="dropdown" id="system-hub">
 
-        <div class="menu-btn">
-            <a href="#" class="text-link">Nova-Core</a>
-        </div>
+  <!-- Browsers -->
+  <button class="sub-btn" onclick="openToolWindow('https://www.opera.com/gx')">OPERA GX</button>
+  <button class="sub-btn" onclick="openToolWindow('https://www.google.com/chrome/')">GOOGLE CHROME</button>
+  <button class="sub-btn" onclick="openToolWindow('https://www.mozilla.org/firefox/')">FIREFOX</button>
+
+  <!-- Microsoft Dev -->
+  <button class="sub-btn" onclick="openToolWindow('https://learn.microsoft.com/en-us/cpp/')">MSVC TOOLCHAIN</button>
+  <button class="sub-btn" onclick="openToolWindow('https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist')">UCRT / VC RUNTIME</button>
+  <button class="sub-btn" onclick="openToolWindow('https://visualstudio.microsoft.com/downloads/')">VISUAL STUDIO</button>
+  <button class="sub-btn" onclick="openToolWindow('https://developer.microsoft.com/en-us/windows/')">WINDOWS DEV CENTER</button>
+
+  <!-- AI / LLM Engines -->
+  <button class="sub-btn" onclick="openToolWindow('https://huggingface.co')">HUGGINGFACE</button>
+  <button class="sub-btn" onclick="openToolWindow('https://ollama.com')">OLLAMA</button>
+  <button class="sub-btn" onclick="openToolWindow('https://openrouter.ai')">OPENROUTER</button>
+  <button class="sub-btn" onclick="openToolWindow('https://platform.openai.com')">OPENAI</button>
+
+  <!-- Hosting / Backend -->
+  <button class="sub-btn" onclick="openToolWindow('https://byet.host')">BYET HOST</button>
+  <button class="sub-btn" onclick="openToolWindow('https://infinityfree.net')">INFINITYFREE</button>
+
+  <!-- Tools -->
+  <button class="sub-btn" onclick="openToolWindow('https://notepad-plus-plus.org')">NOTEPAD++</button>
+  <button class="sub-btn" onclick="openToolWindow('https://code.visualstudio.com')">VS CODE</button>
+  <button class="sub-btn" onclick="openToolWindow('https://www.python.org/downloads/')">PYTHON</button>
+  <button class="sub-btn" onclick="openToolWindow('https://nodejs.org')">NODE.JS</button>
+<button class="sub-btn" onclick="openToolWindow('https://github.com')">github.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://gitlab.com')">gitlab.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://bitbucket.org')">bitbucket.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://sourceforge.net')">sourceforge.net</button>
+<button class="sub-btn" onclick="openToolWindow('https://stackoverflow.com')">stackoverflow.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://npmjs.com')">npmjs.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://pypi.org')">pypi.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://docker.com')">docker.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://kubernetes.io')">kubernetes.io</button>
+<button class="sub-btn" onclick="openToolWindow('https://w3schools.com')">w3schools.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://developer.mozilla.org')">developer.mozilla.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://hashicorp.com')">hashicorp.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://apache.org')">apache.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://linuxfoundation.org')">linuxfoundation.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://gnu.org')">gnu.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://freecodecamp.org')">freecodecamp.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://codepen.io')">codepen.io</button>
+<button class="sub-btn" onclick="openToolWindow('https://repl.it')">repl.it</button>
+<button class="sub-btn" onclick="openToolWindow('https://arxiv.org')">arxiv.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://huggingface.co')">huggingface.co</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://microsoft.com')">microsoft.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://apple.com')">apple.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://ubuntu.com')">ubuntu.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://debian.org')">debian.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://fedoraproject.org')">fedoraproject.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://archlinux.org')">archlinux.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://android.com')">android.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://adobe.com')">adobe.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://salesforce.com')">salesforce.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://atlassian.com')">atlassian.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://slack.com')">slack.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://zoom.us')">zoom.us</button>
+<button class="sub-btn" onclick="openToolWindow('https://notion.so')">notion.so</button>
+<button class="sub-btn" onclick="openToolWindow('https://figma.com')">figma.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://canva.com')">canva.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://office.com')">office.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://dropbox.com')">dropbox.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://box.com')">box.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://vlcapp.com')">vlcapp.com</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://amazon.com')">amazon.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://newegg.com')">newegg.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://microcenter.com')">microcenter.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://pcpartpicker.com')">pcpartpicker.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://cdw.com')">cdw.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://dell.com')">dell.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://hp.com')">hp.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://lenovo.com')">lenovo.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://asus.com')">asus.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://msi.com')">msi.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://intel.com')">intel.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://amd.com')">amd.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://nvidia.com')">nvidia.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://crucial.com')">crucial.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://ifixit.com')">ifixit.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://monoprice.com')">monoprice.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://digikey.com')">digikey.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://mouser.com')">mouser.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://bnhphotovideo.com')">bnhphotovideo.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://ebay.com')">ebay.com</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://digitalocean.com')">digitalocean.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://linode.com')">linode.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://cloudflare.com')">cloudflare.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://shodan.io')">shodan.io</button>
+<button class="sub-btn" onclick="openToolWindow('https://virustotal.com')">virustotal.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://exploit-db.com')">exploit-db.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://mitre.org')">mitre.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://owasp.org')">owasp.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://letsencrypt.org')">letsencrypt.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://namecheap.com')">namecheap.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://godaddy.com')">godaddy.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://wireshark.org')">wireshark.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://nmap.org')">nmap.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://kali.org')">kali.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://haveibeenpwned.com')">haveibeenpwned.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://dnschecker.org')">dnschecker.org</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://google.com')">google.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://bing.com')">bing.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://duckduckgo.com')">duckduckgo.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://youtube.com')">youtube.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://reddit.com')">reddit.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://x.com')">x.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://linkedin.com')">linkedin.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://ycombinator.com')">ycombinator.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://medium.com')">medium.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://dev.to')">dev.to</button>
+<button class="sub-btn" onclick="openToolWindow('https://wikipedia.org')">wikipedia.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://archive.org')">archive.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://speedtest.net')">speedtest.net</button>
+<button class="sub-btn" onclick="openToolWindow('https://producthunt.com')">producthunt.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://twitch.tv')">twitch.tv</button>
+<button class="sub-btn" onclick="openToolWindow('https://discord.com')">discord.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://quora.com')">quora.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://tumblr.com')">tumblr.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://pinterest.com')">pinterest.com</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://github.com')">Trending Tech</button>
+<button class="sub-btn" onclick="openToolWindow('https://stackoverflow.com')">StackOverflow Search</button>
+<button class="sub-btn" onclick="openToolWindow('https://dnschecker.org')">DNS Propagation</button>
+<button class="sub-btn" onclick="openToolWindow('https://virustotal.com')">VirusTotal Scan</button>
+<button class="sub-btn" onclick="openToolWindow('https://shodan.io')">Shodan Search</button>
+<button class="sub-btn" onclick="openToolWindow('https://exploit-db.com')">Exploit Database</button>
+<button class="sub-btn" onclick="openToolWindow('https://pcpartpicker.com')">Hardware Configurator</button>
+<button class="sub-btn" onclick="openToolWindow('https://speedtest.net')">Network Diagnostics</button>
+<button class="sub-btn" onclick="openToolWindow('https://archive.org')">Wayback Machine</button>
+<button class="sub-btn" onclick="openToolWindow('https://midjourney.com')">Midjourney</button>
+<button class="sub-btn" onclick="openToolWindow('https://openai.com/dall-e-3')">DALL·E 3</button>
+<button class="sub-btn" onclick="openToolWindow('https://stability.ai')">Stable Diffusion</button>
+<button class="sub-btn" onclick="openToolWindow('https://civitai.com')">Civitai</button>
+<button class="sub-btn" onclick="openToolWindow('https://lexica.art')">Lexica</button>
+<button class="sub-btn" onclick="openToolWindow('https://runwayml.com')">Runway ML</button>
+<button class="sub-btn" onclick="openToolWindow('https://playgroundai.com')">Playground AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://nightcafe.studio')">NightCafe</button>
+<button class="sub-btn" onclick="openToolWindow('https://deepai.org')">DeepAI</button>
+<button class="sub-btn" onclick="openToolWindow('https://artbreeder.com')">Artbreeder</button>
+<button class="sub-btn" onclick="openToolWindow('https://dream.ai')">Dream by WOMBO</button>
+<button class="sub-btn" onclick="openToolWindow('https://getimg.ai')">GetIMG</button>
+<button class="sub-btn" onclick="openToolWindow('https://ideogram.ai')">Ideogram</button>
+<button class="sub-btn" onclick="openToolWindow('https://pollinations.ai')">Pollinations</button>
+<button class="sub-btn" onclick="openToolWindow('https://fotor.com/features/ai-image-generator')">Fotor AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://starryai.com')">StarryAI</button>
+<button class="sub-btn" onclick="openToolWindow('https://picsart.com/ai-image-generator')">PicsArt AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://clipdrop.co')">ClipDrop</button>
+<button class="sub-btn" onclick="openToolWindow('https://recraft.ai')">Recraft AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://magnific.ai')">Magnific AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://kaiber.ai')">Kaiber AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://dreamstudio.ai')">DreamStudio</button>
+<button class="sub-btn" onclick="openToolWindow('https://photosonic.writesonic.com')">Photosonic</button>
+<button class="sub-btn" onclick="openToolWindow('https://deepdreamgenerator.com')">Deep Dream Generator</button>
+<button class="sub-btn" onclick="openToolWindow('https://artsmart.ai')">Artsmart AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://soulgen.ai')">SoulGen</button>
+<button class="sub-btn" onclick="openToolWindow('https://dezgo.com')">Dezgo</button>
+<button class="sub-btn" onclick="openToolWindow('https://hama.app')">Hama AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://remove.bg')">RemoveBG</button>
+<button class="sub-btn" onclick="openToolWindow('https://cleanup.pictures')">Cleanup Pictures</button>
+<button class="sub-btn" onclick="openToolWindow('https://lumalabs.ai')">Luma Labs</button>
+<button class="sub-btn" onclick="openToolWindow('https://scenario.com')">Scenario AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://krea.ai')">Krea AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://rosebud.ai')">Rosebud AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://toonme.com')">ToonMe</button>
+<button class="sub-btn" onclick="openToolWindow('https://faceapp.com')">FaceApp</button>
+<button class="sub-btn" onclick="openToolWindow('https://facetuneapp.com')">Facetune</button>
+<button class="sub-btn" onclick="openToolWindow('https://remaker.ai')">Remaker AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://heygen.com')">HeyGen</button>
+<button class="sub-btn" onclick="openToolWindow('https://synthesia.io')">Synthesia</button>
+<button class="sub-btn" onclick="openToolWindow('https://leonardo.ai')">Leonardo AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://artguru.ai')">ArtGuru</button>
+<button class="sub-btn" onclick="openToolWindow('https://pixlr.com')">Pixlr AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://befunky.com')">BeFunky</button>
+<button class="sub-btn" onclick="openToolWindow('https://canva.com/ai-image-generator')">Canva AI Art</button>
+<button class="sub-btn" onclick="openToolWindow('https://hotpot.ai')">Hotpot AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://illusion.ai')">Illusion AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://artflow.ai')">Artflow AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://deepface.ai')">DeepFace AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://facefusion.io')">FaceFusion</button>
+<button class="sub-btn" onclick="openToolWindow('https://runwayml.com/ai-tools/gen-2')">Runway Gen‑2</button>
+<button class="sub-btn" onclick="openToolWindow('https://pika.art')">Pika Labs</button>
+<button class="sub-btn" onclick="openToolWindow('https://stablevideo.com')">Stable Video</button>
+<button class="sub-btn" onclick="openToolWindow('https://suno.ai')">Suno AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://udio.com')">Udio</button>
+<button class="sub-btn" onclick="openToolWindow('https://soundraw.io')">Soundraw</button>
+<button class="sub-btn" onclick="openToolWindow('https://aiva.ai')">AIVA</button>
+<button class="sub-btn" onclick="openToolWindow('https://mubert.com')">Mubert</button>
+<button class="sub-btn" onclick="openToolWindow('https://voicemod.net')">Voicemod</button>
+<button class="sub-btn" onclick="openToolWindow('https://elevenlabs.io')">ElevenLabs</button>
+<button class="sub-btn" onclick="openToolWindow('https://resemble.ai')">Resemble AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://kits.ai')">Kits AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://rvc.ai')">RVC Voice Models</button>
+<button class="sub-btn" onclick="openToolWindow('https://fakeyou.com')">FakeYou</button>
+<button class="sub-btn" onclick="openToolWindow('https://voicemaker.in')">Voicemaker</button>
+<button class="sub-btn" onclick="openToolWindow('https://speechify.com')">Speechify</button>
+<button class="sub-btn" onclick="openToolWindow('https://play.ht')">Play.ht</button>
+<button class="sub-btn" onclick="openToolWindow('https://descript.com')">Descript</button>
+<button class="sub-btn" onclick="openToolWindow('https://audiogen.io')">AudioGen</button>
+<button class="sub-btn" onclick="openToolWindow('https://beatoven.ai')">Beatoven</button>
+<button class="sub-btn" onclick="openToolWindow('https://voicery.com')">Voicery</button>
+<button class="sub-btn" onclick="openToolWindow('https://cleanvoice.ai')">CleanVoice</button>
+<button class="sub-btn" onclick="openToolWindow('https://lalal.ai')">LALAL.AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://moises.ai')">Moises AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://audo.ai')">Audo Studio</button>
+<button class="sub-btn" onclick="openToolWindow('https://krisp.ai')">Krisp AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://voice.ai')">Voice.ai</button>
+<button class="sub-btn" onclick="openToolWindow('https://uberduck.ai')">Uberduck</button>
+<button class="sub-btn" onclick="openToolWindow('https://wavtool.com')">WavTool</button>
+<button class="sub-btn" onclick="openToolWindow('https://endlesss.fm')">Endlesss</button>
+<button class="sub-btn" onclick="openToolWindow('https://boomy.com')">Boomy</button>
+<button class="sub-btn" onclick="openToolWindow('https://melobytes.com')">Melobytes</button>
+<button class="sub-btn" onclick="openToolWindow('https://harmonai.org')">HarmonAI</button>
+<button class="sub-btn" onclick="openToolWindow('https://audiobridgeapp.com')">AudioBridge</button>
+<button class="sub-btn" onclick="openToolWindow('https://voctro.ai')">Voctro AI</button>
+<button class="sub-btn" onclick="openToolWindow('https://voiceful.io')">Voiceful</button>
+<button class="sub-btn" onclick="openToolWindow('https://riffusion.com')">Riffusion</button>
+<button class="sub-btn" onclick="openToolWindow('https://magenta.tensorflow.org')">Google Magenta</button>
+<button class="sub-btn" onclick="openToolWindow('https://audiolabs-erlangen.de')">AudioLabs</button>
+<button class="sub-btn" onclick="openToolWindow('https://openvoiceos.com')">OpenVoiceOS</button>
+<button class="sub-btn" onclick="openToolWindow('https://jsonlint.com')">JSONLint</button>
+<button class="sub-btn" onclick="openToolWindow('https://regex101.com')">Regex101</button>
+<button class="sub-btn" onclick="openToolWindow('https://jwt.io')">JWT Debugger</button>
+<button class="sub-btn" onclick="openToolWindow('https://httpbin.org')">HTTPBin</button>
+<button class="sub-btn" onclick="openToolWindow('https://reqbin.com')">ReqBin</button>
+<button class="sub-btn" onclick="openToolWindow('https://postman.com')">Postman Web</button>
+<button class="sub-btn" onclick="openToolWindow('https://curlconverter.com')">cURL Converter</button>
+<button class="sub-btn" onclick="openToolWindow('https://webhook.site')">Webhook Tester</button>
+<button class="sub-btn" onclick="openToolWindow('https://beeceptor.com')">Beeceptor</button>
+<button class="sub-btn" onclick="openToolWindow('https://mockaroo.com')">Mockaroo</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://codepen.io')">CodePen</button>
+<button class="sub-btn" onclick="openToolWindow('https://jsfiddle.net')">JSFiddle</button>
+<button class="sub-btn" onclick="openToolWindow('https://codesandbox.io')">CodeSandbox</button>
+<button class="sub-btn" onclick="openToolWindow('https://stackblitz.com')">StackBlitz</button>
+<button class="sub-btn" onclick="openToolWindow('https://replit.com')">Replit</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://mdn.dev')">MDN Web Docs</button>
+<button class="sub-btn" onclick="openToolWindow('https://w3schools.com')">W3Schools</button>
+<button class="sub-btn" onclick="openToolWindow('https://developer.mozilla.org')">Mozilla Docs</button>
+<button class="sub-btn" onclick="openToolWindow('https://devdocs.io')">DevDocs</button>
+<button class="sub-btn" onclick="openToolWindow('https://overapi.com')">OverAPI</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://github.com/trending')">GitHub Trending</button>
+<button class="sub-btn" onclick="openToolWindow('https://gitignore.io')">GitIgnore Generator</button>
+<button class="sub-btn" onclick="openToolWindow('https://shields.io')">Shields Badges</button>
+<button class="sub-btn" onclick="openToolWindow('https://readme.so')">README Builder</button>
+<button class="sub-btn" onclick="openToolWindow('https://mermaid.live')">Mermaid Live Editor</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://draw.io')">Draw.io</button>
+<button class="sub-btn" onclick="openToolWindow('https://excalidraw.com')">Excalidraw</button>
+<button class="sub-btn" onclick="openToolWindow('https://diagrams.net')">Diagrams.net</button>
+<button class="sub-btn" onclick="openToolWindow('https://flowchart.fun')">Flowchart Fun</button>
+<button class="sub-btn" onclick="openToolWindow('https://whimsical.com')">Whimsical</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://virustotal.com')">VirusTotal</button>
+<button class="sub-btn" onclick="openToolWindow('https://hybrid-analysis.com')">Hybrid Analysis</button>
+<button class="sub-btn" onclick="openToolWindow('https://any.run')">ANY.RUN Sandbox</button>
+<button class="sub-btn" onclick="openToolWindow('https://urlscan.io')">URLScan</button>
+<button class="sub-btn" onclick="openToolWindow('https://metadefender.opswat.com')">MetaDefender</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://shodan.io')">Shodan</button>
+<button class="sub-btn" onclick="openToolWindow('https://censys.io')">Censys</button>
+<button class="sub-btn" onclick="openToolWindow('https://fofa.info')">FOFA</button>
+<button class="sub-btn" onclick="openToolWindow('https://onyphe.io')">Onyphe</button>
+<button class="sub-btn" onclick="openToolWindow('https://greynoise.io')">GreyNoise</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://dnschecker.org')">DNS Checker</button>
+<button class="sub-btn" onclick="openToolWindow('https://dnsdumpster.com')">DNSDumpster</button>
+<button class="sub-btn" onclick="openToolWindow('https://mxtoolbox.com')">MXToolbox</button>
+<button class="sub-btn" onclick="openToolWindow('https://who.is')">WHOIS Lookup</button>
+<button class="sub-btn" onclick="openToolWindow('https://ipinfo.io')">IPInfo</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://speedtest.net')">Speedtest</button>
+<button class="sub-btn" onclick="openToolWindow('https://fast.com')">Fast.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://browserleaks.com')">BrowserLeaks</button>
+<button class="sub-btn" onclick="openToolWindow('https://amiunique.org')">Am I Unique</button>
+<button class="sub-btn" onclick="openToolWindow('https://whatismybrowser.com')">WhatIsMyBrowser</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://remove.bg')">RemoveBG</button>
+<button class="sub-btn" onclick="openToolWindow('https://cleanup.pictures')">Cleanup Pictures</button>
+<button class="sub-btn" onclick="openToolWindow('https://pixlr.com')">Pixlr</button>
+<button class="sub-btn" onclick="openToolWindow('https://photopea.com')">Photopea</button>
+<button class="sub-btn" onclick="openToolWindow('https://canva.com')">Canva</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://soundraw.io')">Soundraw</button>
+<button class="sub-btn" onclick="openToolWindow('https://suno.ai')">Suno</button>
+<button class="sub-btn" onclick="openToolWindow('https://udio.com')">Udio</button>
+<button class="sub-btn" onclick="openToolWindow('https://voicemod.net')">Voicemod</button>
+<button class="sub-btn" onclick="openToolWindow('https://elevenlabs.io')">ElevenLabs</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://archive.org')">Archive.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://waybackmachine.org')">Wayback Machine</button>
+<button class="sub-btn" onclick="openToolWindow('https://openlibrary.org')">OpenLibrary</button>
+<button class="sub-btn" onclick="openToolWindow('https://projecteuler.net')">Project Euler</button>
+<button class="sub-btn" onclick="openToolWindow('https://hackthebox.com')">HackTheBox</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://tryhackme.com')">TryHackMe</button>
+<button class="sub-btn" onclick="openToolWindow('https://overthewire.org')">OverTheWire</button>
+<button class="sub-btn" onclick="openToolWindow('https://crackstation.net')">CrackStation</button>
+<button class="sub-btn" onclick="openToolWindow('https://hashes.com')">Hashes.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://md5decrypt.net')">MD5 Decrypt</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://file.pizza')">File Pizza</button>
+<button class="sub-btn" onclick="openToolWindow('https://wormhole.app')">Wormhole</button>
+<button class="sub-btn" onclick="openToolWindow('https://send.vis.ee')">Send (Encrypted)</button>
+<button class="sub-btn" onclick="openToolWindow('https://anonfiles.com')">AnonFiles</button>
+<button class="sub-btn" onclick="openToolWindow('https://tinywow.com')">TinyWow Tools</button>
+
+<button class="sub-btn" onclick="openToolWindow('https://jsonformatter.org')">JSON Formatter</button>
+<button class="sub-btn" onclick="openToolWindow('https://tableconvert.com')">TableConvert</button>
+<button class="sub-btn" onclick="openToolWindow('https://convertio.co')">Convertio</button>
+<button class="sub-btn" onclick="openToolWindow('https://pdfescape.com')">PDFEscape</button>
+<button class="sub-btn" onclick="openToolWindow('https://ilovepdf.com')">ILovePDF</button>
+<button class="sub-btn" onclick="openToolWindow('https://huggingface.co')">HuggingFace</button>
+<button class="sub-btn" onclick="openToolWindow('https://pytorch.org')">PyTorch</button>
+<button class="sub-btn" onclick="openToolWindow('https://tensorflow.org')">TensorFlow</button>
+<button class="sub-btn" onclick="openToolWindow('https://keras.io')">Keras</button>
+<button class="sub-btn" onclick="openToolWindow('https://jax.readthedocs.io')">JAX</button>
+<button class="sub-btn" onclick="openToolWindow('https://mlflow.org')">MLFlow</button>
+<button class="sub-btn" onclick="openToolWindow('https://wandb.ai')">Weights & Biases</button>
+<button class="sub-btn" onclick="openToolWindow('https://openrouter.ai')">OpenRouter</button>
+<button class="sub-btn" onclick="openToolWindow('https://ollama.com')">Ollama</button>
+<button class="sub-btn" onclick="openToolWindow('https://lmstudio.ai')">LM Studio</button>
+<button class="sub-btn" onclick="openToolWindow('https://replicate.com')">Replicate</button>
+<button class="sub-btn" onclick="openToolWindow('https://modelscope.cn')">ModelScope</button>
+<button class="sub-btn" onclick="openToolWindow('https://lmsys.org')">LMSYS</button>
+<button class="sub-btn" onclick="openToolWindow('https://arxiv.org')">ArXiv AI Papers</button>
+<button class="sub-btn" onclick="openToolWindow('https://paperswithcode.com')">Papers With Code</button>
+<button class="sub-btn" onclick="openToolWindow('https://colab.research.google.com')">Google Colab</button>
+<button class="sub-btn" onclick="openToolWindow('https://kaggle.com')">Kaggle</button>
+<button class="sub-btn" onclick="openToolWindow('https://deepai.org')">DeepAI</button>
+<button class="sub-btn" onclick="openToolWindow('https://fast.ai')">Fast.ai</button>
+<button class="sub-btn" onclick="openToolWindow('https://towardsdatascience.com')">Towards Data Science</button>
+<button class="sub-btn" onclick="openToolWindow('https://cplusplus.com')">cplusplus.com</button>
+<button class="sub-btn" onclick="openToolWindow('https://learn-c.org')">Learn-C.org</button>
+<button class="sub-btn" onclick="openToolWindow('https://tutorialspoint.com/cprogramming')">TutorialsPoint C</button>
+<button class="sub-btn" onclick="openToolWindow('https://geeksforgeeks.org/c-programming-language')">GeeksForGeeks C</button>
+<button class="sub-btn" onclick="openToolWindow('https://programiz.com/c-programming')">Programiz C</button>
+<button class="sub-btn" onclick="openToolWindow('https://w3schools.com/c')">W3Schools C</button>
+<button class="sub-btn" onclick="openToolWindow('https://stackoverflow.com/questions/tagged/c')">StackOverflow C</button>
+<button class="sub-btn" onclick="openToolWindow('https://godbolt.org')">Compiler Explorer</button>
+<button class="sub-btn" onclick="openToolWindow('https://replit.com/languages/c')">Replit C</button>
+<button class="sub-btn" onclick="openToolWindow('https://github.com/topics/c')">GitHub C Projects</button>
+<button class="sub-btn" onclick="openToolWindow('https://php.net')">PHP.net</button>
+<button class="sub-btn" onclick="openToolWindow('https://w3schools.com/php')">W3Schools PHP</button>
+<button class="sub-btn" onclick="openToolWindow('https://phptherightway.com')">PHP The Right Way</button>
+<button class="sub-btn" onclick="openToolWindow('https://laracasts.com')">Laracasts</button>
+<button class="sub-btn" onclick="openToolWindow('https://packagist.org')">Packagist</button>
+<button class="sub-btn" onclick="openToolWindow('https://symfony.com')">Symfony</button>
+<button class="sub-btn" onclick="openToolWindow('https://laravel.com')">Laravel</button>
+<button class="sub-btn" onclick="openToolWindow('https://phpsandbox.io')">PHPSandbox</button>
+<button class="sub-btn" onclick="openToolWindow('https://stackoverflow.com/questions/tagged/php')">StackOverflow PHP</button>
+<button class="sub-btn" onclick="openToolWindow('https://github.com/topics/php')">GitHub PHP</button>
+<button class="sub-btn" onclick="openToolWindow('https://developer.mozilla.org')">MDN Docs</button>
+<button class="sub-btn" onclick="openToolWindow('https://w3schools.com')">W3Schools</button>
+<button class="sub-btn" onclick="openToolWindow('https://css-tricks.com')">CSS Tricks</button>
+<button class="sub-btn" onclick="openToolWindow('https://javascript.info')">JavaScript.info</button>
+<button class="sub-btn" onclick="openToolWindow('https://freecodecamp.org')">FreeCodeCamp</button>
+<button class="sub-btn" onclick="openToolWindow('https://codepen.io')">CodePen</button>
+<button class="sub-btn" onclick="openToolWindow('https://jsfiddle.net')">JSFiddle</button>
+<button class="sub-btn" onclick="openToolWindow('https://stackblitz.com')">StackBlitz</button>
+<button class="sub-btn" onclick="openToolWindow('https://github.com/topics/javascript')">GitHub JS</button>
+<button class="sub-btn" onclick="openToolWindow('https://frontendmentor.io')">Frontend Mentor</button>
+<button class="sub-btn" onclick="openToolWindow('https://learn.microsoft.com/en-us/windows/win32/directx')">Microsoft DirectX Docs</button>
+<button class="sub-btn" onclick="openToolWindow('https://github.com/microsoft/DirectX-Graphics-Samples')">DirectX Samples</button>
+<button class="sub-btn" onclick="openToolWindow('https://learn.microsoft.com/en-us/windows/win32/direct3d')">Direct3D Docs</button>
+<button class="sub-btn" onclick="openToolWindow('https://microsoft.com/en-us/download/details.aspx?id=6812')">DirectX SDK</button>
+<button class="sub-btn" onclick="openToolWindow('https://gamedev.net')">GameDev.net</button>
+<button class="sub-btn" onclick="openToolWindow('https://stackoverflow.com/questions/tagged/directx')">StackOverflow DirectX</button>
+<button class="sub-btn" onclick="openToolWindow('https://github.com/topics/directx')">GitHub DirectX</button>
+<button class="sub-btn" onclick="openToolWindow('https://docs.microsoft.com/en-us/windows/win32/api')">Win32 API Docs</button>
+<button class="sub-btn" onclick="openToolWindow('https://shader-playground.timjones.io')">Shader Playground</button>
+<button class="sub-btn" onclick="openToolWindow('https://renderdoc.org')">RenderDoc</button>
+
+</div>
+
+</div>
+
+      <!-- TRANSMISSIONS -->
+      <div class="menu-group">
+        <button class="rk-btn" onclick="window.open('https://github.com/mercwar', '_self')">
+          Mercwar Github Portal
+        </button>
+      </div>
+
+      <!-- EXIT -->
+      <div class="menu-group">
+	          <button class="rk-btn" onclick="window.open('https://github.com/login', '_self')">
+         Github User Portal
+        </button>
+      </div>
+
+      <!-- STATUS -->
+      <div class="status-line">Select Downlink</div>
 
     </div>
-</div>
+
+  </section>
+
+</main>
+
+<!-- MAIN JS -->
+<script src="js/index.js?v=25"></script>
 
 </body>
 </html>
