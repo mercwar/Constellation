@@ -1,0 +1,121 @@
+{
+  "ice_star_version": "1.0",
+  "source": "mercwar public repositories",
+  "notes": "Public repos only, structured to continue FIRE-STAR navigation. Prioritized for AI directory assistance.",
+  "repos": [
+    {
+      "name": "Constellation",
+      "priority": 1,
+      "pointers": ["src/", "node/", "engine/", "cluster/", "map/", "task/", "docs/"],
+      "role": "Orchestration framework for distributed services; ICE-STAR directory location"
+    },
+    {
+      "name": "mercwar",
+      "priority": 1,
+      "pointers": ["README.md", "docs/", "src/", "assets/", "examples/", "resume/", "experience/", "cvbgod/"],
+      "role": "Identity core / ceremonial command universe"
+    },
+    {
+      "name": "Cyborg",
+      "priority": 1,
+      "pointers": ["src/", "include/", "build/", "ev2/", "docs/", "examples/"],
+      "role": "Pure-C Win64 execution engine (CYBORG eV.2)"
+    },
+    {
+      "name": "AVIS-DATALAKE",
+      "priority": 1,
+      "pointers": ["schema/", "artifacts/", "manifests/", "index/", "engine/"],
+      "role": "Schema-driven datalake for AVIS"
+    },
+    {
+      "name": "NEXUS",
+      "priority": 1,
+      "pointers": ["src/", "runtime/", "compiler/", "schemas/", "docs/"],
+      "role": "SDK unifying compilation/execution for AVIS"
+    },
+    {
+      "name": "AVIS",
+      "priority": 1,
+      "pointers": ["spec/", "schemas/", "manifests/", "docs/", "tools/"],
+      "role": "Repository standard for AI systems"
+    },
+    {
+      "name": "Sentinel",
+      "priority": 1,
+      "pointers": ["src/", "spec/", "validator/", "sitemap/", "seed/"],
+      "role": "Enforcement kernel for AVIS ecosystem"
+    },
+    {
+      "name": "CYBORG-PROJECT-EXPLORER",
+      "priority": 1,
+      "pointers": ["src/", "build/", "evl/", "scanner/"],
+      "role": "Runtime core / project evaluator"
+    },
+    {
+      "name": "Fire-Gem",
+      "priority": 2,
+      "pointers": ["src/", "bin/", "console/", "models/", "docs/"],
+      "role": "High-speed local LLM shell for Windows"
+    },
+    {
+      "name": "Robo-Knight-Gallery",
+      "priority": 2,
+      "pointers": ["gallery-assets/", "renders/", "frames/", "composites/", "hires/", "assets/", "README.md"],
+      "role": "Versioned visual assets & gallery"
+    },
+    {
+      "name": "Robo-Knight-Demos",
+      "priority": 2,
+      "pointers": ["demos/", "directx/", "assets/", "examples/", "php/"],
+      "role": "Artwork & DirectX demos"
+    },
+    {
+      "name": "AVIS-AI-INI-DIR-MK-SCAN",
+      "priority": 2,
+      "pointers": ["src/", "bin/", "scanner-engine/", "docs/"],
+      "role": "Project scanner for AVIS artifacts"
+    },
+    {
+      "name": "JMC-ANDROID-APP-DEMO",
+      "priority": 2,
+      "pointers": ["jni/", "android/", "src/", "build/", "apk/"],
+      "role": "Native-C Android demo app"
+    },
+    {
+      "name": "Robo-Knight-Player",
+      "priority": 2,
+      "pointers": ["src/", "player/", "js/", "php/", "assets/"],
+      "role": "Viewer & execution shell for Robo-Knight assets"
+    },
+    {
+      "name": "Dark-Com",
+      "priority": 2,
+      "pointers": ["src/", "javafx-webview/", "docs/"],
+      "role": "JavaFX WebView browser engine"
+    },
+    {
+      "name": "AVIS-ALERT-FVS",
+      "priority": 2,
+      "pointers": ["src/", "js/", "examples/", "docs/"],
+      "role": "JavaScript UI utility (AVIS-style alerts)"
+    },
+    {
+      "name": "CYHY-CMT",
+      "priority": 2,
+      "pointers": ["src/", "templates/", "generator/", "docs/"],
+      "role": "Comment-driven template engine & compiler assistant"
+    },
+    {
+      "name": "CVBGODLY-CONSOLE",
+      "priority": 2,
+      "pointers": ["src/", "vb6/", "terminal/", "cmd-integration/", "docs/"],
+      "role": "VB6 console + custom terminal"
+    },
+    {
+      "name": "robo-knight-inventory",
+      "priority": 3,
+      "pointers": ["assets/", "images/", "inventory/", "collection/", "README.md"],
+      "role": "Asset storage for Robo-Knight materials"
+    }
+  ]
+}
