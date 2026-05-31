@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>The Cyborg Fire Star</title>
+ 
+  <script>
+  // Generates "YYYY-MM-DD"
+  const d = new Date();
+  const v = d.toISOString().split('T')[0]; 
+  document.write(`<link rel="stylesheet" href="desktop.css?v=${v}">`);
+
+</script>
+<link rel="icon" type="image/x-icon" href="<?= $site_url; ?>/favicon.ico">
+<meta name="meta" content="AVIS-CONSTELLATION">
+  <meta name="ACK" content="core,system,viewer,rru,avis26">
+  <meta name="AVIS" content="protocol=26; layer=frontend; mode=viewer">
+  <meta name="CONSTELLATION" content="engine=active; index=enabled; backend=github">
+  <meta name="RRU" content="compat=true; theme=cyborg-blackglass">
+  <meta name="VERSION" content="dynamic; source=github; filter=Version*">
+  <meta name="IMAGES" content="types=jpg,jpeg,png,webp,gif,bmp; mode=thumb+viewer">
+  <meta name="WINDOWS" content="os=Cyborg-Desktop; stacking=front; draggable=true">
+  <meta name="AUTHOR" content="Demon + Copilot">
+  <meta name="description" content="MERCWAR is a free AI access portal where users can enter AI tools, media features, and interactive digital systems without sign up.">
+
+<meta name="keywords" content="
+MERCWAR, MERC WAR, free AI access, AI login portal, MERCWAR login, no sign up AI access, free AI tools online, AI portal access, how to access MERCWAR, AI system login, MERCWAR free tools, AI dashboard online, MERCWAR entry page, AI interface access, free AI platform, MERCWAR features, AI tools website, MERCWAR online access, AI system entry, CVBGOD MERCWAR, FFF Demonizer MERCWAR, Joe Tron MERCWAR, RRP media access, RRU story access, AI entertainment system, free AI portal online, MERCWAR website access, AI platform free, MERCWAR experience, AI media system online, digital AI portal
+">
+</head>
+
+<body>
+
+
+
+  <!-- DESKTOP HEADER -->
+  <header>
+   <div id="desktop"></div>
+
+    
+  </header>
+    <h1>Ice Star Desktop</h1>
+      <div id="desktopInfo"></div>
+  <!-- DESKTOP AREA -->
+ 
+  <!-- TASKBAR -->
+  <div id="taskbar">
+
+      <!-- CYBORG BUTTON -->
+      <button id="startBtn" class="holoBtn">Cyborg</button>
+
+      <!-- AVIS BUTTON (NO BLUE OUTLINE, NO NESTED BUTTONS) -->
+      <button id="avisBtn" class="holoBtn" onclick="location.href='index.html'">
+          AVIS
+      </button>
+      <button id="avisBtn" class="holoBtn" onclick="location.href='https://mercwar.github.io/Robo-Knight-Gallery/index.html'">
+        RK Gallery
+      </button>
+	  <button id="avisBtn" class="holoBtn" onclick="location.href='https://github.com/mercwar'">
+        Mercwar Github
+      </button>
+      <div id="taskInfo">RRU / Desktop Shell</div>
+  </div>
+
+  <script src="desktop.js?v=6"></script>
+</body>
+</html>

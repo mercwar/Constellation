@@ -1,0 +1,101 @@
+{
+  "ICE_STAR_0": {
+    "id": "ICE-STAR-0",
+    "role": "repo_constellation_index",
+    "repos": [
+      "Constellation",
+      "Cyborg",
+      "NEXUS",
+      "CYBORG-PROJECT-EXPLORER",
+      "nexus-core",
+      "constellation-mesh",
+      "cyborg-templates",
+      "AVIS",
+      "Sentinel",
+      "AVIS-DATALAKE",
+      "avis-runtime",
+      "sentinel-guard",
+      "Robo-Knight-Gallery",
+      "Robo-Knight-Demos",
+      "Robo-Knight-Player",
+      "robo-knight-inventory",
+      "Fire-Gem",
+      "Dark-Com",
+      "CYHY-CMT"
+    ]
+  },
+
+  "ICE_STAR_1": {
+    "id": "ICE-STAR-1",
+    "role": "directory_constellation_index",
+    "directories": {
+      "Constellation": [
+        "/Constellation"
+      ],
+      "Cyborg": [
+        "/Cyborg/src"
+      ],
+      "NEXUS": [
+        "/NEXUS/include"
+      ],
+      "AVIS": [
+        "/AVIS/metadata"
+      ],
+      "Sentinel": [
+        "/Sentinel/kernel"
+      ],
+      "AVIS-DATALAKE": [
+        "/AVIS-DATALAKE/storage"
+      ],
+      "Robo-Knight-Gallery": [
+        "/Robo-Knight-Gallery/assets"
+      ],
+      "Robo-Knight-Player": [
+        "/Robo-Knight-Player/shell"
+      ],
+      "Fire-Gem": [
+        "/Fire-Gem/llama_mod"
+      ],
+      "Dark-Com": [
+        "/Dark-Com/webview"
+      ]
+    }
+  },
+
+  "ICE_STAR_2": {
+    "id": "ICE-STAR-2",
+    "role": "file_constellation_index",
+    "files_by_directory": {
+      "/Constellation": [
+        "mesh.config"
+      ],
+      "/Cyborg/src": [
+        "evl_dispatch.c"
+      ],
+      "/NEXUS/include": [
+        "sdk_core.h"
+      ],
+      "/AVIS/metadata": [
+        "engine.json"
+      ],
+      "/Sentinel/kernel": [
+        "validator.bin"
+      ],
+      "/AVIS-DATALAKE/storage": [
+        "lake_manifest.config"
+      ],
+      "/Robo-Knight-Gallery/assets": [
+        "layout.xml"
+      ],
+      "/Robo-Knight-Player/shell": [
+        "window_interface.win64"
+      ],
+      "/Fire-Gem/llama_mod": [
+        "gguf.manifest"
+      ],
+      "/Dark-Com/webview": [
+        "secure_panel.html"
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "file_pattern": "ice-star-*.json",
+  "start_index": 1,
+  "end_index": 19,
+  "padding": 4,
+  "exclude_keywords": ["img"],
+  "navigation": {
+    "project": "Constellation",
+    "version": "1.0",
+    "description": "ICE STAR navigation JSON and images for mercwar public repositories.",
+    "ice_star_json_path": "./ice_star/ice_star.json",
+    "images_path": "./ice_star/images/",
+    "start_repo": "Constellation",
+    "priority_order": [
+      "Constellation",
+      "mercwar",
+      "Cyborg",
+      "AVIS-DATALAKE",
+      "NEXUS",
+      "AVIS",
+      "Sentinel",
+      "CYBORG-PROJECT-EXPLORER",
+      "Fire-Gem",
+      "Robo-Knight-Gallery",
+      "Robo-Knight-Demos",
+      "AVIS-AI-INI-DIR-MK-SCAN",
+      "JMC-ANDROID-APP-DEMO",
+      "Robo-Knight-Player",
+      "Dark-Com",
+      "AVIS-ALERT-FVS",
+      "CYHY-CMT",
+      "CVBGODLY-CONSOLE",
+      "robo-knight-inventory"
+    ],
+    "default_start_path": "src/"
+  },
+  "image_assets": {
+    "enabled": true,
+    "formats": ["png", "jpg", "svg"],
+    "resolution": "1024x1024",
+    "description": "Images representing repo directories and navigation nodes for ICE STAR."
+  },
+  "logging": {
+    "level": "info",
+    "output": "console"
+  }
+}

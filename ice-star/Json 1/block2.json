@@ -1,0 +1,58 @@
+{
+  "ice_star_version": "1.1",
+  "source": "mercwar unified constellation",
+  "notes": "Fusion layer connecting AVIS, NEXUS, and Sentinel schemas under unified runtime logic.",
+  "repos": [
+    {
+      "name": "AVIS",
+      "role": "Core AI schema repository",
+      "links": {
+        "schemas": "AVIS-DATALAKE/schema/",
+        "runtime": "NEXUS/runtime/",
+        "validator": "Sentinel/validator/"
+      },
+      "files": [
+        "core_manifest.json",
+        "schema_bridge.config",
+        "runtime_adapter.bin"
+      ]
+    },
+    {
+      "name": "NEXUS",
+      "role": "Execution and compilation hub",
+      "links": {
+        "compiler": "NEXUS/compiler/",
+        "docs": "AVIS/docs/",
+        "seed": "Sentinel/seed/"
+      },
+      "files": [
+        "sdk_core.h",
+        "runtime_engine.dll",
+        "compiler_manifest.json"
+      ]
+    },
+    {
+      "name": "Sentinel",
+      "role": "Security and enforcement kernel",
+      "links": {
+        "spec": "Sentinel/spec/",
+        "sitemap": "AVIS-AI-INI-DIR-MK-SCAN/scanner-engine/",
+        "alerts": "AVIS-ALERT-FVS/js/"
+      },
+      "files": [
+        "validator.bin",
+        "sentinel_guard.config",
+        "security_manifest.json"
+      ]
+    }
+  ],
+  "visual": {
+    "center": "AVIS",
+    "connections": [
+      "AVIS → NEXUS",
+      "AVIS → Sentinel",
+      "NEXUS → Sentinel"
+    ],
+    "theme": "RRU black-glass holographic schema lattice"
+  }
+}

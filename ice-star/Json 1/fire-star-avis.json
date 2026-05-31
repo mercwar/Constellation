@@ -1,0 +1,77 @@
+{
+  "ice_star_version": "1.0",
+  "source": "mercwar public repositories",
+  "notes": "AVIS-focused subset of ICE STAR, aligned with FIRE-STAR style for directory assistance.",
+  "repos": [
+    {
+      "name": "AVIS",
+      "priority": 1,
+      "pointers": [
+        "spec/",
+        "schemas/",
+        "manifests/",
+        "docs/",
+        "tools/"
+      ],
+      "role": "Repository standard for AI systems"
+    },
+    {
+      "name": "AVIS-DATALAKE",
+      "priority": 1,
+      "pointers": [
+        "schema/",
+        "artifacts/",
+        "manifests/",
+        "index/",
+        "engine/"
+      ],
+      "role": "Schema-driven datalake for AVIS"
+    },
+    {
+      "name": "NEXUS",
+      "priority": 1,
+      "pointers": [
+        "src/",
+        "runtime/",
+        "compiler/",
+        "schemas/",
+        "docs/"
+      ],
+      "role": "SDK unifying compilation/execution for AVIS"
+    },
+    {
+      "name": "Sentinel",
+      "priority": 1,
+      "pointers": [
+        "src/",
+        "spec/",
+        "validator/",
+        "sitemap/",
+        "seed/"
+      ],
+      "role": "Enforcement kernel for AVIS ecosystem"
+    },
+    {
+      "name": "AVIS-AI-INI-DIR-MK-SCAN",
+      "priority": 2,
+      "pointers": [
+        "src/",
+        "bin/",
+        "scanner-engine/",
+        "docs/"
+      ],
+      "role": "Project scanner for AVIS artifacts"
+    },
+    {
+      "name": "AVIS-ALERT-FVS",
+      "priority": 2,
+      "pointers": [
+        "src/",
+        "js/",
+        "examples/",
+        "docs/"
+      ],
+      "role": "JavaScript UI utility (AVIS-style alerts)"
+    }
+  ]
+}
