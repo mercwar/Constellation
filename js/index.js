@@ -111,7 +111,7 @@ function openToolWindow(url) {
   if (toolWin && !toolWin.closed) {
 
     // Compare with our stored URL (NOT toolWin.location)
-    if (lastToolURL !== url) {
+    if (lastToolURL !== url && url !== 'http://www.bing.com/') {
       toolWin.location.href = url;   // safe navigation
       lastToolURL = url;
     }
