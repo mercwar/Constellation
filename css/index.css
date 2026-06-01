@@ -172,7 +172,7 @@ body {
 
 /* CONSTELLATION PANEL — MAX HEIGHT, TRANSPARENT GLASS */
 .menu-group.open .dropdown {
-  max-height: 215px;
+  max-height: 190px;
   overflow-y: auto;
   opacity: 1;
   transform: translateY(0);
