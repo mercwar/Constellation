@@ -1,4 +1,5 @@
-@import "https://googleapis.com";
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&family=Orbitron:wght@400;700&display=swap');
+
 
 :root {
   --white: #ffffff;
@@ -17,9 +18,8 @@
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
+  position: relative;
+  z-index: 0;
 }
 
 body {
@@ -43,6 +43,7 @@ body {
   width: 1220px;
   overflow: hidden;
   transition: transform .45s cubic-bezier(0.25, 1, 0.5, 1), background .45s ease;
+  z-index: 9999; 
 }
 
 .screen.sidebar-mode {
