@@ -23,7 +23,7 @@ html, body {
 }
 
 body {
-  background-color: var(--bg);
+
   background-image: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/holo-glass-tile.png');
   background-repeat: repeat;
   overflow: hidden;
