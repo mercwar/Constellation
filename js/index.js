@@ -195,3 +195,15 @@ fetch(url)
     return html;
   });
 }
+
+function launchPortal(url) {
+    const keepSelf = document.getElementById("keepInFrame").checked
+        ? "_self"
+        : "";
+
+    if (keepSelf === "_self") {
+        window.open(url, "_self");
+    } else {
+        openToolWindow(url);
+    }
+}
