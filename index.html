@@ -452,17 +452,44 @@ SYSTEM HUB <span class="caret"></span>
 
                </div>
                <!-- TRANSMISSIONS -->
-               <div class="menu-group">
-                  <button class="rk-btn" onclick="window.open('https://github.com/mercwar', '_self')">
-                  Mercwar Github Portal
-                  </button>
-               </div>
-               <!-- EXIT -->
-               <div class="menu-group">
-                  <button class="rk-btn" onclick="window.open('https://github.com/login', '_self')">
-                  Github User Portal
-                  </button>
-               </div>
+<!-- PORTAL SYSTEM DROPDOWN -->
+<div class="menu-group has-dropdown">
+    <button class="rk-btn dropdown-toggle">
+        Mercwar Portal Systems
+        <span class="caret"></span>
+    </button>
+
+    <div class="dropdown">
+
+        <!-- MAIN PORTALS -->
+        <button class="sub-btn" onclick="window.open('https://mercwar.github.io/Robo-Knight-Gallery'">
+            Mercwar AI Portal
+        </button>
+
+        <button class="sub-btn" onclick="window.open('https://github.com/mercwar', '_self')">
+            Mercwar GitHub Portal
+        </button>
+
+        <button class="sub-btn" onclick="window.open('https://github.com/login', '_self')">
+            GitHub User Portal
+        </button>
+
+        <!-- FIRE-STAR -->
+        <button class="sub-btn" onclick="openToolWindow('https://mercwar.github.io/Constellation/Fire-Star/')">
+            Fire‑Star
+        </button>
+
+        <!-- ICE-STAR -->
+        <button class="sub-btn" onclick="openToolWindow('https://mercwar.github.io/Constellation/Ice-Star/')">
+            Ice‑Star
+        </button>
+		        <!-- ICE-STAR -->
+        <button class="sub-btn" onclick="openToolWindow('https://mercwar.github.io/Constellation/Void-Star/')">
+            Void‑Star
+        </button>
+    </div>
+</div>
+
                <!-- STATUS -->
                <div class="status-line" onclick='javascript:exitWin=true;' style="cursor:pointer">Return to Console</div>
             </div>
