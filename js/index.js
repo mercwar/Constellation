@@ -139,14 +139,14 @@ function openToolWindow(url) {
   lastToolURL = url;
 
   const watcher = setInterval(() => {
-    if (!toolWin || toolWin.closed) {
+    if (!toolWin || toolWin.closed ||exitWin) {
       portalScreen.classList.remove('sidebar-mode');
       clearInterval(watcher);
       toolWin = null;
       lastToolURL = null;
       exitWin = false;
     }
-  }, 1024);
+  }, 2024);
 }
 
 
