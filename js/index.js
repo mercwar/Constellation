@@ -43,48 +43,24 @@ async function loadConstellationRepos(username = "mercwar") {
       const block = document.createElement("div");
       block.className = "repo-block";
 
-      // 1. Repo: Open in new tab
-      const btnNewTab = document.createElement("button");
-      btnNewTab.className = "sub-btn repo-ext";
-      btnNewTab.textContent = `${repoName.toUpperCase()} [com.TAB]`;
-      btnNewTab.onclick = () => window.open(repo.html_url, "_blank");
-
-      // 2. Repo: Open in same window
-      const btnSelf = document.createElement("button");
-      btnSelf.className = "sub-btn repo-self";
-      btnSelf.textContent = `${repoName.toUpperCase()} [com.PORTAL]`;
-      btnSelf.onclick = () => window.location.href = repo.html_url;
 
       // 3. Repo: Open in tool window
       const btnTool = document.createElement("button");
       btnTool.className = "sub-btn repo-tool";
       btnTool.textContent = `${repoName.toUpperCase()} [com.Fire-Win]`;
-      btnTool.onclick = () => openToolWindow(repo.html_url);
+      btnTool.onclick = () => launchPortal(repo.html_url);
 
-      // 4A. GitHub Pages (NEW TAB)
-      const btnPagesNew = document.createElement("button");
-      btnPagesNew.className = "sub-btn repo-pages";
-      btnPagesNew.textContent = `${repoName.toUpperCase()} [io.TAB]`;
-      btnPagesNew.onclick = () => window.open(pagesUrl, "_blank");
 
-      // 4B. GitHub Pages (SELF)
-      const btnPagesSelf = document.createElement("button");
-      btnPagesSelf.className = "sub-btn repo-pages-self";
-      btnPagesSelf.textContent = `${repoName.toUpperCase()} [io.PORTAL]`;
-      btnPagesSelf.onclick = () => window.open(pagesUrl, "_self");
 
       // 4C. GitHub Pages (TOOL WINDOW)
       const btnPagesTool = document.createElement("button");
       btnPagesTool.className = "sub-btn repo-pages-tool";
       btnPagesTool.textContent = `${repoName.toUpperCase()} [io.Fire-Win]`;
-      btnPagesTool.onclick = () => openToolWindow(pagesUrl);
+      btnPagesTool.onclick = () => launchPortal(pagesUrl);
 
       // Append all buttons into the wrapper
-      block.appendChild(btnNewTab);
-      block.appendChild(btnSelf);
+
       block.appendChild(btnTool);
-      block.appendChild(btnPagesNew);
-      block.appendChild(btnPagesSelf);
       block.appendChild(btnPagesTool);
 
       // Append wrapper to container
