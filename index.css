@@ -1,159 +1,477 @@
-/* ============================================================
-   GLOBAL PAGE SETTINGS
-============================================================ */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  background-color: #000;
-  background-image: url("https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/holo-glass-tile.png");
-  background-repeat: repeat;
-  background-size: 512px 512px;
-  background-position: center top;
-}
-
-/* ============================================================
-   HEADER + AVIS BUTTON
-============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&family=Orbitron:wght@400;700&display=swap');
 
 
-/* ============================================================
-   DIVIDERS
-============================================================ */
-.divider {
-  width: 950px;
-  height: 750px;
-  margin: 40px auto;
-  overflow: visible;
-  background-image: url("https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/avitar7.png?v=1");
-  background-size: 950px 750px;
-  background-repeat: no-repeat;
-  background-position: top center;
-  border: 1px solid rgba(201,162,39,0.35);
-  box-shadow: 0 0 2px rgba(0,255,255,0.25);
-  border-radius: 1px;
+:root {
+  --white: #ffffff;
+  --white-dim: #e0e0e0;
+  --white-strong: rgba(255, 255, 255, 0.35);
+  --bg: #000000;
+  /* more transparent glass */
+  --glass: rgba(10, 10, 10, 0.45);
+  --glass-2: rgba(5, 5, 5, 0.35);
+  --line: rgba(255, 255, 255, 0.18);
+  --line-strong: rgba(255, 255, 255, 0.45);
 }
 
-/* ============================================================
-   🔥 FINAL AVIS CONTROL FIX — SMALL THUMBS + NO SCROLLBAR HELL
-============================================================ */
-
-/* 1. FIX THE GRID — STOP FORCED HORIZONTAL STRIP */
-#grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    overflow: visible !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    padding: 10px !important;
-    max-width: 900px !important;
-    margin: 20px auto !important;
-}
-
-/* 2. REAL SMALL THUMBNAILS — GUARANTEED */
-.thumb {
-    width: 90px !important;
-    height: 90px !important;
-    object-fit: cover !important;
-    border: 1px solid #c9a227 !important;
-    border-radius: 4px !important;
-    cursor: pointer !important;
-    flex: 0 0 auto !important;
-    transition: transform .2s ease-out, box-shadow .2s ease-out !important;
-}
-
-/* 3. HOVER EFFECT */
-.thumb:hover {
-    transform: scale(1.08) !important;
-    box-shadow: 0 0 10px rgba(0,255,255,0.6) !important;
-}
-
-
-/* ============================================================
-   FIX: PROTECT LIGHTBOX IMAGE FROM THUMBNAIL RULES
-============================================================ */
-
-/* Lightbox image must NEVER inherit thumbnail size */
-#lbImg {
-    width: auto !important;
-    height: auto !important;
-    max-width: 90vw !important;
-    max-height: 90vh !important;
-    object-fit: contain !important;
-    border: 2px solid #c9a227 !important;
-    border-radius: 6px !important;
-}
-
-/* Thumbnails must ONLY apply to .thumb */
-#grid img:not(#lbImg) {
-    width: 90px !important;
-    height: 90px !important;
-    object-fit: cover !important;
-    cursor: pointer !important;
-}
-#pager{
-		margin-left:320px;
-    margin-top:220px;
-    position: relative !important;
-    z-index: 9999 !important;
-}
-header {
-    position: relative;
-    top: 120px;
-	
-    width: 100%;
-    text-align: left;
-    z-index: 10;
-}
-#jump_scroll{
-	
-}
-/* 4. FIX AVIS BUTTON POSITION */
-#avisBtn {
-	margin-left:270px;
-    
-    position: relative !important;
-    z-index: 9999 !important;
-}
-
-h1{
-	margin-left:445px;
-    margin-top:80px;
-    position: relative !important;
-    z-index: 9999 !important;
-}
-
-main {
-    position: relative;
-    top: 115px;
-    width: 100%;
-    text-align: center;
-    z-index: 10;
-}
-/* ===== WEBKIT (Chrome, Edge, Safari, Opera) ===== */
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #000000; 
-}
-
-::-webkit-scrollbar-thumb {
-    background: #c9a227; /* Matches your gold theme tint */
-    border-radius: 5px;
-    border: 2px solid #000000; /* Creates a clean gap effect */
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #f5d76e; /* Bright gold on hover */
-}
-
-/* ===== FIREFOX ===== */
 * {
-    scrollbar-width: thin;
-    scrollbar-color: #c9a227 #000000; /* thumb | track */
+  box-sizing: border-box;
 }
 
+html, body {
+  position: relative;
+  z-index: 0;
+}
+
+body {
+
+  background-image: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/holo-glass-tile.png');
+  background-repeat: repeat;
+  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--white);
+}
+
+/* MAIN INTERFACE LAYER (100PX LESS HEIGHT) */
+.screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/constellation.png') no-repeat center center;
+  background-size: contain;
+  height: 775px;
+  width: 1220px;
+  overflow: hidden;
+  transition: transform .45s cubic-bezier(0.25, 1, 0.5, 1), background .45s ease;
+  z-index: 9999; 
+}
+
+.screen.sidebar-mode {
+  transform: translate(-88%, -70%);
+  background: transparent;
+}
+
+/* PORTAL CENTERPIECE — FULL TRANSPARENT GLASS */
+/* PORTAL CENTERPIECE — ACTUALLY 100% TRANSPARENT */
+.centerpiece {
+  width: 323px;
+  height: 476px;
+  max-height: 476px;
+  position: absolute;
+  top: 118px;
+  left: 610px;
+  transform: translateX(-50%);
+
+  /* TRUE TRANSPARENCY — NO BACKGROUND */
+ background: transparent;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+
+  /* keep the blur effect WITHOUT adding color */
+
+
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.03) inset,
+    0 0 18px rgba(0, 0, 0, 0.85);
+
+  overflow: hidden;
+  transition:
+    left .4s cubic-bezier(0.25, 1, 0.5, 1),
+    top .4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform .4s ease;
+}
+
+
+
+.centerpiece.sidebar-mode {
+	 background: transparent;
+  top: 10px;
+  left: 10px;
+  transform: none !important;
+}
+
+.center-inner {
+	 background: transparent;
+  padding: 14px 18px 16px;
+  margin-top:40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.center-title {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.55);
+   background: transparent;
+}
+
+.menu-group {
+  position: relative;
+   background: transparent;
+  z-index: 2;
+  margin: 3px 0;
+}
+
+/* TOP-LEVEL SYSTEM BUTTONS (MORE GLASS, LESS SOLID) */
+.rk-btn {
+  width: 100%;
+  padding: 9px 14px;
+  height: 36px;
+  background: var(--glass);
+  border: 1px solid var(--line);
+  color: var(--white);
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.rk-btn:hover {
+  background: rgba(5, 5, 5, 0.75);
+  border-color: var(--line-strong);
+  box-shadow:
+    0 0 12px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* DROPDOWN FRAME ARCHITECTURE (FADE + BIG HEIGHT, MORE TRANSPARENT) */
+.dropdown {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+   background: transparent;
+  transition:
+    max-height .4s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity .3s ease-out,
+    transform .3s ease-out,
+    margin .3s ease-out,
+    padding .3s ease-out;
+  border-left: 1px solid rgba(255,255,255,0.18);
+  margin-left: 6px;
+  padding-left: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+/* CONSTELLATION PANEL — MAX HEIGHT, TRANSPARENT GLASS */
+.menu-group.open .dropdown {
+  max-height: 215px;
+  overflow-y: auto;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 8px;
+  padding: 10px;
+
+ background: transparent;
+
+
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow:
+    0 0 16px rgba(0, 0, 0, 0.85),
+    0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.dropdown::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dropdown::-webkit-scrollbar-track {
+  background: rgba(211,211,255,0.25);
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+
+  background: rgba(233,233,22,0.7);
+  border-radius: 3px;
+}
+
+/* CORE SUB-ELEMENT INTERFACES (EVEN MORE TRANSPARENT GLASS) */
+.sub-btn, #github-username, #custom-username, #repo-selector {
+  width: 100%;
+  padding: 7px 11px;
+  margin: 4px 0;
+  background: rgba(10, 10, 10, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  color: var(--white);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.18s ease;
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.04),
+    0 0 6px rgba(0, 0, 0, 0.7);
+}
+
+.sub-btn:hover, #github-username:hover, #custom-username:hover, #repo-selector:hover {
+  transform: translateX(4px);
+  background: rgba(18, 18, 18, 0.8);
+  border-color: var(--line-strong);
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.9),
+    0 0 9px rgba(255, 255, 255, 0.16);
+}
+
+/* GITHUB INTERNAL PORTAL ENGINE */
+#github-browser {
+	 background: transparent;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2px 0;
+}
+
+#user-input-area {
+	 background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+#user-input-area label, #repo-selector-area label {
+	 background: transparent;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white-dim);
+  margin-left: 2px;
+}
+
+#github-username option, #repo-selector option {
+   background: transparent;
+  color: #fff;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 4px;
+  background: rgba(255,255,255,0.9);
+  color: #000000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.action-btn:hover {
+  background: rgba(230,230,230,0.95);
+}
+
+.repo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  margin-top: 10px;
+   background: transparent;
+
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+/* ASSET ACCESSORIES */
+.caret {
+  position: absolute;
+  right: 14px;
+  border-right: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.menu-group.open .caret {
+  transform: rotate(-135deg);
+}
+
+.status-line {
+  margin-top: 4px;
+  text-align: center;
+  font-size: 12px;
+  opacity: .7;
+  color: var(--white-dim);
+  letter-spacing: 1px;
+}
+
+/* TOOL WINDOW (MORE TRANSPARENT GLASS) */
+.tool-window {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  background: rgba(5, 5, 5, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 360px;
+  display: none;
+  border-radius: 6px;
+}
+
+.tool-window iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* BLACK GLASS REFLEX FLASH ANIMATION ENGINE */
+@keyframes blackGlassFlash {
+  0% {
+    left: -150%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.45;
+  }
+  60% {
+    opacity: 0.2;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+.rk-btn::after, .sub-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.08) 30%, 
+    rgba(255, 255, 255, 0.22) 50%, 
+    rgba(255, 255, 255, 0.08) 70%, 
+    transparent
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.rk-btn:hover::after, .sub-btn:hover::after {
+  animation: blackGlassFlash 0.65s ease-out;
+}
+/* ============================
+   RETURN TO CONSOLE — SYSTEM BUTTON
+   ============================ */
+.status-line {
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 6px;
+
+  background: rgba(10, 10, 10, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+
+  color: var(--white);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+
+  user-select: none;
+  transition: all .22s ease;
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 0 8px rgba(255,255,255,0.05),
+    0 0 12px rgba(0,0,0,0.85);
+}
+
+.status-line:hover {
+  background: rgba(20, 20, 20, 0.85);
+  border-color: rgba(255,255,255,0.45);
+
+  box-shadow:
+    0 0 14px rgba(0,0,0,0.95),
+    0 0 12px rgba(255,255,255,0.18);
+}
+
+/* Flash sweep */
+.status-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.10) 30%,
+    rgba(255,255,255,0.25) 50%,
+    rgba(255,255,255,0.10) 70%,
+    transparent
+  );
+
+  transform: skewX(-25deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.status-line:hover::after {
+  animation: blackGlassFlash 0.65s ease-out;
+}
+/* ============================
+   FIXED RK DROPDOWN SCROLLBAR
+   ============================ */
+.menu-group.open .dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.menu-group.open .dropdown::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.35); /* darker glass track */
+  border-radius: 3px;
+  backdrop-filter: blur(6px);
+}
+
+.menu-group.open .dropdown::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 215, 0, 0.85),
+    rgba(255, 230, 80, 0.95)
+  );
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(255, 230, 80, 0.55);
+}
+
+.menu-group.open .dropdown::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 240, 120, 1),
+    rgba(255, 255, 160, 1)
+  );
+  box-shadow: 0 0 8px rgba(255, 255, 160, 0.75);
+}
