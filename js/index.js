@@ -46,37 +46,37 @@ async function loadConstellationRepos(username = "mercwar") {
       // 1. Repo: Open in new tab
       const btnNewTab = document.createElement("button");
       btnNewTab.className = "sub-btn repo-ext";
-      btnNewTab.textContent = `${repoName.toUpperCase()} [TAB]`;
+      btnNewTab.textContent = `${repoName.toUpperCase()} [com.TAB]`;
       btnNewTab.onclick = () => window.open(repo.html_url, "_blank");
 
       // 2. Repo: Open in same window
       const btnSelf = document.createElement("button");
       btnSelf.className = "sub-btn repo-self";
-      btnSelf.textContent = `${repoName.toUpperCase()} [PORTAL]`;
+      btnSelf.textContent = `${repoName.toUpperCase()} [com.PORTAL]`;
       btnSelf.onclick = () => window.location.href = repo.html_url;
 
       // 3. Repo: Open in tool window
       const btnTool = document.createElement("button");
       btnTool.className = "sub-btn repo-tool";
-      btnTool.textContent = `${repoName.toUpperCase()} [Fire-Win]`;
+      btnTool.textContent = `${repoName.toUpperCase()} [com.Fire-Win]`;
       btnTool.onclick = () => openToolWindow(repo.html_url);
 
       // 4A. GitHub Pages (NEW TAB)
       const btnPagesNew = document.createElement("button");
       btnPagesNew.className = "sub-btn repo-pages";
-      btnPagesNew.textContent = `${repoName.toUpperCase()} [TAB]`;
+      btnPagesNew.textContent = `${repoName.toUpperCase()} [io.TAB]`;
       btnPagesNew.onclick = () => window.open(pagesUrl, "_blank");
 
       // 4B. GitHub Pages (SELF)
       const btnPagesSelf = document.createElement("button");
       btnPagesSelf.className = "sub-btn repo-pages-self";
-      btnPagesSelf.textContent = `${repoName.toUpperCase()} [PORTAL]`;
+      btnPagesSelf.textContent = `${repoName.toUpperCase()} [io.PORTAL]`;
       btnPagesSelf.onclick = () => window.open(pagesUrl, "_self");
 
       // 4C. GitHub Pages (TOOL WINDOW)
       const btnPagesTool = document.createElement("button");
       btnPagesTool.className = "sub-btn repo-pages-tool";
-      btnPagesTool.textContent = `${repoName.toUpperCase()} [Fire-Win]`;
+      btnPagesTool.textContent = `${repoName.toUpperCase()} [io.Fire-Win]`;
       btnPagesTool.onclick = () => openToolWindow(pagesUrl);
 
       // Append all buttons into the wrapper
@@ -99,29 +99,35 @@ async function loadConstellationRepos(username = "mercwar") {
 
 
 
-
 let exitWin = false;
 let toolWin = null;
+let lastToolURL = null;   // <-- Track URL safely
 
 function openToolWindow(url) {
   const portalScreen = document.querySelector('.screen');
   if (!portalScreen) return;
 
-  // If the window already exists → bring it to the front
+  // If window exists and is open
   if (toolWin && !toolWin.closed) {
+
+    // Compare with our stored URL (NOT toolWin.location)
+    if (lastToolURL !== url) {
+      toolWin.location.href = url;   // safe navigation
+      lastToolURL = url;
+    }
+
     toolWin.focus();
     portalScreen.classList.add('sidebar-mode');
     return;
   }
 
-  // Activate sidebar mode
+  // Otherwise open a new window
   portalScreen.classList.add('sidebar-mode');
 
   const sidebarWidth = 365;
   const toolWidth = screen.availWidth - sidebarWidth;
   const toolHeight = screen.availHeight - 40;
 
-  // Open the tool window
   toolWin = window.open(
     url,
     "toolBrowser",
@@ -129,16 +135,21 @@ function openToolWindow(url) {
     "menubar=no,toolbar=no,location=no,status=no,resizable=yes"
   );
 
-  // Watch for close
+  // Store URL safely
+  lastToolURL = url;
+
   const watcher = setInterval(() => {
-    if (!toolWin || toolWin.closed || exitWin) {
+    if (!toolWin || toolWin.closed) {
       portalScreen.classList.remove('sidebar-mode');
       clearInterval(watcher);
-      exitWin = false;
       toolWin = null;
+      lastToolURL = null;
+      exitWin = false;
     }
   }, 1024);
 }
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
