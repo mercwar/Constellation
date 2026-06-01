@@ -100,27 +100,28 @@ async function loadConstellationRepos(username = "mercwar") {
 
 
 
-
 let exitWin = false;
 let toolWin = null;
 
 function openToolWindow(url) {
-  // Target the portal screen container
   const portalScreen = document.querySelector('.screen');
   if (!portalScreen) return;
 
-  // ACTIVATE SIDEBAR MODE (Shifts position and removes background via CSS)
+  // If the window already exists → bring it to the front
+  if (toolWin && !toolWin.closed) {
+    toolWin.focus();
+    portalScreen.classList.add('sidebar-mode');
+    return;
+  }
+
+  // Activate sidebar mode
   portalScreen.classList.add('sidebar-mode');
 
-  // LEFT SIDEBAR WIDTH (space for your hub)
-  // LEFT SIDEBAR WIDTH (space for your hub)
-  const sidebarWidth = 365; 
-
-  // CALCULATE 100% OF REMAINING WIDTH
+  const sidebarWidth = 365;
   const toolWidth = screen.availWidth - sidebarWidth;
-  const toolHeight = screen.availHeight - 40; // Uses full available screen height minus top offset
-  
-  // OPEN TOOL WINDOW
+  const toolHeight = screen.availHeight - 40;
+
+  // Open the tool window
   toolWin = window.open(
     url,
     "toolBrowser",
@@ -128,20 +129,17 @@ function openToolWindow(url) {
     "menubar=no,toolbar=no,location=no,status=no,resizable=yes"
   );
 
-
-  // WATCH FOR WINDOW CLOSE
+  // Watch for close
   const watcher = setInterval(() => {
     if (!toolWin || toolWin.closed || exitWin) {
-      
-      // RESTORE ORIGINAL CENTER POSITION & BACKGROUND
       portalScreen.classList.remove('sidebar-mode');
-		
       clearInterval(watcher);
-	  exitWin=false;
+      exitWin = false;
       toolWin = null;
     }
   }, 1024);
 }
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const userDropdown = document.getElementById("github-username");
