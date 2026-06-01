@@ -380,3 +380,67 @@ body {
 .rk-btn:hover::after, .sub-btn:hover::after {
   animation: blackGlassFlash 0.65s ease-out;
 }
+/* ============================
+   RETURN TO CONSOLE — SYSTEM BUTTON
+   ============================ */
+.status-line {
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 6px;
+
+  background: rgba(10, 10, 10, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+
+  color: var(--white);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+
+  user-select: none;
+  transition: all .22s ease;
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 0 8px rgba(255,255,255,0.05),
+    0 0 12px rgba(0,0,0,0.85);
+}
+
+.status-line:hover {
+  background: rgba(20, 20, 20, 0.85);
+  border-color: rgba(255,255,255,0.45);
+
+  box-shadow:
+    0 0 14px rgba(0,0,0,0.95),
+    0 0 12px rgba(255,255,255,0.18);
+}
+
+/* Flash sweep */
+.status-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.10) 30%,
+    rgba(255,255,255,0.25) 50%,
+    rgba(255,255,255,0.10) 70%,
+    transparent
+  );
+
+  transform: skewX(-25deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.status-line:hover::after {
+  animation: blackGlassFlash 0.65s ease-out;
+}

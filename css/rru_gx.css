@@ -7,12 +7,12 @@ a {
 
   #gx-banner {
     position: fixed;
-    top: 35px;
+    top: 0px;
     left: 50%;
     transform: translateX(-200%) scale(0.01); /* 1px blip */
     font-family: Arial, sans-serif;
-    font-size: 9px; /* very small */
-    font-weight: 400;
+    font-size: 11px; /* very small */
+    font-weight: 600;
     cursor: pointer;
     opacity: 0;
     
