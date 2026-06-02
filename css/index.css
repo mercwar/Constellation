@@ -520,3 +520,21 @@ body.sidebar-pinned #sidebar {
 	
 }
 /* Limit visible rows when dropdown opens */
+/* Scrollbar styling for the dropdown list */
+#github-username::-webkit-scrollbar {
+    width: 6px;
+}
+
+#github-username::-webkit-scrollbar-track {
+    background: #000; /* black track */
+}
+
+#github-username::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffcc33, #b8860b);
+    border-radius: 4px;
+    box-shadow: 0 0 6px #ffcc33;
+}
+
+#github-username::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #1f1966, #11971a);
+}
