@@ -5,8 +5,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <title>Mercwar AI Portal</title>
       <!-- MAIN CSS -->
-      <link rel="stylesheet" href="css/index.css?v=7"/>
-	  <link rel="stylesheet" href="css/rru_gx.css?v=7">
+      <link rel="stylesheet" href="css/index.css?v=8"/>
+	  <link rel="stylesheet" href="css/rru_gx.css?v=8">
       <!-- FONTS -->
       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
    </head>
@@ -29,7 +29,23 @@
                   Joe Tron's Avis Gate
                   </button>
                </div>
-			   <div><input type="checkbox" id="keepInFrame" style="margin-left:34px;margin-bottom:8px;"> Open in Frame</div>
+			   
+			   
+<div style="display:flex; align-items:center; gap:22px; margin-left:10px;">
+
+    <label class="rkGlow" style="display:flex; align-items:center; gap:6px;">
+        <input type="checkbox" id="keepInFrame">
+        Up-link Window
+    </label>
+
+    <label class="rkGlow" style="display:flex; align-items:center; gap:6px;">
+        <input type="checkbox" id="pinSidebarChk" onchange="handleSidebarPinChange(this.checked)">
+        Pin Sidebar
+    </label>
+
+</div>
+
+
                <!-- CONSTELLATION (AUTO-POPULATED FROM GITHUB) -->
                <div class="menu-group has-dropdown">
                   <button class="rk-btn dropdown-toggle">
@@ -549,7 +565,7 @@ SYSTEM HUB <span class="caret"></span>
          </section>
       </main>
       <!-- MAIN JS -->
-      <script src="js/index.js?v=36"></script>
+      <script src="js/index.js?v=38"></script>
 	  
 	  <script>
   document.getElementById("gx-banner").addEventListener("click", () => {
