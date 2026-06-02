@@ -1,6 +1,10 @@
 /* ============================
    RK DROPDOWN TOGGLE
-   ============================ */
+   
+   ============================ */ 
+   
+   let sidebarPinned = false;
+   
 const groups = document.querySelectorAll('.menu-group.has-dropdown');
 
 groups.forEach(group => {
@@ -115,12 +119,15 @@ function openToolWindow(url) {
   lastToolURL = url;
 
   const watcher = setInterval(() => {
-    if (!toolWin || toolWin.closed ||exitWin) {
-      portalScreen.classList.remove('sidebar-mode');
-      clearInterval(watcher);
-      toolWin = null;
-      lastToolURL = null;
-      exitWin = false;
+	 
+    if (!toolWin || toolWin.closed ||exitWin ) {
+		 if(!sidebarPinned){
+			  portalScreen.classList.remove('sidebar-mode');
+			  clearInterval(watcher);
+			  toolWin = null;
+			  lastToolURL = null;
+			  exitWin = false;
+		 }
     }
   }, 2024);
 }
@@ -156,6 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Auto-load default
   loadConstellationRepos("mercwar");
+  
+
+
 });
 
 
@@ -182,4 +192,31 @@ function launchPortal(url) {
     } else {
         openToolWindow(url);
     }
+}
+
+
+function enableSidebarMode() {
+    const portalScreen = document.querySelector('.screen');
+    if (portalScreen) {
+        portalScreen.classList.add('sidebar-mode');
+    }
+}
+
+
+function handleSidebarPinChange(isChecked) {
+    if (isChecked) {
+        sidebarPinned = true;
+        enableSidebarMode();   // open sidebar when checked
+    } else {
+        
+		closeSidebar();
+    }
+}
+function closeSidebar() {
+	sidebarPinned = false; // just clear flag, DO NOT close sidebar
+    const portalScreen = document.querySelector('.screen');
+    if (portalScreen) {
+        portalScreen.classList.remove('sidebar-mode');
+   
+}
 }
