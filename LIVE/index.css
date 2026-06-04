@@ -18,25 +18,22 @@
 --shadow:0 0 22px #000000d9
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  min-height: 800px;   /* ← FORCE STRETCH */
+html,body {
+margin:0;
+padding:0;
+min-height:800px
 }
 
 body {
-  background: var(--black-1);
-  color: var(--text);
-  font-family: system-ui, sans-serif;
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: auto;      /* allow scrollbars */
+background:var(--black-1);
+color:var(--text);
+font-family:system-ui,sans-serif;
+display:flex;
+flex-direction:column;
+overflow:auto;
+scrollbar-width:thin;
+scrollbar-color:var(--gold) #0006
 }
-
-
 
 .rru-header {
 background:linear-gradient(180deg,var(--black-2),var(--black-1));
@@ -74,7 +71,6 @@ box-shadow:0 0 10px var(--gold),inset 0 0 4px #0009
 }
 
 .rru-panel {
-	
 background:#0a0a0ad1;
 border:1px solid var(--border-blue);
 backdrop-filter:blur(14px);
@@ -126,29 +122,26 @@ font-size:11px
 }
 
 .top-banner {
-  width: 100%;
-  height: 275px;        /* allow it to grow if needed */
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(180deg,#0a0a0af2,#050505d9);
-  border-bottom: 1px solid var(--border-blue);
-  box-shadow: 0 0 18px var(--blue-soft), inset 0 0 18px #0009;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  overflow: visible;        /* CRITICAL FIX */
+width:100%;
+height:275px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(180deg,#0a0a0af2,#050505d9);
+border-bottom:1px solid var(--border-blue);
+box-shadow:0 0 18px var(--blue-soft),inset 0 0 18px #0009;
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+overflow:visible
 }
 
-
 .top-banner-img {
-  width: 100%;
-  height: auto;             /* no forced crop */
-      /* keeps proportions clean */
-  object-fit: contain;      /* shows the whole image */
-  border-radius: 6px;
-  border: 1px solid var(--border-gold);
-  box-shadow: 0 0 14px var(--gold-soft), 0 0 22px var(--blue-soft);
+width:100%;
+height:auto;
+object-fit:contain;
+border-radius:6px;
+border:1px solid var(--border-gold);
+box-shadow:0 0 14px var(--gold-soft),0 0 22px var(--blue-soft)
 }
 
 .layout {
@@ -167,10 +160,8 @@ backdrop-filter:blur(12px);
 -webkit-backdrop-filter:blur(12px);
 display:flex;
 flex-direction:column;
-
 min-height:0;
 overflow:hidden
-
 }
 
 .sidebar-header,.sidebar-search {
@@ -183,12 +174,11 @@ font-size:11px;
 text-transform:uppercase;
 letter-spacing:.14em;
 color:var(--muted)
-
 }
 
 .sidebar-search {
 padding:8px 10px;
-align-items:left;
+align-items:left
 }
 
 .sidebar-search input {
@@ -399,7 +389,7 @@ width:100%
 .gateway-container {
 display:flex;
 align-items:center;
-padding:0px 0;
+padding:0;
 flex-direction:column;
 gap:22px;
 background:#050505a6;
@@ -410,8 +400,7 @@ backdrop-filter:blur(14px);
 -webkit-backdrop-filter:blur(14px);
 margin-bottom:14px;
 height:160px;
-width:235px;
-
+width:235px
 }
 
 .gateway-link {
@@ -457,26 +446,6 @@ font-family:var(--mono);
 font-size:12px;
 overflow-y:auto;
 overflow-x:auto
-}
-
-.file-tree::-webkit-scrollbar,.viewer-pre::-webkit-scrollbar {
-width:10px;
-height:10px
-}
-
-.file-tree::-webkit-scrollbar-track,.viewer-pre::-webkit-scrollbar-track {
-background:#0006;
-border-radius:10px
-}
-
-.file-tree::-webkit-scrollbar-thumb,.viewer-pre::-webkit-scrollbar-thumb {
-background:var(--gold);
-border-radius:10px;
-box-shadow:0 0 6px #f5c84ccc
-}
-
-.file-tree::-webkit-scrollbar-thumb:hover,.viewer-pre::-webkit-scrollbar-thumb:hover {
-background:var(--gold-strong)
 }
 
 .file-tree,.viewer-pre {
@@ -537,49 +506,63 @@ scrollbar-width:thin;
 scrollbar-color:var(--gold) #0006
 }
 
-/* WEBKIT SCROLLBARS FOR THE HTML DOCUMENT BODY */
+.layout {
+height:calc(100vh - 350px);
+min-height:450px
+}
+
+.sidebar,.main,.viewer,.viewer-body {
+height:100%;
+min-height:0
+}
+
+.file-tree,.viewer-pre {
+height:100%;
+min-height:300px;
+overflow-y:auto
+}
+
 body::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
+width:10px;
+height:10px
 }
 
 body::-webkit-scrollbar-track {
-  background: #0006;
-  border-radius: 10px;
+background:#0006;
+border-radius:10px
 }
 
 body::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 10px;
-  box-shadow: 0 0 6px #f5c84ccc;
+background:var(--gold);
+border-radius:5px;
+box-shadow:0 0 6px #f5c84ccc
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-strong);
+background:var(--gold-strong)
 }
 
-/* FIREFOX */
-body {
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold) #0006;
-}
-/* FORCE FILE TREE + EDITOR TO ALWAYS HAVE HEIGHT */
-.layout {
-  height: calc(100vh - 350px); /* or whatever your banner/header height is */
-  min-height: 450px;           /* ensures visibility even in frames */
+html {
+scrollbar-width:thin;
+scrollbar-color:var(--gold) #0006
 }
 
-.sidebar,
-.main,
-.viewer,
-.viewer-body {
-  height: 100%;
-  min-height: 0;               /* prevents flex collapse */
+html::-webkit-scrollbar {
+width:10px;
+height:10px
 }
 
-.file-tree,
-.viewer-pre {
-  height: 100%;
-  min-height: 300px;           /* ensures both are always visible */
-  overflow-y: auto;
+html::-webkit-scrollbar-track {
+background:#0006;
+border-radius:10px
+}
+
+html::-webkit-scrollbar-thumb {
+background:var(--gold);
+border-radius:5px;
+box-shadow:0 0 6px #f5c84ccc
+}
+
+html::-webkit-scrollbar-thumb:hover {
+background:var(--gold-strong)
 }
