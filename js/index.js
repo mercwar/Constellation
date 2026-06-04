@@ -272,3 +272,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   uplink.checked = (saved === "checked");
 });
+function saveCustomGitUser(name) {
+    setCookie("customGitUser", name, 365);
+}
+
+function loadCustomGitUser() {
+    const saved = getCookie("customGitUser");
+    if (saved) {
+        const input = document.getElementById("custom-username");
+        if (input) input.value = saved;
+    }
+}
+document.addEventListener("DOMContentLoaded", loadCustomGitUser);
