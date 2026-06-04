@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <title>Mercwar AI Portal</title>
       <!-- MAIN CSS -->
-      <link rel="stylesheet" href="css/index.css?v=21"/>
+      <link rel="stylesheet" href="css/index.css?v=22"/>
 	  <link rel="stylesheet" href="css/rru_gx.css?v=18">
       <!-- FONTS -->
       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -566,17 +566,36 @@ SYSTEM HUB <span class="caret"></span>
                <!-- STATUS -->
                <div class="status-line" onclick='javascript:exitWin=true;' style="cursor:pointer">Return to Console</div>
             </div>
+<div class="status-line"
+     onclick="restoreToConsole()"
+     style="cursor:pointer">
+  Restore to Console (Un-Stick)
+</div>
+
             <!-- /center-inner -->
          </section>
       </main>
       <!-- MAIN JS -->
-      <script src="js/index.js?v=49"></script>
+      <script src="js/index.js?v=52"></script>
 	  
 	  <script>
   document.getElementById("gx-banner").addEventListener("click", () => {
     launchPortal("https://roborook.fanclub.rocks");
   });
   
+function restoreToConsole() {
+  exitWin = true; // trigger console reset
+
+  const pinChk = document.getElementById("pinSidebarChk");
+  if (pinChk && pinChk.checked) {
+    // Uncheck and send the normal change event
+    pinChk.checked = false;
+    handleSidebarPinChange(pinChk.checked);
+  } else {
+    // Already unchecked — just send the event
+    handleSidebarPinChange(false);
+  }
+}
 
 </script>
 
