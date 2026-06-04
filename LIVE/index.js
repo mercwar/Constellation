@@ -351,8 +351,24 @@ window.addEventListener("keydown", (e) => {
 fetchRepoTree();
 
 function collapseAllDropdowns() {
-  groups.forEach(g => g.classList.remove('open'));
+  document.querySelectorAll(".tree-children").forEach(el => {
+    el.style.display = "none";
+  });
+
+  document.querySelectorAll(".tree-toggle").forEach(el => {
+    if (!el.classList.contains("hidden")) {
+      el.textContent = "▸";
+    }
+  });
 }
 function expandAllDropdowns() {
-  groups.forEach(g => g.classList.add('open'));
+  document.querySelectorAll(".tree-children").forEach(el => {
+    el.style.display = "";
+  });
+
+  document.querySelectorAll(".tree-toggle").forEach(el => {
+    if (!el.classList.contains("hidden")) {
+      el.textContent = "▾";
+    }
+  });
 }
