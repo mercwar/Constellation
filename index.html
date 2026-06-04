@@ -583,19 +583,6 @@ SYSTEM HUB <span class="caret"></span>
     launchPortal("https://roborook.fanclub.rocks");
   });
   
-function restoreToConsole() {
-  exitWin = true; // trigger console reset
-
-  const pinChk = document.getElementById("pinSidebarChk");
-  if (pinChk && pinChk.checked) {
-    // Uncheck and send the normal change event
-    pinChk.checked = false;
-    handleSidebarPinChange(pinChk.checked);
-  } else {
-    // Already unchecked — just send the event
-    handleSidebarPinChange(false);
-  }
-}
 
 </script>
 
