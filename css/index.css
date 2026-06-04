@@ -58,7 +58,7 @@ body {
   height: 476px;
   
   position: absolute;
-  top: 118px;
+  top: 125px;
   left: 610px;
   transform: translateX(-50%);
 
@@ -66,7 +66,7 @@ body {
  background: transparent;
 
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 14px;
+  border-radius: 7px;
 
   /* keep the blur effect WITHOUT adding color */
 
