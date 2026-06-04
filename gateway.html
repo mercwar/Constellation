@@ -16,43 +16,49 @@
 <body>
 
 <h2>Loading Repository…</h2>
-<script>
-const params = new URLSearchParams(window.location.search);
-let repo_name = params.get("index") || "mercwar";
 
-const LOCAL_MODE = false;   // toggle this
+<script>
+// -----------------------------------------
+// 1. DETECT THIS FILE'S REPO NAME
+// -----------------------------------------
+const path = window.location.pathname.split("/").filter(Boolean);
+
+// Example paths:
+//   /Mercwar/index.html          → repo = Mercwar
+//   /Constellation/index.html    → repo = Constellation
+//   ../../Mercwar/index.html     → repo = Mercwar
+
+// Repo name is ALWAYS the folder BEFORE this file
+const repo_name = path[path.length - 2] || "mercwar";
+
+// -----------------------------------------
+// 2. LOCAL MODE SWITCH
+// -----------------------------------------
+const LOCAL_MODE = false;
 
 let git_url = LOCAL_MODE
   ? "../../"
   : "https://mercwar.github.io/";
 
-// Clean join to avoid double slashes
+// -----------------------------------------
+// 3. CLEAN URL JOINER (NO DOUBLE SLASHES)
+// -----------------------------------------
 function joinURL(base, path) {
   return base.replace(/\/+$/, "") + "/" + path.replace(/^\/+/, "");
 }
 
+// -----------------------------------------
+// 4. BUILD FINAL REDIRECT URL
 // LIVE is ALWAYS inside Constellation
-const clean_url = joinURL(git_url, "Constellation/LIVE/index.html") + `?index=${repo_name}`;
+// -----------------------------------------
+const clean_url =
+  joinURL(git_url, "Constellation/LIVE/index.html") +
+  `?index=${repo_name}`;
 
-// GitHub API URL for repo existence check
-const apiURL = `https://api.github.com/repos/mercwar/${repo_name}`;
-
-// Check repo existence BEFORE redirecting
-fetch(apiURL)
-  .then(res => {
-    if (res.ok || LOCAL_MODE) {
-      window.location.href = clean_url;
-    } else {
-      document.body.innerHTML =
-        `<h2 style="color:red;">Repository '${repo_name}' not found.</h2>`;
-    }
-  })
-  .catch(err => {
-    document.body.innerHTML =
-      `<h2 style="color:red;">GitHub API error.</h2>`;
-  });
-</script>
-
+// -----------------------------------------
+// 5. REDIRECT
+// -----------------------------------------
+window.location.href = clean_url;
 </script>
 
 </body>
