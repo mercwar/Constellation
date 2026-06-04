@@ -42,6 +42,7 @@ function setStatus(mode, text = "") {
     statusDotEl.classList.remove("error");
     statusLabelEl.textContent = "READY";
     statusTextEl.textContent = text;
+	
   }
 }
 
@@ -355,4 +356,3 @@ function collapseAllDropdowns() {
 function expandAllDropdowns() {
   groups.forEach(g => g.classList.add('open'));
 }
-collapseAllDropdowns() ;
