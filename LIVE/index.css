@@ -18,20 +18,22 @@
 --shadow:0 0 22px #000000d9
 }
 
-html,body {
-margin:0;
-padding:0;
-height:100%
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 800px;   /* ← FORCE STRETCH */
 }
 
 body {
-background:var(--black-1);
-color:var(--text);
-font-family:system-ui,sans-serif;
-display:flex;
-flex-direction:column;
+  background: var(--black-1);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
 
-  overflow: auto;     /* allow scrollbars */
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;      /* allow scrollbars */
 }
 
 
@@ -560,4 +562,24 @@ body::-webkit-scrollbar-thumb:hover {
 body {
   scrollbar-width: thin;
   scrollbar-color: var(--gold) #0006;
+}
+/* FORCE FILE TREE + EDITOR TO ALWAYS HAVE HEIGHT */
+.layout {
+  height: calc(100vh - 350px); /* or whatever your banner/header height is */
+  min-height: 450px;           /* ensures visibility even in frames */
+}
+
+.sidebar,
+.main,
+.viewer,
+.viewer-body {
+  height: 100%;
+  min-height: 0;               /* prevents flex collapse */
+}
+
+.file-tree,
+.viewer-pre {
+  height: 100%;
+  min-height: 300px;           /* ensures both are always visible */
+  overflow-y: auto;
 }
