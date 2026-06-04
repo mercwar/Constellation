@@ -246,6 +246,19 @@ async function fetchRepoTree() {
     repoInfoBadgeEl.textContent = "GitHub API ERROR";
   }
 }
+function isBinaryFile(path) {
+  const lower = path.toLowerCase();
+  const binaryExts = [
+    ".exe",".dll",".bin",".dat",".zip",".rar",".7z",".pdf",".jpg",".jpeg",".png",".gif",".bmp",".ico",
+    ".mp3",".wav",".ogg",".mp4",".avi",".mov",".webm"
+  ];
+  return binaryExts.some(ext => lower.endsWith(ext));
+}
+
+function isImageFile(path) {
+  const lower = path.toLowerCase();
+  return [".png",".jpg",".jpeg",".gif",".bmp",".webp",".svg"].some(ext => lower.endsWith(ext));
+}
 
 // ---------------------------------------------------------
 // SELECT FILE
@@ -271,11 +284,40 @@ async function selectFile(path) {
   }
 
   // Always load unsupported files as plain text
-  if (!isTextFile(path)) {
-    fileTypeBadgeEl.textContent = "Plain text (unsupported ext)";
-  } else {
-    fileTypeBadgeEl.textContent = "Text file";
-  }
+// IMAGE FILE → SHOW IMAGE
+if (isImageFile(path)) {
+  fileTypeBadgeEl.textContent = "Image";
+  const rawPath = path.split("/").map(encodeURIComponent).join("/");
+  const imgURL = `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${rawPath}`;
+
+  fileContentEl.innerHTML = `<img src="${imgURL}" style="max-width:100%;border-radius:6px;">`;
+  fileContentEl.style.display = "block";
+  emptyStateEl.style.display = "none";
+  setStatus("ready", "Image loaded");
+  return;
+}
+
+// BINARY FILE → SHOW WARNING
+if (isBinaryFile(path)) {
+  fileTypeBadgeEl.textContent = "Binary file";
+  fileContentEl.style.display = "none";
+  emptyStateEl.style.display = "flex";
+  emptyStateEl.innerHTML = `
+    <div>
+      Cannot display raw binary.<br>
+      <span style="font-size:11px;color:#ff4b6a;">Download or open raw instead.</span>
+    </div>`;
+  setStatus("ready", "Binary file");
+  return;
+}
+
+// TEXT FILE → NORMAL BEHAVIOR
+if (!isTextFile(path)) {
+  fileTypeBadgeEl.textContent = "Plain text (unsupported ext)";
+} else {
+  fileTypeBadgeEl.textContent = "Text file";
+}
+
 
   fileMetaEl.textContent = `${file.size || 0} bytes • sha ${file.sha.slice(0, 7)}`;
 
