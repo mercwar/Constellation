@@ -348,3 +348,11 @@ window.addEventListener("keydown", (e) => {
 // INIT
 // ---------------------------------------------------------
 fetchRepoTree();
+
+function collapseAllDropdowns() {
+  groups.forEach(g => g.classList.remove('open'));
+}
+function expandAllDropdowns() {
+  groups.forEach(g => g.classList.add('open'));
+}
+collapseAllDropdowns() ;
