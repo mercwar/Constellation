@@ -16,38 +16,44 @@
 <body>
 
 <h2>Loading Repository…</h2>
-
 <script>
-  // 1. Read ?index= from URL
-  const params = new URLSearchParams(window.location.search);
-  let repo_name = params.get("index");
+const params = new URLSearchParams(window.location.search);
+let repo_name = params.get("index") || "mercwar";
 
-  // 2. Default if missing
-  if (!repo_name || repo_name.trim() === "") {
-    repo_name = "mercwar";
-  }
+const LOCAL_MODE = true;   // toggle this
 
-  // 3. GitHub API URL for repo existence check
-  const apiURL = `https://api.github.com/repos/mercwar/${repo_name}`;
+let git_url = LOCAL_MODE
+  ? "../../"
+  : "https://mercwar.github.io/";
 
-  // 4. Check repo existence
-  fetch(apiURL)
-    .then(res => {
-      if (res.ok) {
-        // Repo exists → redirect to its LIVE index
-        window.location.href =
-          `https://mercwar.github.io/${repo_name}/LIVE/index.html?index=${repo_name}`;
-      } else {
-        document.body.innerHTML =
-          `<h2 style="color:red;">Repository '${repo_name}' not found.</h2>`;
-      }
-    })
-    .catch(err => {
+// Clean join to avoid double slashes
+function joinURL(base, path) {
+  return base.replace(/\/+$/, "") + "/" + path.replace(/^\/+/, "");
+}
+
+// LIVE is ALWAYS inside Constellation
+const clean_url = joinURL(git_url, "Constellation/LIVE/index.html") + `?index=${repo_name}`;
+
+// GitHub API URL for repo existence check
+const apiURL = `https://api.github.com/repos/mercwar/${repo_name}`;
+
+// Check repo existence BEFORE redirecting
+fetch(apiURL)
+  .then(res => {
+    if (res.ok || LOCAL_MODE) {
+      window.location.href = clean_url;
+    } else {
       document.body.innerHTML =
-        `<h2 style="color:red;">GitHub API error.</h2>`;
-    });
+        `<h2 style="color:red;">Repository '${repo_name}' not found.</h2>`;
+    }
+  })
+  .catch(err => {
+    document.body.innerHTML =
+      `<h2 style="color:red;">GitHub API error.</h2>`;
+  });
+</script>
+
 </script>
 
 </body>
 </html>
-
