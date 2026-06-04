@@ -3,8 +3,7 @@
    
    ============================ */ 
    
-   let sidebarPinned = false;
-   
+
 const groups = document.querySelectorAll('.menu-group.has-dropdown');
 
 groups.forEach(group => {
@@ -78,59 +77,87 @@ async function loadConstellationRepos(username = "mercwar") {
 }
 
 
-
 let exitWin = false;
 let toolWin = null;
-let lastToolURL = null;   // <-- Track URL safely
+let lastToolURL = null;
+let sidebarPinned = false;
+function openToolWindow(url, opts = {}) {
+    const portalScreen = document.querySelector('.screen');
+    if (!portalScreen) return;
 
-function openToolWindow(url) {
-  const portalScreen = document.querySelector('.screen');
-  if (!portalScreen) return;
+    const defaults = {
+        sidebarWidth: 385,
+        topSafe: 0,
+        bottomSafe: 0,
+        minWidth: 300,
+        minHeight: 350,
+        name: "DarmCom-Gate-Browser",
+        features: {
+            menubar: "no",
+            toolbar: "no",
+            location: "no",
+            status: "yes",
+            resizable: "yes",
+            scrollbars: "yes"
+        }
+    };
 
-  // If window exists and is open
-  if (toolWin && !toolWin.closed) {
+    const cfg = Object.assign({}, defaults, opts);
 
-    // Compare with our stored URL (NOT toolWin.location)
-    if (lastToolURL !== url && url !== 'http://www.bing.com/') {
-      toolWin.location.href = url;   // safe navigation
-      lastToolURL = url;
+    const availW = screen.availWidth;
+    const availH = screen.availHeight;
+
+    // Width: right side of screen
+    const toolWidth  = Math.max(availW - cfg.sidebarWidth, cfg.minWidth);
+
+    // Height: 90% of screen for compatibility
+    const toolHeight = Math.max(Math.floor(availH * .92), cfg.minHeight);
+
+    // Position
+    const leftPos = cfg.sidebarWidth;
+    const topPos  = cfg.topSafe;
+
+    const featureParts = [
+        `width=${toolWidth}`,
+        `height=${toolHeight}`,
+        `left=${leftPos}`,
+        `top=${topPos}`
+    ];
+
+    for (const key in cfg.features) {
+        featureParts.push(`${key}=${cfg.features[key]}`);
     }
 
-    toolWin.focus();
-    portalScreen.classList.add('sidebar-mode');
-    return;
-  }
+    const featureString = featureParts.join(",");
 
-  // Otherwise open a new window
-  portalScreen.classList.add('sidebar-mode');
-
-  const sidebarWidth = 365;
-  const toolWidth = screen.availWidth - sidebarWidth;
-  const toolHeight = screen.availHeight - 40;
-
-  toolWin = window.open(
-    url,
-    "toolBrowser",
-    `width=${toolWidth},height=${toolHeight},left=${sidebarWidth},top=40,` +
-    "menubar=no,toolbar=no,location=no,status=no,resizable=yes"
-  );
-
-  // Store URL safely
-  lastToolURL = url;
-
-  const watcher = setInterval(() => {
-	 
-    if (!toolWin || toolWin.closed ||exitWin ) {
-		 if(!sidebarPinned){
-			  portalScreen.classList.remove('sidebar-mode');
-			  clearInterval(watcher);
-			  toolWin = null;
-			  lastToolURL = null;
-			  exitWin = false;
-		 }
+    if (toolWin && !toolWin.closed) {
+        if (lastToolURL !== url && url !== "http://www.bing.com/") {
+            toolWin.location.href = url;
+            lastToolURL = url;
+        }
+        toolWin.focus();
+        portalScreen.classList.add("sidebar-mode");
+        return;
     }
-  }, 2024);
+
+    portalScreen.classList.add("sidebar-mode");
+    toolWin = window.open(url, cfg.name, featureString);
+    lastToolURL = url;
+
+    const watcher = setInterval(() => {
+        if (!toolWin || toolWin.closed || exitWin) {
+            if (!sidebarPinned) {
+                portalScreen.classList.remove("sidebar-mode");
+                clearInterval(watcher);
+                toolWin = null;
+                lastToolURL = null;
+                exitWin = false;
+            }
+        }
+    }, 2024);
 }
+
+
 
 
 
