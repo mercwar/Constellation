@@ -27,7 +27,7 @@
 	document.head.appendChild(css);
 
 	const js = document.createElement("script");
-	js.src =  "index.js?v=2";
+	js.src =  "index.js?v=3";
 	document.head.appendChild(js);
 	
 	document.title = `Mercwar Cyborg ${repo_name} Repo-Browser`;
@@ -83,7 +83,13 @@
       </div>
 
       <div class="sidebar-header">
-        <span>Repository <strong>Files</strong></span>
+        <div style="width:100%;display:block;"><span>Repository <strong>Files</strong>
+		<div style="width:100%" align="right">
+		<button class="btn rk-btn" id="openRawBtn" onclick="collapseAllDropdowns();">collapse
+		</button>
+		</div></div>
+		</span>
+		
       </div>
 
       <div class="sidebar-search">
