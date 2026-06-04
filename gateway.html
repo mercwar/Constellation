@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Loading…</title>
+  <style>
+    body {
+      background: #000;
+      color: #0ff;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 20vh;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Loading Repository…</h2>
+
+<script>
+  // 1. Read ?index= from URL
+  const params = new URLSearchParams(window.location.search);
+  let repo_name = params.get("index");
+
+  // 2. Default if missing
+  if (!repo_name || repo_name.trim() === "") {
+    repo_name = "mercwar";
+  }
+
+  // 3. GitHub API URL for repo existence check
+  const apiURL = `https://api.github.com/repos/mercwar/${repo_name}`;
+
+  // 4. Check repo existence
+  fetch(apiURL)
+    .then(res => {
+      if (res.ok) {
+        // Repo exists → redirect to its LIVE index
+        window.location.href =
+          `https://mercwar.github.io/${repo_name}/LIVE/index.html?index=${repo_name}`;
+      } else {
+        document.body.innerHTML =
+          `<h2 style="color:red;">Repository '${repo_name}' not found.</h2>`;
+      }
+    })
+    .catch(err => {
+      document.body.innerHTML =
+        `<h2 style="color:red;">GitHub API error.</h2>`;
+    });
+</script>
+
+</body>
+</html>
+
