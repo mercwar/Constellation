@@ -169,10 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Initialize
-loadConstellationRepos();
-
-
 function avis_load(url) {
 fetch(url)
   .then(r => r.text())
@@ -224,7 +220,13 @@ function closeSidebar() {
 function setCookie(name, value, days = 365) {
   const d = new Date();
   d.setTime(d.getTime() + (days*24*60*60*1000));
-  document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+
+  document.cookie =
+    `${name}=${value};` +
+    `expires=${d.toUTCString()};` +
+    `path=/;` +
+    `SameSite=None;` +   // ← REQUIRED FOR IFRAMES
+    `Secure`;            // ← REQUIRED WHEN SameSite=None
 }
 
 function getCookie(name) {
