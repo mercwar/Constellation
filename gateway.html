@@ -20,7 +20,7 @@
 const params = new URLSearchParams(window.location.search);
 let repo_name = params.get("index") || "mercwar";
 
-const LOCAL_MODE = true;   // toggle this
+const LOCAL_MODE = false;   // toggle this
 
 let git_url = LOCAL_MODE
   ? "../../"
