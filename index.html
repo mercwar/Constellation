@@ -5,8 +5,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <title>Mercwar AI Portal</title>
       <!-- MAIN CSS -->
-      <link rel="stylesheet" href="css/index.css?v=24"/>
-	  <link rel="stylesheet" href="css/rru_gx.css?v=20">
+      <link rel="stylesheet" href="css/index.css?v=25"/>
+	  <link rel="stylesheet" href="css/rru_gx.css?v=21">
       <!-- FONTS -->
       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
    </head>
@@ -62,6 +62,8 @@
 
         <div class="dropdown">
             <select id="github-username" class="rkSelect" size="5">
+			
+
 			<option value="custom" style="color:#e1d505;text-align:center">** Show me the Box **</option>
 <option value="mercwar" selected>mercwar</option>
 
@@ -123,13 +125,16 @@
                 
             </select>
 
-            <input 
-                id="custom-username"
-                type="text"
-                class="sub-btn"
-                placeholder="Enter GitHub username..."
-                style="display:none;"
-            />
+
+<input 
+    id="custom-username"
+    type="text"
+    class="sub-btn"
+    placeholder="Enter GitHub username..."
+    style="display:none;"
+    oninput="saveCustomGitUser(this.value)"
+/>
+
 
             <button id="load-user-repos" class="sub-btn">
                 LOAD REPOS
@@ -569,14 +574,14 @@ SYSTEM HUB <span class="caret"></span>
 <div class="status-line"
      onclick="restoreToConsole()"
      style="cursor:pointer">
-  Restore to Console (Un-Stick)
+  Restore Console (Un-Pin)
 </div>
 
             <!-- /center-inner -->
          </section>
       </main>
       <!-- MAIN JS -->
-      <script src="js/index.js?v=62"></script>
+      <script src="js/index.js?v=63"></script>
 	  
 	  <script>
   document.getElementById("gx-banner").addEventListener("click", () => {
