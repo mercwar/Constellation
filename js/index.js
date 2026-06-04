@@ -216,6 +216,10 @@ function closeSidebar() {
    
 }
 }
+function saveUplinkState(isChecked) {
+	
+  setCookie("uplinkState", isChecked ? "checked" : "unchecked");
+}
 
 function setCookie(name, value, days = 365) {
   const d = new Date();
@@ -225,46 +229,19 @@ function setCookie(name, value, days = 365) {
     `${name}=${value};` +
     `expires=${d.toUTCString()};` +
     `path=/;` +
-    `SameSite=None;` +   // ← REQUIRED FOR IFRAMES
-    `Secure`;            // ← REQUIRED WHEN SameSite=None
+    `SameSite=None;` +
+    `Secure`;
 }
 
 function getCookie(name) {
   const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
   return match ? match[2] : null;
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   const uplink = document.getElementById("keepInFrame");
 
-  // *** THIS IS THE PART YOU WANT ***
   const saved = getCookie("uplinkState");
 
-  if (saved === "checked") {
-    uplink.checked = true;   // ← CHECK THE BOX ON PAGE LOAD
-  } else {
-    uplink.checked = false;  // ← Leave unchecked
-  }
-
-  // Save cookie when user toggles
-  uplink.addEventListener("change", () => {
-    setCookie("uplinkState", uplink.checked ? "checked" : "unchecked");
-  });
+  uplink.checked = (saved === "checked");
 });
-
-function restoreToConsole() {
-  exitWin = true;
-
-  const uplink = document.getElementById("keepInFrame");
-
-  // If checked → uncheck and fire event
-  if (uplink.checked) {
-    uplink.checked = false;
-    setCookie("uplinkState", "unchecked");
-
-    // Fire the normal change event
-    uplink.dispatchEvent(new Event("change"));
-  } else {
-    // Already unchecked → still fire event
-    uplink.dispatchEvent(new Event("change"));
-  }
-}
