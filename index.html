@@ -5,8 +5,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <title>Mercwar AI Portal</title>
       <!-- MAIN CSS -->
-      <link rel="stylesheet" href="css/index.css?v=22"/>
-	  <link rel="stylesheet" href="css/rru_gx.css?v=18">
+      <link rel="stylesheet" href="css/index.css?v=24"/>
+	  <link rel="stylesheet" href="css/rru_gx.css?v=20">
       <!-- FONTS -->
       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
    </head>
@@ -16,7 +16,7 @@
      
 			
 <div id="gx-banner">
-  <span>Welcome to the Mercwar AI Portal</span>
+  <span><i>Activate Mercwar AI Portal</i></span>
 </div>
 
        <div class="center-inner">
@@ -31,10 +31,10 @@
                </div>
 			   
 			   
-<div style="display:flex; align-items:center; gap:22px; margin-left:10px;">
+<div style="display:flex; align-items:center; gap:22px; margin-left:15px;">
 
     <label class="rkGlow" style="display:flex; align-items:center; gap:6px;">
-        <input type="checkbox" id="keepInFrame">
+        <input type="checkbox" id="keepInFrame" onchange="saveUplinkState(this.checked);">
         Up-link Window
     </label>
 
@@ -576,7 +576,7 @@ SYSTEM HUB <span class="caret"></span>
          </section>
       </main>
       <!-- MAIN JS -->
-      <script src="js/index.js?v=54"></script>
+      <script src="js/index.js?v=59"></script>
 	  
 	  <script>
   document.getElementById("gx-banner").addEventListener("click", () => {
