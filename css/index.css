@@ -47,7 +47,7 @@ body {
 }
 
 .screen.sidebar-mode {
-  transform: translate(-88%, -70%);
+  transform: translate(-87%, -70%);
   background: transparent;
 }
 
@@ -56,7 +56,7 @@ body {
 .centerpiece {
   width: 323px;
   height: 476px;
-  max-height: 476px;
+  
   position: absolute;
   top: 118px;
   left: 610px;
@@ -85,19 +85,21 @@ body {
 
 
 .centerpiece.sidebar-mode {
-	 background: transparent;
+	background: transparent;
   top: 10px;
-  left: 10px;
+  left: 20px;
+   
   transform: none !important;
 }
 
 .center-inner {
 	 background: transparent;
-  padding: 14px 18px 16px;
+  padding: 5px 5px 5px;
   margin-top:40px;
   display: flex;
+
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .center-title {
