@@ -42,13 +42,8 @@ function startGatewayWatcher() {
 
     gatewayWatcher = setInterval(() => {
 
-        // No window → nothing to do
         if (!toolWin || toolWin.closed) return;
 
-        // Only keep on top if:
-        // 1. Gateway Active is ON
-        // 2. Sidebar is pinned
-        // 3. Window is NOT navigating
         if (keepGatewayActive && sidebarPinned && !isNavigating) {
             toolWin.focus();
         }
@@ -66,7 +61,6 @@ function stopGatewayWatcher() {
 function handleGatewayActiveChange(isChecked) {
     keepGatewayActive = isChecked;
 
-    // Only run watcher if sidebar is pinned
     if (keepGatewayActive && sidebarPinned) {
         startGatewayWatcher();
     } else {
@@ -87,18 +81,13 @@ function summonToolWindow(url = "https://roborook.fanclub.rocks/AVIS-NEWS/index.
     const maxWidth  = screen.availWidth  - sidebarWidth;
     const maxHeight = screen.availHeight - (marginTop + marginBottom);
 
-    // Already open → navigate safely
     if (toolWin && !toolWin.closed) {
         isNavigating = true;
         toolWin.location.href = url;
-
-        // Allow navigation to complete
         setTimeout(() => { isNavigating = false; }, 1200);
-
         return;
     }
 
-    // Open fresh
     toolWin = window.open(
         url,
         "toolBrowser",
@@ -106,25 +95,24 @@ function summonToolWindow(url = "https://roborook.fanclub.rocks/AVIS-NEWS/index.
         "menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes"
     );
 
-    // New window is navigating
     isNavigating = true;
     setTimeout(() => { isNavigating = false; }, 1200);
 }
 
 
 /* ============================================================
-   PORTAL LAUNCHER
+   PORTAL LAUNCHER (UPLINK AWARE)
 ============================================================ */
 function launchPortal(url) {
-    const keepSelfBox = document.querySelector("input[type='checkbox'][id*='frame']");
-    const keepSelf = keepSelfBox && keepSelfBox.checked;
+    const uplink = document.getElementById("keepInFrame");
 
-    if (keepSelf) {
-        window.open(url, "_self");
+    if (uplink && uplink.checked) {
+        window.open(url, "_self");   // UPLINK WORKS AGAIN
     } else {
-        summonToolWindow(url);
+        summonToolWindow(url);       // NORMAL MODE
     }
 }
+
 
 
 /* ============================================================
@@ -146,14 +134,9 @@ function handleSidebarPinChange(isChecked) {
 
     if (isChecked) {
         enableSidebarMode();
-
-        // If Gateway Active is ON, restart watcher
         if (keepGatewayActive) startGatewayWatcher();
-
     } else {
         closeSidebar();
-
-        // Sidebar unpinned → force stop window-on-top
         stopGatewayWatcher();
     }
 }
@@ -167,7 +150,7 @@ function restoreToConsole() {
     if (!unpin) return console.warn("restoreToConsole: no pin checkbox found");
 
     if (unpin.checked) {
-        unpin.click();   // EXACT same behavior as user click
+        unpin.click();
     }
 }
 
@@ -189,7 +172,7 @@ function getCookie(name) {
 
 
 /* ============================================================
-   GITHUB REPO LOADER
+   GITHUB REPO LOADER  (CONSTELLATION, FIXED)
 ============================================================ */
 async function loadConstellationRepos(username = "mercwar") {
     const container = document.getElementById('constellation-menu');
@@ -211,7 +194,9 @@ async function loadConstellationRepos(username = "mercwar") {
 
         clean.forEach(repo => {
             const repoName = repo.name;
-            const pagesUrl = `https://${username}.github.io/${repoName}/index.html`;
+
+            const pagesUrl =
+                `https://${username}.github.io/${repoName}/index.html?index=${repoName}`;
 
             const block = document.createElement("div");
             block.className = "repo-block";
@@ -219,7 +204,8 @@ async function loadConstellationRepos(username = "mercwar") {
             const btnTool = document.createElement("button");
             btnTool.className = "sub-btn repo-tool";
             btnTool.textContent = `${repoName.toUpperCase()} [com.Fire-Win]`;
-            btnTool.onclick = () => launchPortal(repo.html_url);
+            btnTool.onclick = () =>
+                launchPortal(`${repo.html_url}?index=${repoName}`);
 
             const btnPagesTool = document.createElement("button");
             btnPagesTool.className = "sub-btn repo-pages-tool";
@@ -254,16 +240,53 @@ function loadCustomGitUser() {
 }
 
 
+/* ============================================================
+   FRAME DETECTION + AUTO‑LOCK SYSTEM
+============================================================ */
+function enforceFrameRulesOnLoad() {
+
+    const uplink = document.getElementById("keepInFrame");
+    const pinBox = document.getElementById("pinSidebarChk");
+    const gatewayBox = document.getElementById("keepGatewayActive");
+
+    const inFrame = (window !== window.top);
+
+    if (inFrame) {
+        if (uplink) {
+            uplink.checked = true;
+            uplink.disabled = true;
+        }
+
+        if (pinBox) {
+            pinBox.checked = false;
+            pinBox.disabled = true;
+        }
+        sidebarPinned = false;
+        closeSidebar();
+
+        if (gatewayBox) {
+            gatewayBox.checked = false;
+            gatewayBox.disabled = true;
+        }
+        keepGatewayActive = false;
+        stopGatewayWatcher();
+
+    } else {
+        if (uplink) uplink.disabled = false;
+        if (pinBox) pinBox.disabled = false;
+        if (gatewayBox) gatewayBox.disabled = false;
+    }
+}
+
 
 /* ============================================================
    MASTER DOMContentLoaded
 ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
- enforceFrameRulesOnLoad();   // <‑‑ ADD THIS FIRST
- 
+    setTimeout(() => enforceFrameRulesOnLoad(), 50);
+	
     initDropdowns();
 
-    /* GitHub User Loader */
     const userDropdown = document.getElementById("github-username");
     const customInput = document.getElementById("custom-username");
     const loadBtn = document.getElementById("load-user-repos");
@@ -286,55 +309,10 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-    /* Load saved uplink state */
     const uplink = document.querySelector("input[type='checkbox'][id*='frame']");
     const saved = getCookie("uplinkState");
     if (uplink) uplink.checked = (saved === "checked");
 
-    /* Load saved custom Git user */
     loadCustomGitUser();
-
-    /* Auto-load Mercwar repos */
     loadConstellationRepos("mercwar");
 });
-/* ============================================================
-   FRAME DETECTION + AUTO‑LOCK SYSTEM
-============================================================ */
-function enforceFrameRulesOnLoad() {
-
-    const uplink = document.getElementById("keepInFrame");
-    const pinBox = document.getElementById("pinSidebarChk");
-    const gatewayBox = document.getElementById("keepGatewayActive");
-
-    const inFrame = (window !== window.top);
-
-    if (inFrame) {
-        // Auto-check + disable uplink
-        if (uplink) {
-            uplink.checked = true;
-            uplink.disabled = true;
-        }
-
-        // Auto-uncheck + disable pin
-        if (pinBox) {
-            pinBox.checked = false;
-            pinBox.disabled = true;
-        }
-        sidebarPinned = false;
-        closeSidebar();
-
-        // Auto-uncheck + disable gateway active
-        if (gatewayBox) {
-            gatewayBox.checked = false;
-            gatewayBox.disabled = true;
-        }
-        keepGatewayActive = false;
-        stopGatewayWatcher();
-
-    } else {
-        // Normal mode — enable everything
-        if (uplink) uplink.disabled = false;
-        if (pinBox) pinBox.disabled = false;
-        if (gatewayBox) gatewayBox.disabled = false;
-    }
-}
