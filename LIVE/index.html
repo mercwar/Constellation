@@ -23,13 +23,10 @@
 	
     const css = document.createElement("link");    
 	css.rel = "stylesheet";
-    css.href = "index.css?v=11";
+    css.href = "index.css?v=13";
 	document.head.appendChild(css);
 
-	const js = document.createElement("script");
-	js.src =  "index.js?v=12";
-	document.head.appendChild(js);
-	
+
 
 	
 	document.title = `Mercwar Cyborg ${repo_name} Repo-Browser`;
@@ -113,7 +110,7 @@
         </div>
 
         <div class="main-actions">
-         <button class="btn rk-btn" id="rawBtn" type="button">RAW</button>
+         <button class="btn rk-btn" id="openRawBtn" type="button">RAW</button>
 
           <button class="btn rk-btn-primary" id="openGithubBtn">OPEN IN GITHUB</button>
         </div>
@@ -174,7 +171,10 @@
     <div class="legal-footer">  All rights reserved.  
       © Mercwar AI Systems * AVIS Cyborg RRU</div>
   </div>
+  
+  
 
+<script src="index.js?v=14"></script>
 
 </body>
 </html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub API Test – mercwar</title>
+  <style>
+    body { font-family: monospace; background:#05060a; color:#e5e5e5; padding:20px; }
+    input, button { padding:6px 10px; margin:4px; }
+    .ok { color:#4cff8a; }
+    .err { color:#ff4b6a; }
+    pre { background:#11131a; padding:10px; border-radius:6px; max-height:260px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <h2>GitHub API Test – mercwar</h2>
+
+  <div>
+    <label>Repo name:</label>
+    <input id="repoName" value="Constellation" />
+    <button onclick="testRepo()">Test Repo</button>
+    <button onclick="testTree()">Test Tree</button>
+  </div>
+
+  <div id="status"></div>
+  <pre id="output"></pre>
+
+  <script>
+    const owner = "mercwar";
+
+    function setStatus(msg, ok = true) {
+      const el = document.getElementById("status");
+      el.innerHTML = ok ? `<span class="ok">${msg}</span>` :
+                         `<span class="err">${msg}</span>`;
+    }
+
+    function showOutput(obj) {
+      document.getElementById("output").textContent =
+        JSON.stringify(obj, null, 2);
+    }
+
+    async function testRepo() {
+      const repo = document.getElementById("repoName").value.trim();
+      if (!repo) return;
+
+      const url = `https://api.github.com/repos/${owner}/${repo}`;
+      setStatus(`GET ${url} ...`);
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        if (!res.ok) {
+          setStatus(`Repo API ERROR: ${data.message || res.status}`, false);
+        } else {
+          setStatus(`Repo OK: ${data.full_name}`);
+        }
+        showOutput(data);
+      } catch (e) {
+        setStatus(`Fetch failed: ${e.message}`, false);
+      }
+    }
+
+    async function testTree() {
+      const repo = document.getElementById("repoName").value.trim();
+      if (!repo) return;
+
+      const url = `https://api.github.com/repos/${owner}/${repo}/git/trees/main?recursive=1`;
+      setStatus(`GET ${url} ...`);
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        if (!res.ok) {
+          setStatus(`Tree API ERROR: ${data.message || res.status}`, false);
+        } else {
+          setStatus(`Tree OK: ${data.tree?.length || 0} entries`);
+        }
+        showOutput(data);
+      } catch (e) {
+        setStatus(`Fetch failed: ${e.message}`, false);
+      }
+    }
+  </script>
+</body>
+</html>
