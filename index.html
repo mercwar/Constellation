@@ -24,14 +24,17 @@
 			  
 			   
                <!-- NORMAL BUTTON -->
-               <div class="menu-group">
-                  <button class="rk-btn" onclick="openToolWindow('https://roborook.fanclub.rocks/AVIS-NEWS/index.php')">
-                  Joe Tron's Avis Gate
-                  </button>
-               </div>
+<div class="menu-group">
+  <button class="rk-btn"
+          type="button"
+          onclick="summonToolWindow();">
+      Joe Tron's Avis Gate
+  </button>
+</div>
+
 			   
 			   
-<div style="display:flex; align-items:center; gap:22px; margin-left:15px;">
+<div style="display:flex; align-items:center; gap:12px; margin-left:30px;">
 
     <label class="rkGlow" style="display:flex; align-items:center; gap:6px;">
         <input type="checkbox" id="keepInFrame" onchange="saveUplinkState(this.checked);">
@@ -536,6 +539,9 @@ SYSTEM HUB <span class="caret"></span>
         <button class="sub-btn" onclick="launchPortal('https://mercwar.github.io/Robo-Knight-Gallery/gateway.html')">
             Mercwar AI Gateway
         </button>
+		 <button class="sub-btn" onclick="launchPortal('https://roborook.fanclub.rocks/AVIS-NEWS/index.php')">
+            Mercwar AVIS News
+        </button>
         <!-- MAIN PORTALS -->
         <button class="sub-btn" onclick="launchPortal('https://mercwar.github.io/Robo-Knight-Gallery')">
             Mercwar AI Portal
@@ -568,9 +574,11 @@ SYSTEM HUB <span class="caret"></span>
     </div>
 </div>
 
-               <!-- STATUS -->
-               <div class="status-line" onclick='javascript:exitWin=true;' style="cursor:pointer">Return to Console</div>
-            </div>
+<label class="rk-check">
+    <input style="margin-left:50px;" type="checkbox" id="keepGatewayActive" onchange="handleGatewayActiveChange(this.checked)">
+    <span>Active Gate & Keep</span>
+</label>
+
 <div class="status-line"
      onclick="restoreToConsole()"
      style="cursor:pointer">
