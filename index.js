@@ -1,140 +1,318 @@
-const owner       = "mercwar";
-const repo        = "Constellation";
-const maxVersions = 12;
-const imageExts   = ["jpg","jpeg","png","gif","webp","bmp"];
+/* ============================================================
+   AVIS CYBORG RRU — GATEWAY CORE (Optimized + Gateway Active)
+   ============================================================ */
 
-let currentVersion = null;
-let files = [];
-let page  = 1;
-const pageSize = 5;   // ONLY SHOW 5 IMAGES (Updated from comment mismatches)
+/* -------------------------------
+   GLOBAL STATE
+--------------------------------*/
+let toolWin = null;
+let lastToolURL = null;
+let sidebarPinned = false;
+let exitWin = false;
 
-function ghList(path=""){
-    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
-    return fetch(url).then(r=>r.json());
+let keepGatewayActive = false;     // Gateway Active checkbox
+let gatewayWatcher = null;         // Watcher loop
+let isNavigating = false;          // Prevent focus during navigation
+
+
+/* ============================================================
+   DROPDOWN MENU SYSTEM
+============================================================ */
+function initDropdowns() {
+    const groups = document.querySelectorAll('.menu-group.has-dropdown');
+
+    groups.forEach(group => {
+        const btn = group.querySelector('.dropdown-toggle');
+        if (!btn) return;
+
+        btn.addEventListener('click', () => {
+            const isOpen = group.classList.contains('open');
+            groups.forEach(g => g.classList.remove('open'));
+            if (!isOpen) group.classList.add('open');
+        });
+    });
 }
 
-function isImageFile(name){
-    const ext = name.split(".").pop().toLowerCase();
-    return imageExts.includes(ext);
-}
 
-function isVersionDir(name){
-    const m = /^Images\s+(\d+)$/i.exec(name);
-    if(!m) return false;
-    const n = parseInt(m[1], 10);
-    return n >= 1 && n <= maxVersions;
-}
+/* ============================================================
+   GATEWAY ACTIVE WATCHER (Navigation‑Safe)
+============================================================ */
+function startGatewayWatcher() {
+    stopGatewayWatcher(); // avoid duplicates
 
-function buildVersionBar(){
-    const bar = document.getElementById("versionBar");
-    if (!bar) return; // Prevent errors if DOM isn't ready
-    bar.textContent = "Loading versions…";
+    gatewayWatcher = setInterval(() => {
 
-    // CHANGE: If your "Images X" folders are inside the "fire-star" folder on GitHub, 
-    // change ghList("") below to ghList("fire-star")
-    ghList("fire-star").then(items=>{
-        if (!Array.isArray(items)) {
-            bar.textContent = "Failed to parse repository structure.";
-            return;
+        if (!toolWin || toolWin.closed) return;
+
+        if (keepGatewayActive && sidebarPinned && !isNavigating) {
+            toolWin.focus();
         }
 
-        const versions = items
-            .filter(i => i.type==="dir" && isVersionDir(i.name))
-            .sort((a,b)=>{
-                const na = parseInt(a.name.split(" ")[1],10);
-                const nb = parseInt(b.name.split(" ")[1],10);
-                return na - nb;
-            });
+    }, 900);
+}
 
-        bar.textContent = "";
-        versions.forEach(v=>{
-            const btn = document.createElement("button");
-            btn.textContent = v.name;
-            btn.onclick = () => {
-                currentVersion = v;
-                page = 1;
-                document.querySelectorAll("#versionBar button").forEach(b=>b.classList.remove("active"));
-                btn.classList.add("active");
-                loadImages();
-            };
-            bar.appendChild(btn);
+function stopGatewayWatcher() {
+    if (gatewayWatcher) {
+        clearInterval(gatewayWatcher);
+        gatewayWatcher = null;
+    }
+}
+
+function handleGatewayActiveChange(isChecked) {
+    keepGatewayActive = isChecked;
+
+    if (keepGatewayActive && sidebarPinned) {
+        startGatewayWatcher();
+    } else {
+        stopGatewayWatcher();
+    }
+}
+
+
+/* ============================================================
+   TOOL WINDOW SUMMONER (Navigation‑Safe)
+============================================================ */
+function summonToolWindow(url = "https://roborook.fanclub.rocks/AVIS-NEWS/index.php") {
+
+    const sidebarWidth = 380;
+    const marginTop    = 40;
+    const marginBottom = 40;
+
+    const maxWidth  = screen.availWidth  - sidebarWidth;
+    const maxHeight = screen.availHeight - (marginTop + marginBottom);
+
+    if (toolWin && !toolWin.closed) {
+        isNavigating = true;
+        toolWin.location.href = url;
+        setTimeout(() => { isNavigating = false; }, 1200);
+        return;
+    }
+
+    toolWin = window.open(
+        url,
+        "toolBrowser",
+        `width=${maxWidth},height=${maxHeight},left=${sidebarWidth},top=${marginTop},` +
+        "menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes"
+    );
+
+    isNavigating = true;
+    setTimeout(() => { isNavigating = false; }, 1200);
+}
+
+
+/* ============================================================
+   PORTAL LAUNCHER (UPLINK AWARE)
+============================================================ */
+function launchPortal(url) {
+    const uplink = document.getElementById("keepInFrame");
+
+    if (uplink && uplink.checked) {
+        window.open(url, "_self");   // UPLINK WORKS AGAIN
+    } else {
+        summonToolWindow(url);       // NORMAL MODE
+    }
+}
+
+
+
+/* ============================================================
+   SIDEBAR MODE (Gateway Active depends on this)
+============================================================ */
+function enableSidebarMode() {
+    const portalScreen = document.querySelector('.screen');
+    if (portalScreen) portalScreen.classList.add('sidebar-mode');
+}
+
+function closeSidebar() {
+    sidebarPinned = false;
+    const portalScreen = document.querySelector('.screen');
+    if (portalScreen) portalScreen.classList.remove('sidebar-mode');
+}
+
+function handleSidebarPinChange(isChecked) {
+    sidebarPinned = isChecked;
+
+    if (isChecked) {
+        enableSidebarMode();
+        if (keepGatewayActive) startGatewayWatcher();
+    } else {
+        closeSidebar();
+        stopGatewayWatcher();
+    }
+}
+
+
+/* ============================================================
+   RESTORE CONSOLE (UN-PIN)
+============================================================ */
+function restoreToConsole() {
+    const unpin = document.querySelector("input[type='checkbox'][id*='pin']");
+    if (!unpin) return console.warn("restoreToConsole: no pin checkbox found");
+
+    if (unpin.checked) {
+        unpin.click();
+    }
+}
+
+
+/* ============================================================
+   COOKIE SYSTEM
+============================================================ */
+function setCookie(name, value, days = 365) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 86400000));
+    document.cookie =
+        `${name}=${value};expires=${d.toUTCString()};path=/;SameSite=None;Secure`;
+}
+
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+}
+
+
+/* ============================================================
+   GITHUB REPO LOADER  (CONSTELLATION, FIXED)
+============================================================ */
+async function loadConstellationRepos(username = "mercwar") {
+    const container = document.getElementById('constellation-menu');
+    if (!container) return;
+
+    try {
+        const response = await fetch(
+            `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
+        );
+
+        if (!response.ok) throw new Error("GitHub API error");
+
+        const repos = await response.json();
+        const clean = repos
+            .filter(r => !r.fork)
+            .sort((a, b) => a.name.localeCompare(b.name));
+
+        container.innerHTML = "";
+
+        clean.forEach(repo => {
+            const repoName = repo.name;
+
+            const pagesUrl =
+                `https://${username}.github.io/${repoName}/index.html?index=${repoName}`;
+
+            const block = document.createElement("div");
+            block.className = "repo-block";
+
+            const btnTool = document.createElement("button");
+            btnTool.className = "sub-btn repo-tool";
+            btnTool.textContent = `${repoName.toUpperCase()} [com.Fire-Win]`;
+            btnTool.onclick = () =>
+                launchPortal(`${repo.html_url}?index=${repoName}`);
+
+            const btnPagesTool = document.createElement("button");
+            btnPagesTool.className = "sub-btn repo-pages-tool";
+            btnPagesTool.textContent = `${repoName.toUpperCase()} [io.Fire-Win]`;
+            btnPagesTool.onclick = () => launchPortal(pagesUrl);
+
+            block.appendChild(btnTool);
+            block.appendChild(btnPagesTool);
+            container.appendChild(block);
         });
 
-        if(versions[0]){
-            bar.querySelector("button").click();
-        } else {
-            bar.textContent = "No Image version directories found.";
+    } catch (err) {
+        container.innerHTML =
+            `<p style="color:red;padding:8px;">Error loading repos: ${err.message}</p>`;
+    }
+}
+
+
+/* ============================================================
+   CUSTOM GIT USER SAVE/LOAD
+============================================================ */
+function saveCustomGitUser(name) {
+    setCookie("customGitUser", name, 365);
+}
+
+function loadCustomGitUser() {
+    const saved = getCookie("customGitUser");
+    if (saved) {
+        const input = document.getElementById("custom-username");
+        if (input) input.value = saved;
+    }
+}
+
+
+/* ============================================================
+   FRAME DETECTION + AUTO‑LOCK SYSTEM
+============================================================ */
+function enforceFrameRulesOnLoad() {
+
+    const uplink = document.getElementById("keepInFrame");
+    const pinBox = document.getElementById("pinSidebarChk");
+    const gatewayBox = document.getElementById("keepGatewayActive");
+
+    const inFrame = (window !== window.top);
+
+    if (inFrame) {
+        if (uplink) {
+            uplink.checked = true;
+            uplink.disabled = true;
         }
-    }).catch(err => {
-        bar.textContent = "Error connecting to GitHub API.";
-        console.error(err);
-    });
-}
 
-function loadImages(){
-    if(!currentVersion) return;
-    ghList(currentVersion.path).then(items=>{
-        files = items.filter(i => i.type==="file" && isImageFile(i.name));
-        page = 1;
-        renderGrid();
-    });
-}
+        if (pinBox) {
+            pinBox.checked = false;
+            pinBox.disabled = true;
+        }
+        sidebarPinned = false;
+        closeSidebar();
 
-function renderGrid(){
-    const grid = document.getElementById("grid");
-    if (!grid) return;
-    grid.innerHTML = "";
+        if (gatewayBox) {
+            gatewayBox.checked = false;
+            gatewayBox.disabled = true;
+        }
+        keepGatewayActive = false;
+        stopGatewayWatcher();
 
-    const start = (page-1)*pageSize;
-    const end   = start + pageSize;
-    const pageFiles = files.slice(start,end);
-
-    pageFiles.forEach(item=>{
-        const img = document.createElement("img");
-        img.src = item.download_url;
-        img.className = "thumb";
-        img.onclick = () => openLightbox(item.download_url);
-        grid.appendChild(img);
-    });
-
-    const totalPages = Math.max(1, Math.ceil(files.length/pageSize));
-    const pageInfo = document.getElementById("pageInfo");
-    if (pageInfo) {
-        pageInfo.textContent = `${page} OF ${totalPages}`;
+    } else {
+        if (uplink) uplink.disabled = false;
+        if (pinBox) pinBox.disabled = false;
+        if (gatewayBox) gatewayBox.disabled = false;
     }
 }
 
-function openLightbox(src){
-    const lb = document.getElementById("lightbox");
-    const lbImg = document.getElementById("lbImg");
-    if (lb && lbImg) {
-        lbImg.src = src;
-        lb.style.display = "flex";
-    }
-}
 
-// Safely attach event listeners after the document finishes loading
+/* ============================================================
+   MASTER DOMContentLoaded
+============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-    const lightbox = document.getElementById("lightbox");
-    if (lightbox) {
-        lightbox.onclick = () => {
-            lightbox.style.display = "none";
+    setTimeout(() => enforceFrameRulesOnLoad(), 50);
+	
+    initDropdowns();
+
+    const userDropdown = document.getElementById("github-username");
+    const customInput = document.getElementById("custom-username");
+    const loadBtn = document.getElementById("load-user-repos");
+
+    if (userDropdown && customInput) {
+        userDropdown.onchange = () => {
+            customInput.style.display =
+                (userDropdown.value === "custom") ? "block" : "none";
         };
     }
 
-    const prevBtn = document.getElementById("prevBtn");
-    if (prevBtn) {
-        prevBtn.onclick = () => {
-            if(page>1){ page--; renderGrid(); }
+    if (loadBtn) {
+        loadBtn.onclick = () => {
+            let username = userDropdown.value;
+            if (username === "custom") {
+                username = customInput.value.trim();
+                if (!username) return alert("Enter a GitHub username");
+            }
+            loadConstellationRepos(username);
         };
     }
 
-    const nextBtn = document.getElementById("nextBtn");
-    if (nextBtn) {
-        nextBtn.onclick = () => {
-            if(page < Math.ceil(files.length/pageSize)){ page++; renderGrid(); }
-        };
-    }
+    const uplink = document.querySelector("input[type='checkbox'][id*='frame']");
+    const saved = getCookie("uplinkState");
+    if (uplink) uplink.checked = (saved === "checked");
 
-    buildVersionBar();
+    loadCustomGitUser();
+    loadConstellationRepos("mercwar");
 });
