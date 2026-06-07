@@ -36,13 +36,13 @@
 			   
 <div style="display:flex; align-items:center; gap:12px; margin-left:30px;">
 
-    <label class="rkGlow" style="display:flex; align-items:center; gap:6px;">
-        <input type="checkbox" id="keepInFrame" onchange="saveUplinkState(this.checked);">
+    <label class="rkGlow" style="display:flex; align-items:center; gap:6px;" title="[1] Keep in Frame [2] No New Browser">
+        <input type="checkbox" id="keepInFrame" onchange="saveUplinkState(this.checked);" title="[1] Keep in Frame [2] No New Browser">
         Up-link Window
     </label>
 
-    <label class="rkGlow" style="display:flex; align-items:center; gap:6px;">
-        <input type="checkbox" id="pinSidebarChk" onchange="handleSidebarPinChange(this.checked)">
+    <label class="rkGlow" style="display:flex; align-items:center; gap:6px;" title="[1] Use as Sidebar [x] Disabled in Frame">
+        <input type="checkbox" id="pinSidebarChk" onchange="handleSidebarPinChange(this.checked)" title="[1] Use as Sidebar [x] Disabled in Frame">
         Pin Sidebar
     </label>
 
@@ -574,8 +574,8 @@ SYSTEM HUB <span class="caret"></span>
     </div>
 </div>
 
-<label class="rk-check">
-    <input style="margin-left:50px;" type="checkbox" id="keepGatewayActive" onchange="handleGatewayActiveChange(this.checked)">
+<label class="rk-check"  title="[1] Auto Win-Top [x] Disabled in Frame">
+    <input style="margin-left:50px;" type="checkbox" id="keepGatewayActive" onchange="handleGatewayActiveChange(this.checked)"  title="[1] Auto Win-Top [x] Disabled in Frame">
     <span>Active Gate & Keep</span>
 </label>
 
