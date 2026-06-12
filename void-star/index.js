@@ -32,7 +32,7 @@ function buildVersionBar(){
 
     // CHANGE: If your "Images X" folders are inside the "fire-star" folder on GitHub, 
     // change ghList("") below to ghList("fire-star")
-    ghList("ice-star").then(items=>{
+    ghList("void-star").then(items=>{
         if (!Array.isArray(items)) {
             bar.textContent = "Failed to parse repository structure.";
             return;
