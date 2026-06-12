@@ -277,28 +277,24 @@ function enforceFrameRulesOnLoad() {
         if (gatewayBox) gatewayBox.disabled = false;
     }
 }
-
-
-/* ============================================================
-   MASTER DOMContentLoaded
-============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => enforceFrameRulesOnLoad(), 50);
-	
     initDropdowns();
 
-    const userDropdown = document.getElementById("github-username");
-    const customInput = document.getElementById("custom-username");
-    const loadBtn = document.getElementById("load-user-repos");
+    // Wait for AJAX-loaded elements
+    waitForElement("#github-username", (userDropdown) => {
+        const customInput = document.getElementById("custom-username");
 
-    if (userDropdown && customInput) {
         userDropdown.onchange = () => {
             customInput.style.display =
                 (userDropdown.value === "custom") ? "block" : "none";
         };
-    }
+    });
 
-    if (loadBtn) {
+    waitForElement("#load-user-repos", (loadBtn) => {
+        const userDropdown = document.getElementById("github-username");
+        const customInput = document.getElementById("custom-username");
+
         loadBtn.onclick = () => {
             let username = userDropdown.value;
             if (username === "custom") {
@@ -307,12 +303,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             loadConstellationRepos(username);
         };
-    }
+    });
 
-    const uplink = document.querySelector("input[type='checkbox'][id*='frame']");
-    const saved = getCookie("uplinkState");
-    if (uplink) uplink.checked = (saved === "checked");
+    waitForElement("input[type='checkbox'][id*='frame']", (uplink) => {
+        const saved = getCookie("uplinkState");
+        uplink.checked = (saved === "checked");
+    });
 
     loadCustomGitUser();
     loadConstellationRepos("mercwar");
 });
+
