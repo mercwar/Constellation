@@ -259,20 +259,35 @@ function isImageFile(path) {
   const lower = path.toLowerCase();
   return [".png",".jpg",".jpeg",".gif",".bmp",".webp",".svg"].some(ext => lower.endsWith(ext));
 }
-
 // ---------------------------------------------------------
-// SELECT FILE
+// SELECT FILE (RRU link + mercwar.github.io address)
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// SELECT FILE (RRU link + mercwar.github.io address)
 // ---------------------------------------------------------
 async function selectFile(path) {
   activePath = path;
-  currentPathEl.textContent = "/" + path;
 
-  document.querySelectorAll(".tree-node")
-    .forEach(el => el.classList.remove("active"));
+  // compute encoded path and Pages base
+  const encodedRepo = encodeURIComponent(CONFIG.repo);
+  const rawPathEncoded = path ? path.split("/").map(encodeURIComponent).join("/") : "";
+  const pagesBase = `https://mercwar.github.io/${encodedRepo}`;
+  // pagesURL: for files and dirs; directories can optionally have trailing slash
+  const pagesURL = path ? `${pagesBase}/${rawPathEncoded}` : `${pagesBase}/`;
 
+  // Display the path as an RRU-styled clickable link that opens in a new tab
+  if (!path) {
+    currentPathEl.innerHTML = `<a class="rru-link" href="${pagesURL}" target="_blank" rel="noopener noreferrer">/${CONFIG.repo}</a>`;
+  } else {
+    currentPathEl.innerHTML = `<a class="rru-link" href="${pagesURL}" target="_blank" rel="noopener noreferrer">/${path}</a>`;
+  }
+
+  // mark active node
+  document.querySelectorAll(".tree-node").forEach(el => el.classList.remove("active"));
   const activeNode = document.querySelector(`.tree-node[data-path="${CSS.escape(path)}"]`);
   if (activeNode) activeNode.classList.add("active");
 
+  // find file metadata
   const file = flatFiles.find(f => f.path === path && f.type === "file");
   if (!file) {
     fileTypeBadgeEl.textContent = "Directory";
@@ -283,54 +298,42 @@ async function selectFile(path) {
     return;
   }
 
-  // Always load unsupported files as plain text
-// IMAGE FILE → SHOW IMAGE
-if (isImageFile(path)) {
-  fileTypeBadgeEl.textContent = "Image";
-  const rawPath = path.split("/").map(encodeURIComponent).join("/");
-  const imgURL = `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${rawPath}`;
+  // prepare raw URL for fetching/displaying content
+  const rawURL = `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${rawPathEncoded}`;
 
-  fileContentEl.innerHTML = `<img src="${imgURL}" style="max-width:100%;border-radius:6px;">`;
-  fileContentEl.style.display = "block";
-  emptyStateEl.style.display = "none";
-  setStatus("ready", "Image loaded");
-  return;
-}
+  // IMAGE FILE → SHOW IMAGE (image content from raw.githubusercontent, link points to Pages)
+  if (isImageFile(path)) {
+    fileTypeBadgeEl.textContent = "Image";
+    fileContentEl.innerHTML = `<img src="${rawURL}" style="max-width:100%;border-radius:6px;">`;
+    fileContentEl.style.display = "block";
+    emptyStateEl.style.display = "none";
+    setStatus("ready", "Image loaded");
+    return;
+  }
 
-// BINARY FILE → SHOW WARNING
-if (isBinaryFile(path)) {
-  fileTypeBadgeEl.textContent = "Binary file";
-  fileContentEl.style.display = "none";
-  emptyStateEl.style.display = "flex";
-  emptyStateEl.innerHTML = `
-    <div>
-      Cannot display raw binary.<br>
-      <span style="font-size:11px;color:#ff4b6a;">Download or open raw instead.</span>
-    </div>`;
-  setStatus("ready", "Binary file");
-  return;
-}
+  // BINARY FILE → SHOW WARNING (link still points to Pages)
+  if (isBinaryFile(path)) {
+    fileTypeBadgeEl.textContent = "Binary file";
+    fileContentEl.style.display = "none";
+    emptyStateEl.style.display = "flex";
+    emptyStateEl.innerHTML = `
+      <div>
+        Cannot display raw binary.<br>
+        <span style="font-size:11px;color:#ff4b6a;">Open via the RRU link or download.</span>
+      </div>`;
+    setStatus("ready", "Binary file");
+    return;
+  }
 
-// TEXT FILE → NORMAL BEHAVIOR
-if (!isTextFile(path)) {
-  fileTypeBadgeEl.textContent = "Plain text (unsupported ext)";
-} else {
-  fileTypeBadgeEl.textContent = "Text file";
-}
-
-
+  // TEXT FILE → NORMAL BEHAVIOR
+  fileTypeBadgeEl.textContent = isTextFile(path) ? "Text file" : "Plain text (unsupported ext)";
   fileMetaEl.textContent = `${file.size || 0} bytes • sha ${file.sha.slice(0, 7)}`;
 
   setStatus("loading", "Fetching file content...");
 
   try {
-    const rawPath = path.split("/").map(encodeURIComponent).join("/");
-    const res = await fetch(
-      `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${rawPath}`
-    );
-
+    const res = await fetch(rawURL);
     if (!res.ok) throw new Error("Failed to fetch file");
-
     const text = await res.text();
     fileContentEl.textContent = text;
     fileContentEl.style.display = "block";
@@ -344,6 +347,28 @@ if (!isTextFile(path)) {
     setStatus("error", "Failed to load file");
   }
 }
+
+// ---------------------------------------------------------
+// OPEN BUTTONS (use same mercwar.github.io Pages URL)
+// ---------------------------------------------------------
+openGithubBtn.addEventListener("click", () => {
+  if (!activePath) {
+    window.open(`https://github.com/${CONFIG.owner}/${CONFIG.repo}`, "_blank");
+    return;
+  }
+  const rawPathEncoded = activePath.split("/").map(encodeURIComponent).join("/");
+  const pagesURL = `https://mercwar.github.io/${encodeURIComponent(CONFIG.repo)}/${rawPathEncoded}`;
+  window.open(pagesURL, "_blank", "noopener");
+});
+
+openRawBtn.addEventListener("click", () => {
+  if (!activePath) return;
+  const rawPathEncoded = activePath.split("/").map(encodeURIComponent).join("/");
+  const pagesURL = `https://mercwar.github.io/${encodeURIComponent(CONFIG.repo)}/${rawPathEncoded}`;
+  window.open(pagesURL, "_blank", "noopener");
+});
+
+
 
 // ---------------------------------------------------------
 // BUTTONS
