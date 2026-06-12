@@ -114,27 +114,7 @@ SYSTEM HUB <span class="caret"></span>
 
 </section>
 <!-- This syntax ONLY functions in legacy Internet Explorer environments -->
-<object 
-  id="MySystemControl" 
-  classid="clsid:A1F0C1D2-1234-4B55-9A10-ABCDEF123456">
-  <param name="ParamName" value="ParamValue">
-  <p>ActiveX controls are not supported by this browser.</p>
-</object>
 
-<!-- ============================================================
-     CALL SYNTHETIC ACTIVEX OBJECT
-============================================================ -->
-<script>
-try {
-    // Calling a method directly from the registered system DLL
-    var result = document.getElementById("MySystemControl").LoadWindow();
-    console.log(result);
-} catch(e) {
-    console.error("ActiveX object execution blocked or unsupported.");
-}
-
-
-</script>
 
 <script>
 printAjaxHTML("hub.html?v=4", "#hub-drop");
