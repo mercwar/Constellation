@@ -1,0 +1,58 @@
+{
+  "id": "voidstar_grid_scene",
+  "title": "Void Star Grid Scene",
+  "units": "meters",
+  "origin": {"x": 0, "y": 0, "z": 0},
+  "nodes": [
+    {
+      "id": "PRIME_CORE",
+      "type": "singularity",
+      "position": {"x": 0, "y": 0, "z": 0},
+      "radius": 2.0,
+      "visual_role": "white-gold core",
+      "render_hint": {"emissive": true, "volumetric": true}
+    },
+    {
+      "id": "OVERSEER_RING",
+      "type": "halo",
+      "position": {"x": 0, "y": 0, "z": 0},
+      "inner_radius": 3.5,
+      "outer_radius": 4.2,
+      "visual_role": "violet halo",
+      "render_hint": {"transparent": true, "blend_mode": "additive"}
+    },
+    {
+      "id": "NEXUS_GATES",
+      "type": "gateway_cluster",
+      "count": 6,
+      "orbit_radius": 8.0,
+      "visual_role": "cyan gates",
+      "render_hint": {"instanced": true, "rotation_variance": 45}
+    },
+    {
+      "id": "CRYSTAL_SHARDS",
+      "type": "shard_field",
+      "count": 120,
+      "orbit_min": 5.0,
+      "orbit_max": 18.0,
+      "visual_role": "amber crystals",
+      "render_hint": {"kinematic": true, "phase_offset": true}
+    },
+    {
+      "id": "NODE_WEB",
+      "type": "connective_network",
+      "connects": ["PRIME_CORE", "CRYSTAL_SHARDS", "NEXUS_GATES"],
+      "visual_role": "mapping-light tubes",
+      "render_hint": {"tube_radius": 0.02}
+    }
+  ],
+  "render_settings": {
+    "background": "deep-black",
+    "stars_density": "sparse",
+    "neon_edges": true,
+    "camera": {"fov": 28, "distance": 20, "focus": "PRIME_CORE"},
+    "lighting": {"key": {"color": "white-gold", "intensity": 1.6}, "fill": {"color": "cyan", "intensity": 0.4}}
+  },
+  "export": {"format": "gltf", "lods": true, "animations": ["shard_orbits", "core_pulse"]},
+  "notes": "Use this scene JSON to place objects deterministically for batch image generation or 3D renders."
+}
