@@ -679,6 +679,33 @@
     <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/BrowserNav.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/ParserJSON.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/ParserMarkdown.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/ParserImage.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/FileSurfer.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/GitHubAPI.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/ParserText.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/UI.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/ParserHTML.js</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/HOST/class/CVBGOD</loc>
   </url>
   <url>
