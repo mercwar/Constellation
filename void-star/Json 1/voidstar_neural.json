@@ -1,0 +1,22 @@
+{
+  "id": "voidstar_neural",
+  "title": "Neural Star Network",
+  "prompt": "VOID-STAR neural-star: magenta neural filaments radiating from a tri-core lattice; halo-ring overseer above; interlinked gates of cyan nexus in background; node-web mapping light connecting shards; high contrast, painterly cosmic, dramatic rim lighting",
+  "negative_prompt": "faces, animals, text, logos, low-detail",
+  "style_tags": ["abstract", "concept-art", "high-contrast"],
+  "aspect_ratio": "3:2",
+  "seed": 1337,
+  "steps": 120,
+  "guidance_scale": 10.5,
+  "sampler": "plms",
+  "resolution": {"width": 3072, "height": 2048},
+  "camera": {"fov": 35, "distance": 18, "focus_point": [0,1.5,0], "aperture": 4.0},
+  "scene_layers": [
+    {"layer": "HYPERVISOR", "role": "tri-core lattice", "color_shift": "blue->magenta"},
+    {"layer": "NEURAL-AGENT", "role": "filaments", "glow": 1.0},
+    {"layer": "NEXUS", "role": "gates", "depth_blur": 0.4}
+  ],
+  "postprocessing": {"contrast": 1.2, "vignette": 0.15, "edge_enhance": 0.12},
+  "assets": {"brush_presets": "prompts/neural_brushes.json"},
+  "notes": "Good for concept thumbnails and hero banners; painterly finish recommended."
+}
