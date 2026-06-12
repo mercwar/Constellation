@@ -1,0 +1,21 @@
+{
+  "id": "voidstar_crystal",
+  "title": "Crystal Archive Closeup",
+  "prompt": "VOID-STAR memory-core closeup: amber crystal archive facets reflecting mapping-light; micro-fractures with tiny white-gold cores; shallow depth of field, macro detail, photoreal textures, specular highlights",
+  "negative_prompt": "blurry, noisy, low-detail",
+  "style_tags": ["macro", "photoreal", "textural"],
+  "aspect_ratio": "1:1",
+  "seed": 777777,
+  "steps": 140,
+  "guidance_scale": 11.0,
+  "sampler": "ddim",
+  "resolution": {"width": 2048, "height": 2048},
+  "camera": {"fov": 50, "distance": 0.6, "focus_point": [0,0,0], "aperture": 1.8, "macro": true},
+  "scene_layers": [
+    {"layer": "MEMORY-CORE", "role": "crystal-facets", "ior_variation": [1.45,1.9]},
+    {"layer": "MICRO_CORES", "role": "white-gold specks", "specular": 1.5}
+  ],
+  "postprocessing": {"dof_strength": 0.9, "specular_boost": 0.35, "denoise": 0.02},
+  "assets": {"micro_normal": "textures/crystal_micro_normal.exr", "env_map": "textures/close_space.hdr"},
+  "notes": "Use for UI panels and documentation hero images; export at 4k for UI hero."
+}
