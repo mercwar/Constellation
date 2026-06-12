@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mercwar Void Star</title>
+
+<script>
+  // Generates "YYYY-MM-DD"
+  const d = new Date();
+  const v = d.toISOString().split('T')[0]; 
+
+  document.write(`<link rel="stylesheet" href="index.css?v=${v}">`);
+  document.write(`<link rel="stylesheet" href="ui.css?v=${v}">`);
+  document.write(`<link rel="stylesheet" href="fire-gem-orb.css?v=${v}">`);
+</script>
+
+  <!-- ===== AVIS / CONSTELLATION META CORE ===== -->
+  <meta name="meta" content="AVIS-CONSTELLATION">
+  <meta name="ACK" content="core,system,viewer,rru,avis26">
+  <meta name="AVIS" content="protocol=26; layer=frontend; mode=viewer">
+  <meta name="CONSTELLATION" content="engine=active; index=enabled; backend=github">
+  <meta name="RRU" content="compat=true; theme=cyborg-blackglass">
+  <meta name="VERSION" content="dynamic; source=github; filter=Version*">
+  <meta name="IMAGES" content="types=jpg,jpeg,png,webp,gif,bmp; mode=thumb+viewer">
+  <meta name="WINDOWS" content="os=Cyborg-Desktop; stacking=front; draggable=true">
+  <meta name="AUTHOR" content="Demon + Copilot">
+  <meta name="description" content="MERCWAR is a free AI access portal where users can enter AI tools, media features, and interactive digital systems without sign up.">
+
+<meta name="keywords" content="
+MERCWAR, MERC WAR, free AI access, AI login portal, MERCWAR login, no sign up AI access, free AI tools online, AI portal access, how to access MERCWAR, AI system login, MERCWAR free tools, AI dashboard online, MERCWAR entry page, AI interface access, free AI platform, MERCWAR features, AI tools website, MERCWAR online access, AI system entry, CVBGOD MERCWAR, FFF Demonizer MERCWAR, Joe Tron MERCWAR, RRP media access, RRU story access, AI entertainment system, free AI portal online, MERCWAR website access, AI platform free, MERCWAR experience, AI media system online, digital AI portal
+">
+<link rel="icon" type="image/x-icon" href="<?= $site_url; ?>/favicon.ico">
+
+<script>
+function openPortal() {
+    const in_a_frame = (window.self !== window.top);
+
+    const portal_tron = in_a_frame
+        ? "https://mercwar.github.io/Robo-Knight-Gallery/index.html"
+        : "https://mercwar01.byethost3.com/index.php?AVIS-FRAME=RKG";
+
+    // 🔥 ALWAYS break out of iframe
+    window.top.location.href = portal_tron;
+}
+</script>
+</head>
+
+<body>
+
+  <!-- WRAPPER DIVIDER -->
+  <div class="divider" id="topDivider">
+  
+    <div id="versionBar"></div>
+    <a id="jump_scroll"></a>
+
+    <!-- PAGINATION -->
+    <div id="pager">
+      <button id="prevBtn">Prev</button>
+      <button id="nextBtn">Next</button>
+      <span id="pageInfo"></span>
+    </div>
+
+<header>
+
+  <!-- SCENE: now uses internal center wrapper for frame/iframe-safe alignment -->
+  <div class="scene">
+    <div class="quantum-system-center">
+
+      <!-- Neon Oval Rings -->
+      <div class="neon-orbit-rig">
+          <div class="neon-oval neon-blue"></div>
+          <div class="neon-oval neon-purple"></div>
+      </div>
+
+      <!-- Shell 1 -->
+      <div class="atom-orbit orbit-1">
+          <div class="spin-rig">
+              <div class="electron pos-top"></div>
+              <div class="electron pos-bottom"></div>
+          </div>
+      </div>
+
+      <!-- Shell 2 -->
+      <div class="atom-orbit orbit-2">
+          <div class="spin-rig">
+              <div class="electron pos-left"></div>
+              <div class="electron pos-right"></div>
+          </div>
+      </div>
+
+      <!-- Shell 3 -->
+      <div class="atom-orbit orbit-3">
+          <div class="spin-rig">
+              <div class="electron pos-top"></div>
+              <div class="electron pos-bottom"></div>
+          </div>
+      </div>
+
+      <!-- Nucleus -->
+      <div class="fireball">
+          <div class="rk-ring3"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AVIS BUTTON -->
+  <button class="holoBtn" id="avisBtn" onclick="location.href='desktop.html'">AVIS</button>
+
+  <!-- PORTAL BUTTON -->
+  <button class="holoBtn" id="port" onclick="openPortal()">Portal</button>
+
+  <!-- TITLE -->
+  <h1>Void Star</h1>
+
+</header>
+
+  <main>
+    <!-- LIGHTBOX -->
+    <div id="lightbox">
+      <div id="lightboxInner">
+        <img id="lbImg" alt="">
+      </div>
+    </div>
+
+    <!-- IMAGE GRID -->
+    <div id="grid"></div>
+  </main>
+
+ </div>
+
+  <!-- BOTTOM DIVIDER -->
+  <div id="bottomDivider"></div>
+
+  <script src="index.js?v=8"></script>
+<script>
+window.addEventListener("load", () => {
+    const anchor = document.getElementById("jump_scroll");
+    if (!anchor) return;
+
+    anchor.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    let lastPos = -1;
+    let sameCount = 0;
+
+    function trackScroll() {
+        const currentPos = window.scrollY;
+
+        if (currentPos === lastPos) {
+            sameCount++;
+            if (sameCount >= 3) {
+                window.scrollBy({
+                    top: 140,
+                    behavior: "smooth"
+                });
+                return;
+            }
+        } else {
+            sameCount = 0;
+        }
+
+        lastPos = currentPos;
+        requestAnimationFrame(trackScroll);
+    }
+
+    requestAnimationFrame(trackScroll);
+});
+</script>
+
+</body>
+</html>
