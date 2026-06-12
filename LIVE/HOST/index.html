@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Site Surfer</title>
+
+<link rel="stylesheet" href="constellation.css">
+
+<style>
+/* SIDEBAR (integrated into your glass aesthetic) */
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 48px; /* below header */
+    width: 240px;
+    height: calc(100vh - 80px); /* header + footer */
+    background: rgba(0,0,0,0.45);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px);
+    padding: 16px;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+#sidebar-title {
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: #ffd86b;
+    margin-bottom: 12px;
+}
+
+#sidebar-list a {
+    display: block;
+    padding: 8px 6px;
+    margin-bottom: 4px;
+    color: #7cffb5;
+    text-decoration: none;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.05);
+}
+
+#sidebar-list a:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+/* MAIN PANEL SHIFT */
+#main {
+    margin-left: 260px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- HEADER -->
+<header id="top-bar">
+    <div id="title">SITE SURFER</div>
+    <div id="sub">File Viewer</div>
+
+    <div id="nav-bar">
+        <button id="nav-back">⟵</button>
+        <button id="nav-forward">⟶</button>
+        <button id="nav-reload">⟳</button>
+        <button id="nav-home">⌂</button>
+        <input id="nav-url" type="text" placeholder="Enter URL or GitHub path…">
+        <button id="nav-go">Go</button>
+    </div>
+</header>
+
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+        <div id="sidebar-title">FILES</div>
+        <div id="sidebar-list"></div>
+    </div>
+
+    <!-- MAIN PANEL -->
+    <main id="main">
+        <div id="glass-panel">
+<div id="nav-info">
+    <div><strong>Current URL:</strong> <span id="nav-info-url">none</span></div>
+    <div><strong>History Index:</strong> <span id="nav-info-index">0</span></div>
+    <div><strong>History Length:</strong> <span id="nav-info-length">0</span></div>
+</div>
+
+            <!-- STATUS -->
+            <div id="status">Ready.</div>
+
+            <!-- CONTENT -->
+            <div id="inject"></div>
+
+            <!-- OPTIONAL VIEWER -->
+            <div id="viewer"></div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="bottom-bar">
+        <span id="footer-text">Constellation Site Surfer</span>
+    </footer>
+
+</div>
+
+<script src="class/UI.js"></script>
+<script src="class/GitHubAPI.js"></script>
+<script src="class/ParserHTML.js"></script>
+<script src="class/ParserMarkdown.js"></script>
+<script src="class/ParserJSON.js"></script>
+<script src="class/ParserText.js"></script>
+<script src="class/ParserImage.js"></script>
+
+<!-- BrowserNav MUST load BEFORE FileSurfer -->
+<script src="class/BrowserNav.js"></script>
+
+<!-- FileSurfer MUST load BEFORE constellation.js -->
+<script src="class/FileSurfer.js"></script>
+
+<!-- constellation.js MUST load LAST -->
+<script src="constellation.js"></script>
+
+</body>
+</html>

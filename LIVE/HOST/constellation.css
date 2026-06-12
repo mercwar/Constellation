@@ -1,0 +1,237 @@
+/* ---------------------------------------------------------
+   GLOBAL RESET & BASE
+--------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #e5e5e5;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+}
+
+/* ---------------------------------------------------------
+   APP LAYOUT
+--------------------------------------------------------- */
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+/* ---------------------------------------------------------
+   HEADER BAR
+--------------------------------------------------------- */
+#top-bar {
+    height: 48px;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
+#title {
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffd86b;
+}
+
+#sub {
+    font-size: 12px;
+    color: #888;
+}
+
+/* ---------------------------------------------------------
+   MAIN PANEL
+--------------------------------------------------------- */
+#main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    overflow: hidden;
+}
+
+/* ---------------------------------------------------------
+   GLASS PANEL
+--------------------------------------------------------- */
+#glass-panel {
+    width: 95%;
+    height: 90%;
+    background: rgba(20,20,20,0.45);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    backdrop-filter: blur(22px);
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+/* ---------------------------------------------------------
+   STATUS BAR
+--------------------------------------------------------- */
+#status {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #7cffb5;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+/* ---------------------------------------------------------
+   CONTENT INJECTION AREA
+--------------------------------------------------------- */
+#inject {
+    width: 100%;
+    min-height: 100%;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+/* ---------------------------------------------------------
+   OPTIONAL VIEWER PANEL
+--------------------------------------------------------- */
+#viewer {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    backdrop-filter: blur(12px);
+}
+
+/* ---------------------------------------------------------
+   CODE / PRE FORMATTING
+--------------------------------------------------------- */
+pre {
+    background: rgba(0,0,0,0.35);
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow-x: auto;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #d6ffd6;
+}
+
+code {
+    font-family: "Consolas", "Courier New", monospace;
+}
+
+/* ---------------------------------------------------------
+   FOOTER BAR
+--------------------------------------------------------- */
+#bottom-bar {
+    height: 32px;
+    background: rgba(0,0,0,0.55);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+
+#footer-text {
+    font-size: 11px;
+    color: #666;
+}
+
+/* ---------------------------------------------------------
+   SCROLLBARS
+--------------------------------------------------------- */
+#glass-panel::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+#glass-panel::-webkit-scrollbar-thumb,
+pre::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+}
+
+#glass-panel::-webkit-scrollbar-track,
+pre::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.03);
+}
+
+/* ---------------------------------------------------------
+   LINKS
+--------------------------------------------------------- */
+a {
+    color: #7cffb5;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   HEADERS INSIDE INJECTED CONTENT
+--------------------------------------------------------- */
+#inject h1,
+#inject h2,
+#inject h3,
+#inject h4 {
+    margin: 12px 0 6px 0;
+    color: #ffd86b;
+    font-weight: 600;
+}
+
+#inject p {
+    margin: 8px 0;
+}
+#nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 20px;
+}
+
+#nav-bar button {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #ffd86b;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#nav-bar button:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+#nav-url {
+    flex: 1;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    color: #7cffb5;
+}
+#nav-info {
+    margin-top: 12px;
+    padding: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    color: #ffd86b;
+    font-size: 13px;
+    line-height: 1.4;
+}
