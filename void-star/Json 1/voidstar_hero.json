@@ -1,0 +1,23 @@
+{
+  "id": "voidstar_hero",
+  "title": "Void Singularity Hero",
+  "prompt": "VOID-STAR: an inverted star collapsing into an infinite void; central singularity core glowing white-gold with radiant corona; surrounding negative space like torn velvet; neon cyan and magenta edges; crystalline archive shards orbiting in slow, deliberate motion; hyper-real detail, volumetric light, cinematic depth, photoreal + sci-fi hybrid",
+  "negative_prompt": "cartoon, low-res, grain, lens-flare overexposed, text, watermark",
+  "style_tags": ["hyper-real", "cinematic", "sci-fi", "photoreal"],
+  "aspect_ratio": "16:9",
+  "seed": 420420,
+  "steps": 150,
+  "guidance_scale": 12.0,
+  "sampler": "ddim",
+  "resolution": {"width": 3840, "height": 2160},
+  "camera": {"fov": 28, "distance": 20, "focus_point": [0,0,0], "aperture": 2.8},
+  "scene_layers": [
+    {"layer": "PRIME_CORE", "role": "singularity", "emissive": true, "intensity": 1.0},
+    {"layer": "OVERSEER_RING", "role": "halo", "opacity": 0.6},
+    {"layer": "CRYSTAL_SHARDS", "role": "orbiting", "motion_blur": 0.35},
+    {"layer": "NODE_WEB", "role": "connective", "glow": 0.8}
+  ],
+  "postprocessing": {"bloom": 0.25, "color_grade": "teal-magenta", "grain": 0.01, "sharpen": 0.08},
+  "assets": {"env_map": "textures/void_hdr.hdr", "shaders": ["shaders/voidcore.frag","shaders/crystalrefraction.frag"]},
+  "notes": "Use long exposure motion blur on orbiting shards; emphasize negative space pressure."
+}
