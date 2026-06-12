@@ -1,0 +1,90 @@
+/* ============================================================
+   AIFVS-ARTIFACT: FILE-EXPLORER-CSS
+   Local File Explorer (Standalone Panel)
+   ============================================================ */
+
+.centerpiece-files {
+    width: 260px;              /* match sidebar width */
+height:100%;
+	margin: 0 auto;            /* center it under the top bar */
+    padding-top: 605px;
+}
+
+.cp-files-wrapper {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+    padding: 10px;
+    height: 100%;
+    overflow-y: auto;
+    font-family: system-ui, sans-serif;
+    color: #e2e8f0;
+
+    width: 100%;               /* lock to 260px container */
+    box-sizing: border-box;
+}
+
+.cp-files-title {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #7dd3fc;
+    text-shadow: 0 0 6px #00eaff;
+}
+
+.cp-filetree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+}
+
+.cp-filetree li {
+    padding: 3px 0;
+    cursor: default;
+    display: flex;
+    align-items: center;
+}
+
+.cp-file-icon {
+    width: 16px;
+    margin-right: 6px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.cp-folder {
+    font-weight: 600;
+    color: #7dd3fc;
+}
+
+.cp-file {
+    color: #e2e8f0;
+}
+
+.cp-files-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+.cp-files-wrapper::-webkit-scrollbar-track {
+    background: rgba(15,23,42,0.7);
+}
+.cp-files-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(56,189,248,0.7);
+    border-radius: 3px;
+}
+
+.cp-access-btn {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #00eaff, #ff00e0);
+    border: none;
+    border-radius: 6px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+.cp-access-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px #00eaff;
+}
