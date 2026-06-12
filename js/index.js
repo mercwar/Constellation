@@ -69,9 +69,7 @@ function handleGatewayActiveChange(isChecked) {
 }
 
 
-/* ============================================================
-   TOOL WINDOW SUMMONER (Navigation‑Safe)
-============================================================ */
+
 function summonToolWindow(url = "https://roborook.fanclub.rocks/AVIS-NEWS/index.php") {
 
     const sidebarWidth = 380;
@@ -107,7 +105,7 @@ function launchPortal(url) {
     const uplink = document.getElementById("keepInFrame");
 
     if (uplink && uplink.checked) {
-        window.open(url, "_self");   // UPLINK WORKS AGAIN
+        window.open(url, "_top");   // UPLINK WORKS AGAIN
     } else {
         summonToolWindow(url);       // NORMAL MODE
     }
