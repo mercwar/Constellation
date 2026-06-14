@@ -105,7 +105,7 @@ function launchPortal(url) {
     const uplink = document.getElementById("keepInFrame");
 
     if (uplink && uplink.checked) {
-        window.open(url, "_top");   // UPLINK WORKS AGAIN
+        window.open(url, "_self");   // UPLINK WORKS AGAIN
     } else {
         summonToolWindow(url);       // NORMAL MODE
     }
