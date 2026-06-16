@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("ajax-log").innerHTML += msg + "<br>";
     }
 
-    log("🔥 AJAX STARTED…");
+   // log("🔥 AJAX STARTED…");
 
     const targetUrl = "CSV/constellation.csv";
 
@@ -118,8 +118,8 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(r => r.text())
         .then(txt => {
 
-            log("🔥 RAW CSV RESPONSE:");
-            log("<pre>" + txt.replace(/</g, "&lt;") + "</pre>");
+        //    log("🔥 RAW CSV RESPONSE:");
+         //   log("<pre>" + txt.replace(/</g, "&lt;") + "</pre>");
 
             // Split CSV into lines
             const lines = txt.split(/\r?\n/).filter(l => l.trim() !== "");
@@ -136,15 +136,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
 
-            log("🔥 PARSED USERS:");
-            log("<pre>" + JSON.stringify(users, null, 2) + "</pre>");
+        //    log("🔥 PARSED USERS:");
+        //    log("<pre>" + JSON.stringify(users, null, 2) + "</pre>");
 
             let sel = document.getElementById("github-username");
 
-            log("🔥 HYDRATING SELECT WITH " + users.length + " USERS");
+        //    log("🔥 HYDRATING SELECT WITH " + users.length + " USERS");
 
             users.forEach(u => {
-                log("➡ ADDING OPTION: " + u);
+               // log("➡ ADDING OPTION: " + u);
                 let opt = document.createElement("option");
                 opt.value = u;
                 opt.textContent = u;
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 sel.appendChild(opt);
             });
 
-            log("✅ HYDRATION COMPLETE");
+      //      log("✅ HYDRATION COMPLETE");
         })
         .catch(err => {
             log("❌ AJAX ERROR: " + err);
