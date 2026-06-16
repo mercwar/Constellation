@@ -104,16 +104,31 @@ handleGatewayActiveChange(true);
 
 
 <script>
+
+const getTargetUrl = (address) => {
+    const d = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    const dt = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}-${pad(d.getMinutes())}-${pad(d.getSeconds())}`;
+    return `${address}?dt=${dt}`;
+};
+
+
 document.addEventListener("DOMContentLoaded", function() {
+
+
 
     function log(msg) {
         document.getElementById("ajax-log").innerHTML += msg + "<br>";
     }
+	
+const targetUrl = getTargetUrl("CSV/constellation.csv");
+
+
 
   /// log("🔥 AJAX STARTED…");
 
    // const targetUrl = "../../../RRU-AI/LOGIN/REG/CSV/constellation.csv";
-  const targetUrl = "CSV/constellation.csv";
+
     fetch(targetUrl)
         .then(r => r.text())
         .then(txt => {
