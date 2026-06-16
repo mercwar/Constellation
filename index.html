@@ -7,42 +7,9 @@
 
 <link rel="stylesheet" href="css/index.css?v=28"/>
 <link rel="stylesheet" href="css/rru_gx.css?v=28">
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
 <script src="js/ajax.js?v=69"></script>
-
-<!-- ============================================================
-     SYNTHETIC ACTIVEX FOR OPERA GX
-============================================================ -->
-<script>
-// Fake ActiveX API for Opera GX
-window.AIFVS = window.AIFVS || {};
-
-AIFVS.Tree = class {
-    constructor() {
-        console.log("AIFVS.Tree object created (Opera GX mode)");
-    }
-
-    LoadWindow() {
-        console.log("LoadWindow() called — Opera GX synthetic handler");
-        // Replace this with your DLL bridge, WebSocket, or local endpoint
-        fetch("/cdrop/launch_window")
-            .then(r => r.text())
-            .then(t => console.log("Window launched:", t))
-            .catch(err => console.error("Launch failed:", err));
-    }
-};
-
-// Drop‑in replacement for ActiveXObject
-function ActiveXObject(name) {
-    if (name === "AIFVS.Tree") {
-        return new AIFVS.Tree();
-    }
-    throw new Error("Unknown ActiveXObject: " + name);
-}
-</script>
-
 </head>
 
 <body>
@@ -62,12 +29,12 @@ function ActiveXObject(name) {
 </div>
 
 <div style="display:flex; align-items:center; gap:12px; margin-left:30px;">
-    <label class="rkGlow" title="[1] Keep in Frame [2] No New Browser">
+    <label class="rkGlow">
         <input type="checkbox" id="keepInFrame" onchange="saveUplinkState(this.checked);">
         Up-link Window
     </label>
 
-    <label class="rkGlow" title="[1] Use as Sidebar [x] Disabled in Frame">
+    <label class="rkGlow">
         <input type="checkbox" id="pinSidebarChk" onchange="handleSidebarPinChange(this.checked)">
         Pin Sidebar
     </label>
@@ -113,16 +80,14 @@ SYSTEM HUB <span class="caret"></span>
 </div>
 
 </section>
-<!-- This syntax ONLY functions in legacy Internet Explorer environments -->
 
-<div id="ajax-log1" style="color:#ff4444; font-family:Consolas; margin-top:10px;"></div>
+<!-- LOG AREA -->
+<div id="ajax-log" style="color:#ff4444; font-family:Consolas; margin-top:10px;"></div>
+
 <script>
 printAjaxHTML("hub.html?v=4", "#hub-drop");
 printAjaxHTML("portal.html?v=4", "#portal-drop");
 printAjaxHTML("repo.html?v=4", "#repo-drop");
-printAjaxHTML("https://roborook.fanclub.rocks/RRU-AI/LOGIN/REG/github-csv-users.php", "ajax-log");
-printAjaxHTML("../RRU-AI/LOGIN/REG/github-csv-users.php", "ajax-log1");
-
 </script>
 
 <script src="js/index.js?v=69"></script>
@@ -135,9 +100,9 @@ document.getElementById("gx-banner").addEventListener("click", () => {
 handleGatewayActiveChange(true);
 </script>
 
-
 </main>
 
+<!-- GITHUB USER HYDRATION SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
