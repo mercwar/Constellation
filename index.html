@@ -112,13 +112,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     log("🔥 AJAX STARTED…");
 
-    fetch("https://roborook.fanclub.rocks/RRU-AI/LOGIN/REG/github-csv-users.php")
+    const targetUrl = "https://roborook.fanclub.rocks/RRU-AI/LOGIN/REG/github-csv-users.php";
+    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(targetUrl);
+
+    fetch(proxyUrl)
         .then(r => {
-            log("🔥 RESPONSE OBJECT RECEIVED");
-            return r.text();
+            log("🔥 RESPONSE OBJECT RECEIVED FROM PROXY");
+            return r.json();
         })
-        .then(txt => {
-            log("🔥 RAW RESPONSE TEXT:");
+        .then(proxyData => {
+            const txt = proxyData.contents;
+
+            log("🔥 RAW SERVER RESPONSE TEXT:");
             log("<pre>" + txt + "</pre>");
 
             let data;
@@ -158,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 </script>
+
 
 </body>
 </html>
