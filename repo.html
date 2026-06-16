@@ -1,65 +1,38 @@
 <select id="github-username" class="rkSelect" size="5">
-			
 
-			<option value="custom" style="color:#e1d505;text-align:center">** Show me the Box **</option>
-<option value="mercwar" selected>mercwar</option>
+    <option value="custom" style="color:#e1d505;text-align:center">
+        ** Show me the Box **
+    </option>
 
-<!-- Core Tech Giants -->
-<option value="torvalds">torvalds</option>
-<option value="microsoft">microsoft</option>
-<option value="google">google</option>
-<option value="facebook">facebook</option>
-<option value="github">github</option>
-<option value="openai">openai</option>
-<option value="vercel">vercel</option>
-<option value="apple">apple</option>
-<option value="amazon">amazon</option>
 
-<!-- Frameworks & Libraries -->
-<option value="vuejs">vuejs</option>
-<option value="angular">angular</option>
-<option value="sveltejs">sveltejs</option>
-<option value="nestjs">nestjs</option>
-<option value="denoland">denoland</option>
-<option value="rust-lang">rust-lang</option>
-<option value="golang">golang</option>
-<option value="python">python</option>
 
-<!-- DevOps / Cloud / Infra -->
-<option value="hashicorp">hashicorp</option>
-<option value="kubernetes">kubernetes</option>
-<option value="docker">docker</option>
-<option value="prometheus">prometheus</option>
-<option value="grafana">grafana</option>
-<option value="ansible">ansible</option>
-<option value="terraform-providers">terraform-providers</option>
-
-<!-- AI / ML / Data -->
-<option value="huggingface">huggingface</option>
-<option value="pytorch">pytorch</option>
-<option value="tensorflow">tensorflow</option>
-<option value="apache">apache</option>
-<option value="apache-spark">apache-spark</option>
-
-<!-- Game Engines / Graphics -->
-<option value="unity-technologies">unity-technologies</option>
-<option value="godotengine">godotengine</option>
-<option value="unrealengine">unrealengine</option>
-<option value="threejs">threejs</option>
-
-<!-- Cybersecurity -->
-<option value="zaproxy">zaproxy</option>
-<option value="metasploit">metasploit</option>
-<option value="nmap">nmap</option>
-
-<!-- Linux / OS Projects -->
-<option value="archlinux">archlinux</option>
-<option value="debian">debian</option>
-<option value="fedora-infra">fedora-infra</option>
-<option value="canonical">canonical</option>
-<option value="homebrew">homebrew</option>
+ 
 
 </select>
+    <script>
+   
+        fetch("https://roborook.fanclub.rocks/RRU-AI/LOGIN/REG/github-csv-users.php")
+        .then(r => r.json())
+        .then(data => {
+            if (!data.users) return;
+
+            let sel = document.getElementById("github-username");
+
+
+
+            // Add new entries
+            data.users.forEach(u => {
+                let opt = document.createElement("option");
+                opt.value = u;
+                opt.textContent = u;
+                opt.dataset.dynamic = "1";
+                sel.appendChild(opt);
+            });
+        });
+    
+
+   
+    </script>
 
 <input 
     id="custom-username"
