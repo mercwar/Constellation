@@ -1,38 +1,13 @@
 <select id="github-username" class="rkSelect" size="5">
-
     <option value="custom" style="color:#e1d505;text-align:center">
         ** Show me the Box **
     </option>
-
-
-
- 
-
 </select>
-    <script>
-   
-        fetch("https://roborook.fanclub.rocks/RRU-AI/LOGIN/REG/github-csv-users.php")
-        .then(r => r.json())
-        .then(data => {
-            if (!data.users) return;
 
-            let sel = document.getElementById("github-username");
+<div id="ajax-log" style="color:#ff4444; font-family:Consolas; margin-top:10px;"></div>
 
 
 
-            // Add new entries
-            data.users.forEach(u => {
-                let opt = document.createElement("option");
-                opt.value = u;
-                opt.textContent = u;
-                opt.dataset.dynamic = "1";
-                sel.appendChild(opt);
-            });
-        });
-    
-
-   
-    </script>
 
 <input 
     id="custom-username"

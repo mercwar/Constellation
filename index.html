@@ -115,11 +115,14 @@ SYSTEM HUB <span class="caret"></span>
 </section>
 <!-- This syntax ONLY functions in legacy Internet Explorer environments -->
 
-
+<div id="ajax-log1" style="color:#ff4444; font-family:Consolas; margin-top:10px;"></div>
 <script>
 printAjaxHTML("hub.html?v=4", "#hub-drop");
 printAjaxHTML("portal.html?v=4", "#portal-drop");
 printAjaxHTML("repo.html?v=4", "#repo-drop");
+printAjaxHTML("https://roborook.fanclub.rocks/RRU-AI/LOGIN/REG/github-csv-users.php", "ajax-log");
+printAjaxHTML("../RRU-AI/LOGIN/REG/github-csv-users.php", "ajax-log1");
+
 </script>
 
 <script src="js/index.js?v=69"></script>
@@ -132,6 +135,64 @@ document.getElementById("gx-banner").addEventListener("click", () => {
 handleGatewayActiveChange(true);
 </script>
 
+
 </main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    function log(msg) {
+        document.getElementById("ajax-log").innerHTML += msg + "<br>";
+    }
+
+    log("🔥 AJAX STARTED…");
+
+    fetch("https://roborook.fanclub.rocks/RRU-AI/LOGIN/REG/github-csv-users.php")
+        .then(r => {
+            log("🔥 RESPONSE OBJECT RECEIVED");
+            return r.text();
+        })
+        .then(txt => {
+            log("🔥 RAW RESPONSE TEXT:");
+            log("<pre>" + txt + "</pre>");
+
+            let data;
+            try {
+                data = JSON.parse(txt);
+            } catch (e) {
+                log("❌ JSON PARSE FAILED: " + e);
+                return;
+            }
+
+            log("🔥 PARSED JSON:");
+            log("<pre>" + JSON.stringify(data, null, 2) + "</pre>");
+
+            if (!data.users) {
+                log("⚠ NO USERS ARRAY FOUND");
+                return;
+            }
+
+            let sel = document.getElementById("github-username");
+
+            log("🔥 HYDRATING SELECT WITH " + data.users.length + " USERS");
+
+            data.users.forEach(u => {
+                log("➡ ADDING OPTION: " + u);
+                let opt = document.createElement("option");
+                opt.value = u;
+                opt.textContent = u;
+                opt.dataset.dynamic = "1";
+                sel.appendChild(opt);
+            });
+
+            log("✅ HYDRATION COMPLETE");
+        })
+        .catch(err => {
+            log("❌ AJAX ERROR: " + err);
+        });
+
+});
+</script>
+
 </body>
 </html>
