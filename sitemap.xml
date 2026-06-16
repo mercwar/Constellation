@@ -4,6 +4,9 @@
     <loc>https://github.com/mercwar/Constellation/blob/main/sitemap.xml</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/favicon.ico</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/ui.css</loc>
   </url>
   <url>
@@ -656,6 +659,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/sitemap.sh</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/favicon.ico</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/LIVE/index.js</loc>
