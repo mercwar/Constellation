@@ -102,7 +102,6 @@ handleGatewayActiveChange(true);
 
 </main>
 
-<!-- GITHUB USER HYDRATION SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -113,40 +112,37 @@ document.addEventListener("DOMContentLoaded", function() {
     log("🔥 AJAX STARTED…");
 
     const targetUrl = "https://roborook.fanclub.rocks/RRU-AI/LOGIN/REG/github-csv-users.php";
-    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(targetUrl);
 
-    fetch(proxyUrl)
-        .then(r => {
-            log("🔥 RESPONSE OBJECT RECEIVED FROM PROXY");
-            return r.json();
-        })
-        .then(proxyData => {
-            const txt = proxyData.contents;
+    fetch(targetUrl)
+        .then(r => r.text())
+        .then(txt => {
 
-            log("🔥 RAW SERVER RESPONSE TEXT:");
-            log("<pre>" + txt + "</pre>");
+            log("🔥 RAW CSV RESPONSE:");
+            log("<pre>" + txt.replace(/</g, "&lt;") + "</pre>");
 
-            let data;
-            try {
-                data = JSON.parse(txt);
-            } catch (e) {
-                log("❌ JSON PARSE FAILED: " + e);
-                return;
-            }
+            // Split CSV into lines
+            const lines = txt.split(/\r?\n/).filter(l => l.trim() !== "");
 
-            log("🔥 PARSED JSON:");
-            log("<pre>" + JSON.stringify(data, null, 2) + "</pre>");
+            let users = [];
 
-            if (!data.users) {
-                log("⚠ NO USERS ARRAY FOUND");
-                return;
-            }
+            lines.forEach(line => {
+                const parts = line.split(",");
+                if (parts.length === 2) {
+                    const github = parts[1].trim();
+                    if (github !== "" && !users.includes(github)) {
+                        users.push(github);
+                    }
+                }
+            });
+
+            log("🔥 PARSED USERS:");
+            log("<pre>" + JSON.stringify(users, null, 2) + "</pre>");
 
             let sel = document.getElementById("github-username");
 
-            log("🔥 HYDRATING SELECT WITH " + data.users.length + " USERS");
+            log("🔥 HYDRATING SELECT WITH " + users.length + " USERS");
 
-            data.users.forEach(u => {
+            users.forEach(u => {
                 log("➡ ADDING OPTION: " + u);
                 let opt = document.createElement("option");
                 opt.value = u;
