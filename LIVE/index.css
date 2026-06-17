@@ -22,10 +22,12 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 1024px;
+ 
   width: 100vw;
-  min-height: 0 !important; /* Removes the 800px constraint breaking resize calculations */
-  overflow: hidden !important; /* Suppresses main window scrollbar entirely */
+  min-height: 0 !important; 
+  overflow-x: auto !important; 
+   
 }
 
 body {
