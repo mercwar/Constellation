@@ -15,16 +15,35 @@ const CONFIG = {
   branch: "main"
 };
 
-// NOTHING ELSE.
-// All viewer DOM elements removed because they do not exist.
-// All tree rendering removed.
-// All file loading removed.
-// All search removed.
-// All status bar removed.
-// All GitHub buttons removed.
-// All event listeners removed.
-// All functions removed.
-// All logic removed.
 
-// This JS file is intentionally empty because your HTML
-// does NOT contain the repo viewer UI.
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    let lastMenu = null;
+    let lastSub = null;
+
+    // MENU BUTTONS (STATIC)
+    document.querySelectorAll(".rk-btn.dropdown-toggle").forEach(btn => {
+        btn.addEventListener("click", () => {
+            if (lastMenu && lastMenu !== btn) {
+                lastMenu.classList.remove("menu-active");
+            }
+            btn.classList.add("menu-active");
+            lastMenu = btn;
+        });
+    });
+
+    // SUB BUTTONS (DYNAMIC, AJAX-LOADED)
+    document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".sub-btn");
+        if (!btn) return;
+
+        if (lastSub && lastSub !== btn) {
+            lastSub.classList.remove("sub-active");
+        }
+        btn.classList.add("sub-active");
+        lastSub = btn;
+    });
+
+});
+
