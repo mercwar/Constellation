@@ -540,6 +540,43 @@ body.sidebar-pinned #sidebar {
 #github-username::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #1f1966, #11971a);
 }
+/* ============================================================
+   INDICATOR BORDER FOR rk-btn dropdown-toggle + sub-btn
+   ============================================================ */
 
+/* INDICATOR BORDER FOR rk-btn dropdown-toggle + sub-btn */
 
+.rk-btn.dropdown-toggle,
+.sub-btn {
+    position: relative;
+    padding-left: 22px !important;
+}
 
+/* BASE — BLUE */
+.rk-btn.dropdown-toggle::before,
+.sub-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 4px;
+    border-radius: 4px;
+    background: #00c8ff; /* blue */
+    box-shadow: 0 0 10px #00c8ff;
+    transition: background .2s ease, box-shadow .2s ease;
+}
+
+/* HOVER — YELLOW (ONLY IF NOT ACTIVE) */
+.rk-btn.dropdown-toggle:not(.menu-active):hover::before,
+.sub-btn:not(.sub-active):hover::before {
+    background: #ffcc00; /* yellow */
+    box-shadow: 0 0 12px #ffcc00;
+}
+
+/* REMEMBERED ACTIVE — GREEN */
+.menu-active::before,
+.sub-active::before {
+    background: #3dff8a !important; /* green */
+    box-shadow: 0 0 12px #3dff8a !important;
+}
