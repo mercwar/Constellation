@@ -352,8 +352,12 @@ box-shadow:0 0 12px var(--gold-soft),inset 0 0 8px #0009
 display:flex;
 flex-direction:column;
 flex:1;
-min-height:0
+min-height:0;
+
+  overflow: hidden;
 }
+
+
 
 .viewer-meta {
 display:flex;
@@ -365,14 +369,19 @@ margin-bottom:8px
 
 .viewer-body {
 flex:1;
-min-height:0;
-position:relative;
-display:flex;
-flex-direction:column;
-overflow:hidden
+
+  height: 440px;          /* ← YOU SAID HEIGHT, HERE IT IS */
+  min-height: 440px;
+  max-height: 440px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;       /* prevent double scrollbars */
 }
 
 .viewer-pre {
+
 flex:1;
 margin:0;
 padding:14px;
@@ -385,6 +394,9 @@ overflow-x:auto!important;
 scrollbar-width:thin;
 scrollbar-color:var(--gold) #0006
 }
+
+
+
 
 .status-bar {
 position:absolute;
@@ -465,3 +477,4 @@ background:#0002
 background:var(--gold);
 border-radius:4px
 }
+
