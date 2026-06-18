@@ -63,7 +63,7 @@ body {
   transform: translateX(-50%);
 
 	  /* your background image */
-  background: url('images/constellation-bg.png?v=3');
+  background: url('../images/constellation-bg.png?v=3');
   background-size: cover;
   background-position: center;
 
