@@ -62,30 +62,18 @@ body {
   left: 610px;
   transform: translateX(-50%);
 
-  /* TRUE TRANSPARENCY — NO BACKGROUND */
- background: transparent;
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 7px;
-
-  /* keep the blur effect WITHOUT adding color */
+	  /* your background image */
+  background: url('images/constellation-bg.png?v=3');
+  background-size: cover;
+  background-position: center;
 
 
-  box-shadow:
-    0 0 20px rgba(255, 255, 255, 0.03) inset,
-    0 0 18px rgba(0, 0, 0, 0.85);
-
-  overflow: hidden;
-  transition:
-    left .4s cubic-bezier(0.25, 1, 0.5, 1),
-    top .4s cubic-bezier(0.25, 1, 0.5, 1),
-    transform .4s ease;
 }
 
 
 
 .centerpiece.sidebar-mode {
-	background: transparent;
+	
   top: 10px;
   left: 20px;
    
@@ -93,7 +81,7 @@ body {
 }
 
 .center-inner {
-	 background: transparent;
+	
   padding: 5px 5px 5px;
   margin-top:40px;
   display: flex;

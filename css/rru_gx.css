@@ -7,7 +7,7 @@ a {
 
   #gx-banner {
     position: fixed;
-    top: 0;
+    top: 18px;
     left: 50%;
 	margin-top:14px;
     transform: translateX(-200%) scale(0.01); /* 1px blip */
