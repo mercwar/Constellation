@@ -72,17 +72,17 @@ function handleGatewayActiveChange(isChecked) {
 
 function summonToolWindow(url = "https://roborook.fanclub.rocks/AVIS-NEWS/index.php") {
 
-    const sidebarWidth = 380;
-    const marginTop    = 40;
-    const marginBottom = 40;
+    const sidebarWidth = 372;
+    const marginTop    = 106;
+    const marginBottom = 78;
 
-    const maxWidth  = screen.availWidth  - sidebarWidth;
+    const maxWidth  = screen.availWidth  - sidebarWidth -8;
     const maxHeight = screen.availHeight - (marginTop + marginBottom);
 
     if (toolWin && !toolWin.closed) {
         isNavigating = true;
         toolWin.location.href = url;
-        setTimeout(() => { isNavigating = false; }, 1200);
+        setTimeout(() => { isNavigating = false; }, 700);
         return;
     }
 
