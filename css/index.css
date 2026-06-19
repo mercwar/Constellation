@@ -47,7 +47,7 @@ body {
 }
 
 .screen.sidebar-mode {
-  transform: translate(-87%, -70%);
+  transform: translate(-87%, -69%);
   background: transparent;
 }
 
@@ -73,7 +73,7 @@ overflow:hidden;
 
 
 .centerpiece.sidebar-mode {
-	  top: 10px;
+	  top: 50px;
   left: 20px;
    max-height: 476px;
      transform: none !important;
