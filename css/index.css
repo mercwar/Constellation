@@ -56,12 +56,12 @@ body {
 .centerpiece {
   width: 323px;
   height: 476px;
-  
+   max-height: 476px;
   position: absolute;
   top: 125px;
   left: 610px;
   transform: translateX(-50%);
-
+overflow:hidden;
 	  /* your background image */
   background: url('../images/constellation-bg.png?v=3');
   background-size: cover;
@@ -73,15 +73,13 @@ body {
 
 
 .centerpiece.sidebar-mode {
-	
-  top: 10px;
+	  top: 10px;
   left: 20px;
-   
-  transform: none !important;
+   max-height: 476px;
+     transform: none !important;
 }
 
 .center-inner {
-	
   padding: 5px 5px 5px;
   margin-top:40px;
   display: flex;
