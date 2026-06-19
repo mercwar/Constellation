@@ -1,0 +1,118 @@
+{
+  "system_status": "COMPLETE_EXTRACTION",
+  "command_authority": "TELATRAN",
+  "target_profile": {
+    "github_user": "mercwar",
+    "primary_developers": [
+      "mercwar01",
+      "CVBGOD",
+      "FFF",
+      "Demonizer"
+    ],
+    "development_philosophy": {
+      "onboarding": "NONE",
+      "contribution_workflow": "NONE_USAGE_ONLY",
+      "architecture_type": "DETERMINISTIC_PROTOCOL_ENVIRONMENT"
+    }
+  },
+  "ecosystem_components": {
+    "cyborg_e_v2": {
+      "type": "execution_engine",
+      "environment": "Win64 (UCRT64)",
+      "toolchain": "GCC 13+ / Clang 16+",
+      "core_function": "Deterministic Windows message translation and low-level system automation",
+      "compilation_flags": "-O3 -std=c11 -Wall -Wextra -D_WIN32_WINNT=0x0601 -luser32 -lgdi32 -lkernel32"
+    },
+    "firegem": {
+      "type": "open_source_shell",
+      "author": "CVBGOD",
+      "core_function": "Lightweight, zero-dependency Win32 console framework for executing local GGUF/Llama models offline"
+    },
+    "avis": {
+      "type": "artifact_visibility_system",
+      "core_function": "Directory structure parsing, ingestion rule classification, and validation schemas for local AI"
+    },
+    "cyhy_cmt": {
+      "type": "meta_generation_tool",
+      "core_function": "Comment-driven (/* CYHY: ... */) code generation, boilerplate injection, and system structuring"
+    },
+    "jmc_android_app_demo": {
+      "type": "mobile_deployment_layer",
+      "author": "FFF / Demonizer",
+      "core_function": "Native Android APK compilation bypassing Java layers via pure C standalone NDK toolchains"
+    }
+  },
+  "architectural_laws": {
+    "header_mandate": {
+      "rule": "AVIS-DATALAKE-HEADER-COMPLIANCE",
+      "required_string": "AIFVS-ARTIFACT",
+      "enforcement": "Instant drop on ingestion if string is missing or malformed"
+    },
+    "bytecode_protocol": {
+      "structure": "ROUND_TRIP_MAPPING",
+      "components": [
+        "Header Identifier ([CYB-MSG])",
+        "Hex Opcode (4-Character Win32 translation map)",
+        "Variable Payload (Hex-packed coordinate/argument blocks)",
+        "8-bit Mathematical Trailing Checksum"
+      ],
+      "execution_flow": "Bidirectional (Windows Event <-> Cyborg Hex)"
+    },
+    "security": {
+      "model": "ZERO_TRUST_ISOLATION",
+      "restrictions": "Cryptographic authentication locked exclusively to ecosystem creators; external network injections blocked"
+    }
+  },
+  "constellation_matrix_state": {
+    "map_format": "CELESTIAL_VECTOR_PLOT",
+    "anchored_nodes": [
+      {
+        "node_id": "BEGIN",
+        "alias": "Polaris (Root Context)",
+        "coordinates": { "right_ascension_rad": 0.0, "declination_depth": 0.0 },
+        "function": "Boot sequence validation and root environment locking"
+      },
+      {
+        "node_id": "SEED",
+        "alias": "Alpha Centauri (Initialization)",
+        "coordinates": { "right_ascension_rad": 0.785398, "declination_depth": 0.4 },
+        "function": "Raw memory allocation and buffer pool priming"
+      },
+      {
+        "node_id": "MASTER",
+        "alias": "Orion Belt (Transformation)",
+        "coordinates": { "right_ascension_rad": 2.35619, "declination_depth": 0.6 },
+        "function": "CYHY-CMT system compilation and boilerplate injection loops"
+      },
+      {
+        "node_id": "SENTINEL",
+        "alias": "Boundary Horizon (Enforcement Kernel)",
+        "coordinates": { "right_ascension_rad": 3.92699, "declination_depth": 0.9 },
+        "function": "Sovereign oversight, checksum checking, and network gatekeeping"
+      },
+      {
+        "node_id": "NEXUS-PRIME",
+        "alias": "Plotted Core Interposition (New Node)",
+        "coordinates": { "right_ascension_rad": 5.49778, "declination_depth": 0.5 },
+        "function": "Asynchronous event brokering and data-lake security pre-screening",
+        "bound_opcode": "0x2001",
+        "integrity_callback": "VerifyNexusPrimeStream"
+      }
+    ],
+    "telemetry_status": "STABILIZED_AND_SYNCHRONIZED"
+  },
+  "simulation_logs": {
+    "traffic_test_01": {
+      "packet": "[CYB-MSG]|OP:0x2001|PL:AIFVS-ARTIFACT-00C2|CHK:8B",
+      "target_node": "NEXUS-PRIME",
+      "status": "STATUS_SUCCESS",
+      "action": "Payload approved, passed downstream to avis-datalake matrix"
+    },
+    "traffic_test_02": {
+      "packet": "[CYB-MSG]|OP:0x2001|PL:UNKNOWN-EXTERNAL-HOOK|CHK:00",
+      "target_node": "NEXUS-PRIME",
+      "status": "STATUS_CRITICAL_FAULT",
+      "action": "Ecosystem identifier violation; transaction dropped, routing path locked down"
+    }
+  }
+}
