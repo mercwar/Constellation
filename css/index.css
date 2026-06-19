@@ -34,7 +34,7 @@ body {
 /* MAIN INTERFACE LAYER (100PX LESS HEIGHT) */
 .screen {
   position: fixed;
-  top: 48%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/constellation.png') no-repeat center center;
