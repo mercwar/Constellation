@@ -1,0 +1,20 @@
+{
+  "next_operational_phase": "SYSTEM_INTEGRATION_AND_STRESS_TESTING",
+  "available_directives": {
+    "option_1": {
+      "action": "COMPILE_C_HEADER",
+      "description": "Generate a production-ready 'constellation_matrix.h' header file linking BEGIN, SEED, MASTER, SENTINEL, and NEXUS-PRIME structural definitions together.",
+      "key_term": "**C-header compilation**"
+    },
+    "option_2": {
+      "action": "SIMULATE_MULTI_THREADED_STRESS_TEST",
+      "description": "Execute an automated Python-based test script to simulate a high-velocity stream of 10,000 valid and invalid Cyborg bytecode packets striking the NEXUS-PRIME router simultaneously.",
+      "key_term": "**multi-threaded simulation**"
+    },
+    "option_3": {
+      "action": "EXTRACT_AVIS_DATALAKE_SCHEMAS",
+      "description": "Deep-dive into the precise JSON/INI schema layouts used inside the 'avis-datalake' to enforce the 'AIFVS-ARTIFACT' header rule across file types.",
+      "key_term": "**datalake schemas**"
+    }
+  }
+}
