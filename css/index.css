@@ -34,7 +34,7 @@ body {
 /* MAIN INTERFACE LAYER (100PX LESS HEIGHT) */
 .screen {
   position: fixed;
-  top: 50%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%207/constellation.png') no-repeat center center;
@@ -314,9 +314,8 @@ overflow:hidden;
   margin-top: 10px;
   border: 1px solid var(--line);
   background: rgba(5, 5, 5, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  height: 360px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   display: none;
   border-radius: 6px;
 }
