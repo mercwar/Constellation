@@ -2,35 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-   <script>
-    // Read ?index= from URL and use it as the repo name
+  <script>
+    // Read ?index= from URL
     const params = new URLSearchParams(window.location.search);
-    let repo_name = params.get("index");
-	
-	
-	
-	
-    // Default if missing or empty
-    if (!repo_name || repo_name.trim() === "") {
-      repo_name = "mercwar";
-    }
+    const indexParam = params.get("index");
 
+    // Expose to index.js (null means "use JSON fallback")
+    window.REPO_NAME = indexParam && indexParam.trim() !== "" ? indexParam : null;
 
-    // Build the stylesheet link dynamically
-	
-    const css = document.createElement("link");    
-	css.rel = "stylesheet";
-    css.href = "index.css?v=16";
-	document.head.appendChild(css);
+    // Load CSS
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "index.css?v=21";
+    document.head.appendChild(css);
 
-
-
-	
-	document.title = `Mercwar Cyborg ${repo_name} Repo-Browser`;
-
+    // Temporary title until JSON loads
+    document.title = "Mercwar Cyborg Repo-Browser";
   </script>
 
 </head>
@@ -45,7 +34,7 @@
   <header class="rru-header">
     <div class="brand">
       <div class="brand-badge">MW</div>
-      <span><strong><script>document.write(repo_name); </script></strong></span>
+      <span><strong id="repoNameHeader">loading...</strong></span>
     </div>
 
     <div class="repo-meta rru-panel rru-flex rru-gap">
@@ -68,34 +57,25 @@
     <!-- SIDEBAR -->
     <aside class="sidebar rru-panel">
 
-      <!-- GATEWAY IMAGE -->
       <div class="gateway-container">
         <a target="_self"
            href="https://mercwar.github.io/Constellation/index.html"
            class="gateway-link">
-          <img
-            src="mercwar.png"
-            alt="Mercwar Constellation"
-            class="gateway-banner"
-          />
+          <img src="mercwar.png" alt="Mercwar Constellation" class="gateway-banner" />
         </a>
       </div>
 
-<div class="sidebar-header" style="display:flex;align-items:center;justify-content:space-between;">
-    <span>Repository <strong>Files</strong></span>
-
-<button class="btn rk-btn" id="collapseBtn" type="button" onclick="collapseAllDropdowns();">
-    Collapse
-</button>
-
-</div>
-
+      <div class="sidebar-header" style="display:flex;align-items:center;justify-content:space-between;">
+        <span>Repository <strong>Files</strong></span>
+        <button class="btn rk-btn" id="collapseBtn" type="button" onclick="collapseAllDropdowns();">
+          Collapse
+        </button>
+      </div>
 
       <div class="sidebar-search">
         <input id="searchInput" type="text" placeholder="Filter files (Ctrl+K)">
       </div>
 
-      <!-- SCROLLING FILE TREE -->
       <div class="file-tree" id="fileTree"></div>
 
     </aside>
@@ -110,8 +90,7 @@
         </div>
 
         <div class="main-actions">
-         <button class="btn rk-btn" id="openRawBtn" type="button">RAW</button>
-
+          <button class="btn rk-btn" id="openRawBtn" type="button">RAW</button>
           <button class="btn rk-btn-primary" id="openGithubBtn">OPEN IN GITHUB</button>
         </div>
       </div>
@@ -150,31 +129,21 @@
 
   </div>
 
-  <!-- LEGAL SECTION AT BOTTOM -->
+  <!-- LEGAL SECTION -->
   <div class="legal-section rru-panel legal-bottom">
-    <div class="legal-title">MERCWAR • <script>document.write(repo_name); </script> LEGAL</div>
+    <div class="legal-title">MERCWAR • <span id="legalRepoName">loading...</span> LEGAL</div>
 
     <div class="legal-body">
       This interface, its code structures, rendered assets, and operational logic constitute
-      a protected system under the Mercwar Sovereign Framework. Unauthorized duplication,
-      extraction, modification, or redistribution of any component of this gateway — including
-      but not limited to source files, compiled assets, AVIS documents, CBORD structures,
-      or Nexus‑linked metadata — is strictly prohibited.
-
-      By accessing this system, you acknowledge and accept the operational terms governing
-      the Nexus Repo Browser, including automated logging, integrity verification, and
-      AVIS‑compliant audit trails.
-
-
+      a protected system under the Mercwar Sovereign Framework...
     </div>
 
-    <div class="legal-footer">  All rights reserved.  
-      © Mercwar AI Systems * AVIS Cyborg RRU</div>
+    <div class="legal-footer">
+      All rights reserved. © Mercwar AI Systems • AVIS Cyborg RRU
+    </div>
   </div>
-  
-  
 
-<script src="index.js?v=17"></script>
+  <script src="index.js?v=22"></script>
 
 </body>
 </html>

@@ -1,11 +1,18 @@
-// --- CONFIG: point this at your repo ---
+// ---------------------------------------------------------
+// CONFIG (hydrated from config.json)
+// ---------------------------------------------------------
 const CONFIG = {
-  owner: "mercwar",
-  repo: repo_name,
-  branch: "main"
+  owner: "",
+  repo: "",
+  branch: "",
+  api_base: "",
+  raw_base: "",
+  pages_base: ""
 };
 
-// --- DOM refs ---
+// ---------------------------------------------------------
+// DOM REFS
+// ---------------------------------------------------------
 const fileTreeEl = document.getElementById("fileTree");
 const currentPathEl = document.getElementById("currentPath");
 const fileContentEl = document.getElementById("fileContent");
@@ -42,28 +49,24 @@ function setStatus(mode, text = "") {
     statusDotEl.classList.remove("error");
     statusLabelEl.textContent = "READY";
     statusTextEl.textContent = text;
-	
   }
 }
 
 // ---------------------------------------------------------
-// TEXT FILE DETECTION (with AVIS + CBORD + fallback)
+// TEXT FILE DETECTION
 // ---------------------------------------------------------
 function isTextFile(path) {
   const lower = path.toLowerCase();
   const textExts = [
-    ".avis", ".cbord",   // AVIS + CBORD support
-
-    ".js",".ts",".jsx",".tsx",".json",".md",".txt",".html",".css",".scss",".sass",".less",
+    ".avis",".cbord",".js",".ts",".jsx",".tsx",".json",".md",".txt",".html",".css",".scss",".sass",".less",
     ".yml",".yaml",".xml",".c",".h",".cpp",".hpp",".cc",".hh",".py",".rb",".go",".rs",".java",
     ".cs",".php",".sh",".bat",".ps1",".toml",".ini",".cfg",".conf",".env"
   ];
-
   return textExts.some(ext => lower.endsWith(ext));
 }
 
 // ---------------------------------------------------------
-// BUILD TREE (HARDENED)
+// BUILD TREE
 // ---------------------------------------------------------
 function buildTreeFromPaths(files) {
   const root = { name: "/", path: "", type: "dir", children: [] };
@@ -209,21 +212,21 @@ async function fetchRepoTree() {
 
   try {
     const refRes = await fetch(
-      `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/git/refs/heads/${CONFIG.branch}`
+      `${CONFIG.api_base}/${CONFIG.owner}/${CONFIG.repo}/git/refs/heads/${CONFIG.branch}`
     );
     if (!refRes.ok) throw new Error("Failed to resolve branch ref");
     const refData = await refRes.json();
     const commitSha = refData.object.sha;
 
     const commitRes = await fetch(
-      `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/git/commits/${commitSha}`
+      `${CONFIG.api_base}/${CONFIG.owner}/${CONFIG.repo}/git/commits/${commitSha}`
     );
     if (!commitRes.ok) throw new Error("Failed to fetch commit");
     const commitData = await commitRes.json();
     const treeSha = commitData.tree.sha;
 
     const treeRes = await fetch(
-      `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/git/trees/${treeSha}?recursive=1`
+      `${CONFIG.api_base}/${CONFIG.owner}/${CONFIG.repo}/git/trees/${treeSha}?recursive=1`
     );
     if (!treeRes.ok) throw new Error("Failed to fetch tree");
     const treeDataRaw = await treeRes.json();
@@ -246,6 +249,10 @@ async function fetchRepoTree() {
     repoInfoBadgeEl.textContent = "GitHub API ERROR";
   }
 }
+
+// ---------------------------------------------------------
+// FILE TYPE HELPERS
+// ---------------------------------------------------------
 function isBinaryFile(path) {
   const lower = path.toLowerCase();
   const binaryExts = [
@@ -259,35 +266,30 @@ function isImageFile(path) {
   const lower = path.toLowerCase();
   return [".png",".jpg",".jpeg",".gif",".bmp",".webp",".svg"].some(ext => lower.endsWith(ext));
 }
+
 // ---------------------------------------------------------
-// SELECT FILE (RRU link + mercwar.github.io address)
-// ---------------------------------------------------------
-// ---------------------------------------------------------
-// SELECT FILE (RRU link + mercwar.github.io address)
+// SELECT FILE
 // ---------------------------------------------------------
 async function selectFile(path) {
   activePath = path;
 
-  // compute encoded path and Pages base
   const encodedRepo = encodeURIComponent(CONFIG.repo);
   const rawPathEncoded = path ? path.split("/").map(encodeURIComponent).join("/") : "";
-  const pagesBase = `https://mercwar.github.io/${encodedRepo}`;
-  // pagesURL: for files and dirs; directories can optionally have trailing slash
-  const pagesURL = path ? `${pagesBase}/${rawPathEncoded}` : `${pagesBase}/`;
 
-  // Display the path as an RRU-styled clickable link that opens in a new tab
+  const pagesURL = path
+    ? `${CONFIG.pages_base}/${encodedRepo}/${rawPathEncoded}`
+    : `${CONFIG.pages_base}/${encodedRepo}/`;
+
   if (!path) {
     currentPathEl.innerHTML = `<a class="rru-link" href="${pagesURL}" target="_blank" rel="noopener noreferrer">/${CONFIG.repo}</a>`;
   } else {
     currentPathEl.innerHTML = `<a class="rru-link" href="${pagesURL}" target="_blank" rel="noopener noreferrer">/${path}</a>`;
   }
 
-  // mark active node
   document.querySelectorAll(".tree-node").forEach(el => el.classList.remove("active"));
   const activeNode = document.querySelector(`.tree-node[data-path="${CSS.escape(path)}"]`);
   if (activeNode) activeNode.classList.add("active");
 
-  // find file metadata
   const file = flatFiles.find(f => f.path === path && f.type === "file");
   if (!file) {
     fileTypeBadgeEl.textContent = "Directory";
@@ -298,10 +300,8 @@ async function selectFile(path) {
     return;
   }
 
-  // prepare raw URL for fetching/displaying content
-  const rawURL = `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${rawPathEncoded}`;
+  const rawURL = `${CONFIG.raw_base}/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${rawPathEncoded}`;
 
-  // IMAGE FILE → SHOW IMAGE (image content from raw.githubusercontent, link points to Pages)
   if (isImageFile(path)) {
     fileTypeBadgeEl.textContent = "Image";
     fileContentEl.innerHTML = `<img src="${rawURL}" style="max-width:100%;border-radius:6px;">`;
@@ -311,7 +311,6 @@ async function selectFile(path) {
     return;
   }
 
-  // BINARY FILE → SHOW WARNING (link still points to Pages)
   if (isBinaryFile(path)) {
     fileTypeBadgeEl.textContent = "Binary file";
     fileContentEl.style.display = "none";
@@ -325,7 +324,6 @@ async function selectFile(path) {
     return;
   }
 
-  // TEXT FILE → NORMAL BEHAVIOR
   fileTypeBadgeEl.textContent = isTextFile(path) ? "Text file" : "Plain text (unsupported ext)";
   fileMetaEl.textContent = `${file.size || 0} bytes • sha ${file.sha.slice(0, 7)}`;
 
@@ -349,29 +347,7 @@ async function selectFile(path) {
 }
 
 // ---------------------------------------------------------
-// OPEN BUTTONS (use same mercwar.github.io Pages URL)
-// ---------------------------------------------------------
-openGithubBtn.addEventListener("click", () => {
-  if (!activePath) {
-    window.open(`https://github.com/${CONFIG.owner}/${CONFIG.repo}`, "_blank");
-    return;
-  }
-  const rawPathEncoded = activePath.split("/").map(encodeURIComponent).join("/");
-  const pagesURL = `https://mercwar.github.io/${encodeURIComponent(CONFIG.repo)}/${rawPathEncoded}`;
-  window.open(pagesURL, "_blank", "noopener");
-});
-
-openRawBtn.addEventListener("click", () => {
-  if (!activePath) return;
-  const rawPathEncoded = activePath.split("/").map(encodeURIComponent).join("/");
-  const pagesURL = `https://mercwar.github.io/${encodeURIComponent(CONFIG.repo)}/${rawPathEncoded}`;
-  window.open(pagesURL, "_blank", "noopener");
-});
-
-
-
-// ---------------------------------------------------------
-// BUTTONS
+// OPEN BUTTONS
 // ---------------------------------------------------------
 openGithubBtn.addEventListener("click", () => {
   if (!activePath) {
@@ -388,7 +364,7 @@ openRawBtn.addEventListener("click", () => {
   if (!activePath) return;
   const rawPath = activePath.split("/").map(encodeURIComponent).join("/");
   window.open(
-    `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${rawPath}`,
+    `${CONFIG.raw_base}/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/${rawPath}`,
     "_blank"
   );
 });
@@ -413,9 +389,39 @@ window.addEventListener("keydown", (e) => {
 });
 
 // ---------------------------------------------------------
-// INIT
+// HYDRATE CONFIG FROM JSON + APPLY ?index= OVERRIDE
 // ---------------------------------------------------------
-fetchRepoTree();
+async function hydrateConfigFromRoot() {
+  try {
+    const res = await fetch("config.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("CONFIG JSON missing or unreadable");
+
+    const data = await res.json();
+
+    CONFIG.owner = data.owner;
+    CONFIG.branch = data.branch;
+    CONFIG.api_base = data.api_base;
+    CONFIG.raw_base = data.raw_base;
+    CONFIG.pages_base = data.pages_base;
+
+    CONFIG.repo = window.REPO_NAME ? window.REPO_NAME : data.repo;
+
+    document.getElementById("repoNameHeader").textContent = CONFIG.repo;
+    document.getElementById("legalRepoName").textContent = CONFIG.repo;
+    document.title = `Mercwar Cyborg ${CONFIG.repo} Repo-Browser`;
+
+    fetchRepoTree();
+
+  } catch (err) {
+    console.error("CONFIG HYDRATION ERROR:", err);
+    setStatus("error", "Failed to load config.json");
+  }
+}
+
+// ---------------------------------------------------------
+// STARTUP
+// ---------------------------------------------------------
+hydrateConfigFromRoot();
 
 function collapseAllDropdowns() {
   document.querySelectorAll(".tree-children").forEach(el => {

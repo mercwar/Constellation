@@ -215,9 +215,7 @@ width:100%
 .gateway-banner {
 width:100%;
 height:auto;
-
 object-fit:contain;
-
 display:block
 }
 
@@ -253,7 +251,6 @@ font-size:12px
 font-family:var(--mono);
 font-size:12px;
 padding:6px;
-
 height:300px;
 overflow-y:auto!important;
 overflow-x:auto;
@@ -353,11 +350,8 @@ display:flex;
 flex-direction:column;
 flex:1;
 min-height:0;
-
-  overflow: hidden;
+overflow:hidden;
 }
-
-
 
 .viewer-meta {
 display:flex;
@@ -369,19 +363,16 @@ margin-bottom:8px
 
 .viewer-body {
 flex:1;
-
-  height: 440px;          /* ← YOU SAID HEIGHT, HERE IT IS */
-  min-height: 440px;
-  max-height: 440px;
-
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;       /* prevent double scrollbars */
+height:440px;
+min-height:440px;
+max-height:440px;
+position:relative;
+display:flex;
+flex-direction:column;
+overflow:hidden;
 }
 
 .viewer-pre {
-
 flex:1;
 margin:0;
 padding:14px;
@@ -394,9 +385,6 @@ overflow-x:auto!important;
 scrollbar-width:thin;
 scrollbar-color:var(--gold) #0006
 }
-
-
-
 
 .status-bar {
 position:absolute;
@@ -477,4 +465,3 @@ background:#0002
 background:var(--gold);
 border-radius:4px
 }
-
