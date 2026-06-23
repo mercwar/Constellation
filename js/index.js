@@ -70,7 +70,7 @@ function handleGatewayActiveChange(isChecked) {
 
 
 
-function summonToolWindow(url = "https://roborook.fanclub.rocks/AVIS-NEWS/index.php") {
+function summonToolWindow(url = "https://mercwar01.byethost3.com/AVIS-NEWS/index.php") {
 
     const sidebarWidth = 372;
     const marginTop    = 106;
