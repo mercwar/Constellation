@@ -3,6 +3,70 @@
 --------------------------------------------------------- */
 window.Prism = window.Prism || {};
 Prism.manual = true; // prevent Prism from auto-highlighting <pre> in HTML
+// ---------------------------------------------------------
+// VIEW IN FRAME BUTTON (load source, not URL)
+// ---------------------------------------------------------
+const openFrameBtn = document.getElementById("openFrameBtn");
+const frameViewer = document.getElementById("frameViewer");
+openFrameBtn.addEventListener("click", () => {
+  if (!activePath) return;
+  if (!lastFetchedFileContent) return;
+
+  frameViewer.style.display = "block";
+  fileContentEl.style.display = "none";
+  emptyStateEl.style.display = "none";
+
+  let content = lastFetchedFileContent;
+
+  // Detect fragment (no root tags)
+  const lower = content.toLowerCase();
+  const isFragment = !(
+    lower.includes("<html") ||
+    lower.includes("<body") ||
+    lower.includes("<head") ||
+    lower.includes("<?xml") ||
+    lower.includes("<svg")
+  );
+
+  // Wrap fragment in full HTML shell
+  if (isFragment) {
+    content =
+      `<html><head><style>
+        html, body {
+          background: white !important;
+          margin: 0;
+          padding: 10px;
+          font-family: Arial;
+          overflow: auto;
+        }
+
+        /* SCROLLBAR THEME INSIDE IFRAME */
+        ::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #020512; /* blue-darkest */
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #9be1f0; /* blue */
+          border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #fff; /* blue-strong */
+          box-shadow: 0 0 12px #9be1f044;
+        }
+      </style></head><body>` +
+      content +
+      `</body></html>`;
+  }
+
+  const blob = new Blob([content], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+
+  frameViewer.src = url;
+});
+
 
 function injectPrismDependencies() {
   if (document.getElementById("prism-core-lib")) return;
@@ -432,6 +496,7 @@ async function selectFile(path) {
     const res = await fetch(rawURL);
     if (!res.ok) throw new Error("Failed to fetch file");
     const rawCode = await res.text();
+lastFetchedFileContent = rawCode;
 
     fileContentEl.innerHTML = renderPrismCode(rawCode, path);
 
@@ -556,3 +621,14 @@ function expandAllDropdowns() {
     }
   });
 }
+function isFragmentHTML(content) {
+  const lower = content.toLowerCase();
+  return !(
+    lower.includes("<html") ||
+    lower.includes("<body") ||
+    lower.includes("<head") ||
+    lower.includes("<?xml") ||
+    lower.includes("<svg")
+  );
+}
+
