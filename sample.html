@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Local HTML Test</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #1e1e1e;
+    color: #e0e0e0;
+    padding: 20px;
+  }
+  .box {
+    padding: 10px;
+    background: #333;
+    border: 1px solid #555;
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 8px 14px;
+    background: #4a90e2;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+
+</head>
+<body>
+
+<h1>Local HTML Test Page</h1>
+
+<div class="box">
+  <p>This page is running entirely from your local machine.</p>
+  <p>No network calls. No external resources.</p>
+</div>
+
+<div class="box">
+  <h2>JavaScript Test</h2>
+  <button onclick="document.getElementById('jsResult').textContent = 'JavaScript works!'">
+    Run JS Test
+  </button>
+  <p id="jsResult"></p>
+</div>
+
+<div class="box">
+  <h2>Image Test</h2>
+  <p>Place a file named <strong>local.png</strong> next to this HTML file.</p>
+  <img src="local.png" alt="Local Image" style="max-width:200px;border:1px solid #555;">
+</div>
+
+</body>
+</html>
