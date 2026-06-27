@@ -69,6 +69,24 @@ overflow:hidden;
 
 
 }
+#mwai {
+    width: 100%;
+    height: 100vh;
+
+    background-image: url("https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/refs/heads/main/Version%2010/Copilot_20260627_053736.png");
+
+    /* Make the image always 50% of the container width */
+    background-size: 73% auto;
+
+    /* Align right + center vertically */
+    background-position: right center;
+
+    /* No tiling */
+    background-repeat: no-repeat;
+
+    /* Optional: keeps the image feeling anchored */
+    background-attachment: fixed;
+}
 
 
 
