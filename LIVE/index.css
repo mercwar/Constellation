@@ -59,6 +59,20 @@ body {
   display: flex;
   flex-direction: column;
 }
+a {
+  color: #ffe66b;              /* bright soft yellow */
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #7fd3ff;              /* light, bright blue */
+  text-decoration: underline;
+}
+
+a:active {
+  color: #ffd23f;              /* punchier yellow on click */
+}
 
 .rru-panel {
 background:#030408cc;
@@ -470,3 +484,4 @@ border-radius:4px
 .file-tree::-webkit-scrollbar-thumb:hover,.viewer-pre::-webkit-scrollbar-thumb:hover {
 background:var(--blue-strong)
 }
+
