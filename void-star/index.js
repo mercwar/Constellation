@@ -2,6 +2,7 @@ const owner       = "mercwar";
 const repo        = "Constellation";
 const maxVersions = 12;
 const imageExts   = ["jpg","jpeg","png","gif","webp","bmp"];
+const app_name   = "void-star";
 
 let currentVersion = null;
 let files = [];

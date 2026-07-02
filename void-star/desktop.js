@@ -3,7 +3,7 @@ const owner       = "mercwar";
 const repo        = "Constellation";
 const maxVersions = 12;
 const imageExts   = ["jpg","jpeg","png","gif","webp","bmp"];
-
+const app_name   = "void-star";
 let zIndexTop = 10;
 let offset    = 40;
 
@@ -102,7 +102,7 @@ function openStartMenu(){
     content.innerHTML = "Loading…";
 
     // Kept as "" to read the main repository root directory
-    ghList("ice-star").then(items=>{
+    ghList(app_name).then(items=>{
         const versions = items
             .filter(i => i.type==="dir" && isVersionDir(i.name))
             .sort((a,b)=>{
