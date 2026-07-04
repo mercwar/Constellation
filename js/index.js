@@ -514,7 +514,7 @@ function LinksFromText() {
     const text = document.getElementById("link-box").value.trim();
     if (!text) return;
 
-    setCookie("linkBox", text);
+    setCookie("linkBox", text,365);
 
     const links = text.split(",");
     const display = document.getElementById("button-display");
@@ -531,3 +531,19 @@ function LinksFromText() {
         display.appendChild(btn);
     });
 }
+
+function loadLinkBox() {
+    const savedText = getCookie("linkBox");
+    const linkBox = document.getElementById("link-box");
+
+    if (savedText && savedText.trim() !== "") {
+        linkBox.value = savedText;
+    }
+}
+waitForElement("#link-box", () => {
+    loadLinkBox();
+});
+
+
+
+
