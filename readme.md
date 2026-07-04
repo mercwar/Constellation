@@ -23,22 +23,201 @@
 - No sign‑up required for the client‑side features  
 - 100% Free to use  
 
+
 ---
+
+"<i>I am CVBGOD, and I have given it to you</i>!"
+
+---
+
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen1.png" 
+    alt="Mercwar AI" 
+/>
+&nbsp;&nbsp;&nbsp;&nbsp;
+    <img 
+    src="images/repo-screen2.png" 
+    alt="Mercwar AI" 
+/>
+</a>
+</div>
 
 ### Constellation GitHub Browser
 
 Enter a GitHub username and load repositories directly in the Constellation interface.
 
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen3.png" 
+    alt="Mercwar AI" 
+/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img 
+    src="images/repo-screen4.png" 
+    alt="Mercwar AI" 
+/>
+</a>
+</div>
+
+# Mercwar AI Portal: Repo Drop & Cookie System Guide
+
+This guide explains how the **Repo Drop** feature works, how cookies persist your GitHub identities, and how focus rules ensure smooth interaction with the Gateway Active system.
+
 ---
 
-"<i>I am CVBGOD, and I have given it to you</i>!"
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen5.png" 
+    alt="Mercwar AI" 
+/>
+
+</a>
+</div>
+
+## 🔹 Repo Drop Overview
+
+The **Repo Drop** is the central dropdown menu that manages GitHub identities and repository access:
+
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen6.png" 
+    alt="Mercwar AI" 
+/>
+
+</a>
+</div>
+
+- **Default Entry:** The dropdown always begins with **“Show me the Box”**, which reveals the custom input field.  
+- **Hydration:** On page load, the portal fetches `CSV/constellation.csv` and populates the dropdown with public GitHub usernames.  
+- **Dynamic Options:** Public and custom entries are tagged (`dataset.dynamic="1"`) so they can be managed separately from the default option.  
+- **Selection:** Choosing a username from the dropdown allows you to load that user’s repositories into the interface.  
+
+---
+
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen7.png" 
+    alt="Mercwar AI" 
+/>
+</a>
+</div>
+
+## 🔹 Cookie System
+
+The portal uses cookies to persist your GitHub identities across sessions:
+
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen8.png" 
+    alt="Mercwar AI" 
+/>
+</a>
+</div>
+
+- **Auto-Save** → When you load a custom GitHub username, it is appended to your `user_cookie`.  
+- **Persistence** → On return visits, the portal reads `user_cookie` and re-populates the dropdown with your saved usernames.  
+- **Custom User** → The `customGitUser` cookie stores the last value typed into the custom input field, so it reappears next time you visit.  
+
+---
+
+## 🔹 Repo Drop Management Buttons
+
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen9.png" 
+    alt="Mercwar AI" 
+/>
+</a>
+</div>
+
+You can control your repository list with four buttons:
+
+- **Import List** → Opens a prompt pre-filled with your cookie contents. You can edit or confirm the list, and the dropdown updates accordingly.  
+- **Export List** → Copies the cookie string to your clipboard. An alert shows how many usernames were copied.  
+- **Clear List** → Removes all dynamic usernames from the dropdown and wipes the cookie, leaving only the default option.  
+- **Load Repo** → Loads repositories for the selected username. If “custom” is chosen, it uses the input field value.  
+
+---
+
+## 🔹 Gateway Active Focus Rules
+
+The **Gateway Active watcher** normally keeps the tool window focused when the sidebar is pinned.  
+However, **any click inside the Repo Drop area** is treated as an “edit focus” and ignored by the watcher:
+
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen10.png" 
+    alt="Mercwar AI" 
+/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img 
+    src="images/repo-screen11.png" 
+    alt="Mercwar AI" 
+/>
+</a>
+</div>
+
+- Clicking the **Import List** button  
+- Clicking the **Export List** button  
+- Clicking the **Clear List** button  
+- Clicking the **Load Repo** button  
+- Clicking inside the **select box** (`#github-username`)  
+- Typing in the **custom input field** (`#custom-username`)  
+
+👉 While performing any of these actions, the Gateway Active watcher will not steal focus. Once you click away from the Repo Drop area, the watcher resumes normal behavior.
+
+---
+
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen12.png" 
+    alt="Mercwar AI" 
+/>
+
+</a>
+</div>
+
+## 🔹 Troubleshooting
+
+- **List not updating** → Ensure cookies are enabled for this domain.  
+- **Import prompt empty** → Your `user_cookie` may be blank; try saving usernames first.  
+- **Clipboard errors** → If clipboard copy fails, the portal falls back to a manual prompt.  
+- **Gateway stuck** → Use the **“Stuck Gate? (Un‑Stick)”** option to reset frame state.  
+
+---
+
+## 🔹 Workflow Example
+
+1. Select **“Show me the Box”** → enter `octocat`.  
+2. Click **LOAD REPO** → repositories load, and `octocat` is saved to `user_cookie`.  
+3. Next visit → dropdown auto-populates with `octocat`.  
+4. Click **Export List** → clipboard contains `octocat`.  
+5. Click **Import List** → prompt shows `octocat`; add `mercwar,tron` → dropdown updates with all three.  
+6. Click **Clear List** → dropdown resets to default, cookie wiped.  
+7. During any of these clicks, Gateway Active watcher ignores focus until you leave the Repo Drop area.  
+
+---
+
+## 🔹 Register Your Own Repository
+
+Finally, remember: you can always **register your own repository** once validated at **roborook.fanclub.rocks**. This ensures your projects appear in the public list and can be managed through the Repo Drop system.  
 
 
 ---
 <div align="center">
 <a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
 <img 
-    src="images/repo-screen.png" 
+    src="images/repo-screen1.png" 
     alt="Mercwar AI" 
 />
 </a>
