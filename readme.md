@@ -267,10 +267,22 @@ Explore the live Constellation Gateway here:
 
 ## 🔹 Register Your Own Repository
 
-Finally, remember: you can always **register your own repository** once validated at **roborook.fanclub.rocks**. This ensures your projects appear in the public list and can be managed through the Repo Drop system.
+##Finally, remember: you can always **register your own repository** once validated at **roborook.fanclub.rocks**. This ensures your projects appear in the public list and can be managed through the Repo Drop system.
 
-[Cyborg Live Git Browser](https://mercwar.github.io/CYBORG-LIVE-GIT-BROWSER/index.html?index=CYBORG-LIVE-GIT-BROWSER) Free to Install!
-[Cyborg Live Git Browser](https://mercwar.github.io/CYBORG-LIVE-GIT-BROWSER/index.html?index=CYBORG-LIVE-GIT-BROWSER) Free to Install!
+## 👑 Cyborg Live Git Browser
+
+---
+
+###  ✔️ FREE to Use 
+###  ✔️ FREE to Install
+
+---
+
+#### 💥 Try the [Demo](https://mercwar.github.io/CYBORG-LIVE-GIT-BROWSER/index.html?index=CYBORG-LIVE-GIT-BROWSER)
+#### ✨ Git the [Clone](https://github.com/mercwar/CYBORG-LIVE-GIT-BROWSER) 
+
+#### "<i>I am CVBGOD and I have given it to you</i>!"
+
 ---
 
 
