@@ -352,7 +352,7 @@ function enforceFrameRulesOnLoad() {
         if (screenEl) {
             screenEl.style.left = "50%";
             // translate X is -50% (center) minus 250px
-            screenEl.style.transform = "translate(calc(-50% - 350px), -50%)";
+            screenEl.style.transform = "translate(calc(-50% - 225px), -50%)";
         }
 
     } else {
