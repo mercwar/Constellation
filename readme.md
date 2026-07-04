@@ -221,7 +221,7 @@ It allows you to manage, store, and launch your favorite links directly from the
 
 ---
 
-## 🔗 Live Demo
+## 🔗 Live Free Gateway Portal
 Explore the live Constellation Gateway here:  
 👉 [Constellation Portal](https://mercwar.github.io/Constellation/index.html)
 
