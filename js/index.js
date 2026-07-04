@@ -332,9 +332,6 @@ function ExportFromCookie() {
     });
 }
 
-/* ============================================================
-   FRAME DETECTION
-============================================================ */
 function enforceFrameRulesOnLoad() {
     const uplink = document.getElementById("keepInFrame");
     const pinBox = document.getElementById("pinSidebarChk");
@@ -350,11 +347,12 @@ function enforceFrameRulesOnLoad() {
         keepGatewayActive = false;
         stopGatewayWatcher();
 
-        // 🔥 Shift the .screen object left by 200px when in frame
+        // 🔥 Shift the .screen object left by 250px when in frame
         const screenEl = document.querySelector(".screen");
         if (screenEl) {
-            screenEl.style.left = "calc(50% - 250px)";
-            screenEl.style.transform = "translate(-50%, -50%)";
+            screenEl.style.left = "50%";
+            // translate X is -50% (center) minus 250px
+            screenEl.style.transform = "translate(calc(-50% - 250px), -50%)";
         }
 
     } else {
@@ -362,7 +360,12 @@ function enforceFrameRulesOnLoad() {
         if (pinBox) pinBox.disabled = false;
         if (gatewayBox) gatewayBox.disabled = false;
 
-
+        // Reset .screen back to centered
+        const screenEl = document.querySelector(".screen");
+        if (screenEl) {
+            screenEl.style.left = "50%";
+            screenEl.style.transform = "translate(-50%, -50%)";
+        }
     }
 }
 
