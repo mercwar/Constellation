@@ -349,15 +349,35 @@ function enforceFrameRulesOnLoad() {
         if (gatewayBox) { gatewayBox.checked = false; gatewayBox.disabled = true; }
         keepGatewayActive = false;
         stopGatewayWatcher();
+
+        // 🔥 Shift the .screen object left by 200px when in frame
+        const screenEl = document.querySelector(".screen");
+        if (screenEl) {
+            screenEl.style.left = "calc(50% - 200px)";
+            screenEl.style.transform = "translate(-50%, -50%)";
+        }
+
     } else {
         if (uplink) uplink.disabled = false;
         if (pinBox) pinBox.disabled = false;
         if (gatewayBox) gatewayBox.disabled = false;
+
+
     }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => enforceFrameRulesOnLoad(), 50);
     initDropdowns();
+
+    // Restore Gateway Active state properly
+    loadGatewayActiveState();
+
+    // Restore uplink checkbox state
+    waitForElement("input[type='checkbox'][id*='frame']", (uplink) => {
+        const saved = getCookie("uplinkState");
+        uplink.checked = (saved === "checked");
+    });
 
     // Toggle custom input visibility
     waitForElement("#github-username", (userDropdown) => {
@@ -418,3 +438,31 @@ document.addEventListener("DOMContentLoaded", () => {
     loadCustomGitUser();
     loadConstellationRepo("mercwar");
 });
+function saveGatewayActiveState(isChecked) {
+    setCookie("gatewayActiveState", isChecked ? "checked" : "unchecked", 365);
+}
+
+function loadGatewayActiveState() {
+    const gatewayBox = document.getElementById("keepGatewayActive");
+    if (!gatewayBox) return;
+
+    const saved = getCookie("gatewayActiveState");
+
+    if (saved) {
+        // Use cookie value if it exists
+        gatewayBox.checked = (saved === "checked");
+        keepGatewayActive = gatewayBox.checked;
+    } else {
+        // First run: auto-fill ON by default
+        gatewayBox.checked = true;
+        keepGatewayActive = true;
+        saveGatewayActiveState(true);
+    }
+
+    // Attach listener to persist changes
+    gatewayBox.addEventListener("change", () => {
+        keepGatewayActive = gatewayBox.checked;
+        saveGatewayActiveState(gatewayBox.checked);
+        handleGatewayActiveChange(gatewayBox.checked);
+    });
+}
