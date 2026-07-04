@@ -45,14 +45,30 @@ function startGatewayWatcher() {
         if (!toolWin || toolWin.closed) return;
 
         // Check if the user is typing in the custom username box
-        const isEditingCustomUser = (document.activeElement && document.activeElement.id === "custom-username");
+        const isEditingCustomUser = (
+            document.activeElement && document.activeElement.id === "custom-username"
+        );
 
-        // Only focus if the gate is active, pinned, we aren't navigating, AND the user isn't typing
-        if (keepGatewayActive && sidebarPinned && !isNavigating && !isEditingCustomUser) {
+        // Check if focus is inside the repo dropdown area
+        const activeEl = document.activeElement;
+        const isInsideRepoDrop =
+            activeEl &&
+            (
+                activeEl.id === "github-username" ||      // select box
+                activeEl.id === "load-user-repos" ||      // Load button
+                activeEl.id === "import-user-repos" ||    // Import button
+                activeEl.id === "export-user-repos" ||    // Export button
+                activeEl.id === "clear-user-repos" ||     // Clear button
+                activeEl.id === "custom-username"         // custom input
+            );
+
+        // Only focus if the gate is active, pinned, not navigating, and user is not editing/clicking repo drop
+        if (keepGatewayActive && sidebarPinned && !isNavigating && !isEditingCustomUser && !isInsideRepoDrop) {
             toolWin.focus();
         }
     }, 900);
 }
+
 function stopGatewayWatcher() {
     if (gatewayWatcher) {
         clearInterval(gatewayWatcher);
