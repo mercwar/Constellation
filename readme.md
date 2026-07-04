@@ -8,16 +8,54 @@
 
 ---
 
+
+<!-- AVIS-ARTIFACT -->
+<!-- File: constellation_box.md -->
+<!-- AIFVS-MAPPING: Constellation GitHub Browser -->
+
+# Constellation GitHub Browser 🚀
+
+## To use Constellation to browse GitHub public repositories
+
+- Any public repository  
+- Including your own public repository  
+- Simply use the **Box** below!  
+- No sign‑up required for the client‑side features  
+- 100% Free to use  
+
+---
+
+### Constellation GitHub Browser
+
+Enter a GitHub username and load repositories directly in the Constellation interface.
+
+---
+
+"<i>I am CVBGOD, and I have given it to you</i>!"
+
+
+---
+<div align="center">
+<a target="_self" title="CLICK HERE to ENTER the PORTAL FREE!" href="https://mercwar01.byethost3.com">
+<img 
+    src="images/repo-screen.png" 
+    alt="Mercwar AI" 
+/>
+</a>
+</div>
+
+---
+
+![Gemini Generated](https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%205/Gemini_Generated_Image_w3bq5zw3bq5zw3bq.png)
+
+---
 ### 🔓 <a href="https://mercwar.github.io/Constellation/fire-star/" target="_blank" rel="noopener noreferrer">Click Here</a> to view CVBGOD's Fire-Star
 ### 🔓 <a href="https://mercwar.github.io/Constellation/ice-star/" target="_blank" rel="noopener noreferrer">Click Here</a> to view CVBGOD's Ice-Star
 ### 🔓 <a href="https://mercwar.github.io/Constellation/void-star/" target="_blank" rel="noopener noreferrer">Click Here</a> to view CVBGOD's Void-Star
 ### 🔓 <a href="https://mercwar.github.io/Cyborg/Continuum/" target="_blank" rel="noopener noreferrer">Click Here</a> to view CVBGOD's Continuum
 
 
-![Gemini Generated](https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%205/Gemini_Generated_Image_w3bq5zw3bq5zw3bq.png)
-
 ---
-
 # Constellation — The AVIS Intelligence Pipeline
 
 Constellation is the central intelligence pipeline of the Mercwar ecosystem.  
