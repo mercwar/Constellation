@@ -1,8 +1,29 @@
+<!-- AIFVS-ARTIFACT: Universal Meta Loader -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Loading…</title>
+  <title>Loading Repository…</title>
+
+  <!-- 🔹 UNIVERSAL META BLOCK -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="FireGem Systems">
+  <meta name="description" content="Universal loader for FireGem, MercWar, CVBGOD, and GGUF repositories. Auto-detects repo root and redirects to Constellation LIVE.">
+  <meta name="keywords" content="FireGem, MercWar, CVBGOD, GGUF, MSVC, LLM, AI, compiler, optimization, Constellation, AVIS, AIFVS">
+  <meta name="ACK" content="schema.json">
+  <meta name="AVIS" content="artifact-loader">
+  <meta name="FVS" content="universal-meta">
+  <meta property="og:title" content="FireGem Universal Loader">
+  <meta property="og:description" content="Auto-detects repo root and redirects to Constellation LIVE.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mercwar.github.io/assets/firegem-banner.png">
+  <meta property="og:url" content="https://mercwar.github.io/Constellation/LIVE/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FireGem Universal Loader">
+  <meta name="twitter:description" content="Universal redirect system for FireGem, MercWar, CVBGOD, and GGUF.">
+  <meta name="twitter:image" content="https://mercwar.github.io/assets/firegem-banner.png">
+
   <style>
     body {
       background: #000;
@@ -14,52 +35,36 @@
   </style>
 </head>
 <body>
+  <h2>Loading Repository…</h2>
 
-<h2>Loading Repository…</h2>
+  <script>
+    // -----------------------------------------
+    // 1. DETECT REPO NAME FROM URL PATH
+    // -----------------------------------------
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const repoName = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : "mercwar";
 
-<script>
-// -----------------------------------------
-// 1. DETECT THIS FILE'S REPO NAME
-// -----------------------------------------
-const path = window.location.pathname.split("/").filter(Boolean);
+    // -----------------------------------------
+    // 2. LOCAL MODE SWITCH
+    // -----------------------------------------
+    const LOCAL_MODE = false;
+    const gitBase = LOCAL_MODE ? "../../" : "https://mercwar.github.io/";
 
-// Example paths:
-//   /Mercwar/index.html          → repo = Mercwar
-//   /Constellation/index.html    → repo = Constellation
-//   ../../Mercwar/index.html     → repo = Mercwar
+    // -----------------------------------------
+    // 3. CLEAN URL JOINER (NO DOUBLE SLASHES)
+    // -----------------------------------------
+    const joinURL = (base, segment) =>
+      base.replace(/\/+$/, "") + "/" + segment.replace(/^\/+/, "");
 
-// Repo name is ALWAYS the folder BEFORE this file
-const repo_name = path[path.length - 2] || "mercwar";
+    // -----------------------------------------
+    // 4. BUILD FINAL REDIRECT URL
+    // -----------------------------------------
+    const redirectURL = joinURL(gitBase, "Constellation/LIVE/index.html") + `?index=${repoName}`;
 
-// -----------------------------------------
-// 2. LOCAL MODE SWITCH
-// -----------------------------------------
-const LOCAL_MODE = false;
-
-let git_url = LOCAL_MODE
-  ? "../../"
-  : "https://mercwar.github.io/";
-
-// -----------------------------------------
-// 3. CLEAN URL JOINER (NO DOUBLE SLASHES)
-// -----------------------------------------
-function joinURL(base, path) {
-  return base.replace(/\/+$/, "") + "/" + path.replace(/^\/+/, "");
-}
-
-// -----------------------------------------
-// 4. BUILD FINAL REDIRECT URL
-// LIVE is ALWAYS inside Constellation
-// -----------------------------------------
-const clean_url =
-  joinURL(git_url, "Constellation/LIVE/index.html") +
-  `?index=${repo_name}`;
-
-// -----------------------------------------
-// 5. REDIRECT
-// -----------------------------------------
-window.location.href = clean_url;
-</script>
-
+    // -----------------------------------------
+    // 5. REDIRECT TO LIVE HOST
+    // -----------------------------------------
+    window.location.href = redirectURL;
+  </script>
 </body>
 </html>

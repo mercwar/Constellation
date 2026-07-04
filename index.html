@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Mercwar AI Portal</title>
 <link rel="icon" type="image/x-icon" href="fav-icon.ico">
-<link rel="stylesheet" href="css/index.css?v=60"/>
-<link rel="stylesheet" href="css/rru_gx.css?v=60">
+<link rel="stylesheet" href="css/index.css?v=80"/>
+<link rel="stylesheet" href="css/rru_gx.css?v=65">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
-<script src="js/ajax.js?v=84"></script>
+<script src="js/ajax.js?v=85"></script>
 </head>
 
 <body>
@@ -91,13 +91,13 @@ SYSTEM HUB <span class="caret"></span>
 <div id="ajax-log" style="color:#ff4444; font-family:Consolas; margin-top:10px;"></div>
 
 <script>
-printAjaxHTML("hub.html?v=9", "#hub-drop");
-printAjaxHTML("portal.html?v=12", "#portal-drop");
-printAjaxHTML("repo.html?v=9", "#repo-drop");
+printAjaxHTML("hub.html?v=19", "#hub-drop");
+printAjaxHTML("portal.html?v=23", "#portal-drop");
+printAjaxHTML("repo.html?v=23", "#repo-drop");
 </script>
 
-<script src="js/index.js?v=131"></script>
-<script src="js/index1.js?v=80"></script>
+<script src="js/index.js?v=153"></script>
+<script src="js/index1.js?v=81"></script>
 
 <script>
 document.getElementById("gx-banner").addEventListener("click", () => {
@@ -108,9 +108,7 @@ handleGatewayActiveChange(true);
 
 </main>
 
-
 <script>
-
 const getTargetUrl = (address) => {
     const d = new Date();
     const pad = (n) => String(n).padStart(2, '0');
@@ -118,69 +116,52 @@ const getTargetUrl = (address) => {
     return `${address}?dt=${dt}`;
 };
 
-
 document.addEventListener("DOMContentLoaded", function() {
-
-
-
     function log(msg) {
-        document.getElementById("ajax-log").innerHTML += msg + "<br>";
+        const logArea = document.getElementById("ajax-log");
+        if (logArea) logArea.innerHTML += msg + "<br>";
     }
-	
-const targetUrl = getTargetUrl("CSV/constellation.csv");
 
+    function FillBox(target = "CSV/constellation.csv") {
+        const targetUrl = getTargetUrl(target);
 
+        fetch(targetUrl)
+            .then(r => r.text())
+            .then(txt => {
+                const lines = txt.split(/\r?\n/).filter(l => l.trim() !== "");
+                let users = [];
 
-  /// log("🔥 AJAX STARTED…");
-
-   // const targetUrl = "../../../RRU-AI/LOGIN/REG/CSV/constellation.csv";
-
-    fetch(targetUrl)
-        .then(r => r.text())
-        .then(txt => {
-
-         //  log("🔥 RAW CSV RESPONSE:");
-         //   log("<pre>" + txt.replace(/</g, "&lt;") + "</pre>");
-
-            
-            const lines = txt.split(/\r?\n/).filter(l => l.trim() !== "");
-
-            let users = [];
-
-            lines.forEach(line => {
-                const parts = line.split(",");
-                if (parts.length === 2) {
-                    const github = parts[1].trim();
-                    if (github !== "" && !users.includes(github)) {
-                        users.push(github);
+                lines.forEach(line => {
+                    const parts = line.split(",");
+                    if (parts.length === 2) {
+                        const github = parts[1].trim();
+                        if (github !== "" && !users.includes(github)) {
+                            users.push(github);
+                        }
                     }
-                }
+                });
+
+                const sel = document.getElementById("github-username");
+                if (!sel) return;
+
+                users.forEach(u => {
+                    let opt = document.createElement("option");
+                    opt.value = u;
+                    opt.textContent = u;
+                    opt.dataset.dynamic = "1";
+                    sel.appendChild(opt);
+                });
+            })
+            .catch(err => {
+                log("❌ AJAX ERROR: " + err);
             });
+    }
 
-         //  log("🔥 PARSED USERS:");
-         //  log("<pre>" + JSON.stringify(users, null, 2) + "</pre>");
-
-            let sel = document.getElementById("github-username");
-
-         //  log("🔥 HYDRATING SELECT WITH " + users.length + " USERS");
-
-            users.forEach(u => {
-          //     log("➡ ADDING OPTION: " + u);
-                let opt = document.createElement("option");
-                opt.value = u;
-                opt.textContent = u;
-                opt.dataset.dynamic = "1";
-                sel.appendChild(opt);
-            });
-
-        //   log("✅ HYDRATION COMPLETE");
-        })
-        .catch(err => {
-            log("❌ AJAX ERROR: " + err);
-        });
-
+    // Run hydration on DOM ready
+    FillBox();
 });
 </script>
+
 
 
 </body>
