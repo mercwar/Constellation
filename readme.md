@@ -170,6 +170,80 @@ This guide explains how the **Repo Drop** feature works, how cookies persist you
 
 ---
 
+# 🚀 Constellation Link Screen
+
+The **Link Screen** is a core feature of the Constellation Gateway.  
+It allows you to manage, store, and launch your favorite links directly from the interface — with uplink awareness and cookie persistence for seamless workflows.
+
+---
+
+## ✨ Features
+- **Persistent storage**: Links are saved in cookies and restored automatically.
+- **Clipboard integration**: Copy and paste lists of links with one click.
+- **Dynamic buttons**: Generate launch buttons instantly from your textarea.
+- **Uplink aware**: Buttons respect the uplink checkbox, opening in‑frame or in a tool window.
+
+---
+
+## 📸 Screenshots
+
+<p align="center">
+  <a href="https://mercwar.github.io/Constellation/index.html">
+    <img src="images/link-screen1.png" alt="Link Screen 1" width="100%">
+  </a>
+  <br>
+  <em>Initial view of the Link Screen with sample entries.</em>
+</p>
+
+<p align="center">
+  <a href="https://mercwar.github.io/Constellation/index.html">
+    <img src="images/link-screen2.png" alt="Link Screen 2" width="100%">
+  </a>
+  <br>
+  <em>Clipboard integration with Down‑Link and Up‑Link buttons.</em>
+</p>
+
+<p align="center">
+  <a href="https://mercwar.github.io/Constellation/index.html">
+    <img src="images/link-screen3.png" alt="Link Screen 3" width="100%">
+  </a>
+  <br>
+  <em>Dynamic button generation from textarea content.</em>
+</p>
+
+<p align="center">
+  <a href="https://mercwar.github.io/Constellation/index.html">
+    <img src="images/link-screen4.png" alt="Link Screen 4" width="100%">
+  </a>
+  <br>
+  <em>Launching links with uplink awareness — in‑frame or tool window.</em>
+</p>
+
+---
+
+## 🔗 Live Demo
+Explore the live Constellation Gateway here:  
+👉 [Constellation Portal](https://mercwar.github.io/Constellation/index.html)
+
+---
+
+## ⚡ Quick Start
+1. Enter your links into the textarea.  
+2. Use **Down‑Link** to copy and save them.  
+3. Use **Up‑Link** to generate launch buttons.  
+4. Click any button to open the link — respecting the uplink checkbox.  
+5. Use **Clear** to reset the list instantly.
+
+---
+
+## 🛠️ Tech Notes
+- Pure client‑side JavaScript (no server dependencies).  
+- Cookie persistence ensures your links survive reloads.  
+- Buttons integrate with the existing `launchPortal(url)` function for uplink awareness.  
+
+
+
+---
 ## 🔹 Troubleshooting
 
 - **List not updating** → Ensure cookies are enabled for this domain.  
