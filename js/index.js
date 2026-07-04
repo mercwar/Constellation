@@ -37,20 +37,22 @@ function initDropdowns() {
 /* ============================================================
    GATEWAY ACTIVE WATCHER (Navigation‑Safe)
 ============================================================ */
+
 function startGatewayWatcher() {
     stopGatewayWatcher(); // avoid duplicates
 
     gatewayWatcher = setInterval(() => {
-
         if (!toolWin || toolWin.closed) return;
 
-        if (keepGatewayActive && sidebarPinned && !isNavigating) {
+        // Check if the user is typing in the custom username box
+        const isEditingCustomUser = (document.activeElement && document.activeElement.id === "custom-username");
+
+        // Only focus if the gate is active, pinned, we aren't navigating, AND the user isn't typing
+        if (keepGatewayActive && sidebarPinned && !isNavigating && !isEditingCustomUser) {
             toolWin.focus();
         }
-
     }, 900);
 }
-
 function stopGatewayWatcher() {
     if (gatewayWatcher) {
         clearInterval(gatewayWatcher);
@@ -86,12 +88,17 @@ function summonToolWindow(url = "https://mercwar01.byethost3.com/AVIS-NEWS/index
         return;
     }
 
-    toolWin = window.open(
-        url,
-        "toolBrowser",
-        `width=${maxWidth},height=${maxHeight},left=${sidebarWidth},top=${marginTop},` +
-        "menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes"
-    );
+toolWin = window.open(
+    url,
+    "toolBrowser",
+    `width=${maxWidth - 40},
+     height=${maxHeight - 40},
+     left=${sidebarWidth + 20},
+     top=${marginTop + 20},
+     resizable=yes,
+     scrollbars=yes`
+);
+
 
     isNavigating = true;
     setTimeout(() => { isNavigating = false; }, 1200);
@@ -152,7 +159,6 @@ function restoreToConsole() {
     }
 }
 
-
 /* ============================================================
    COOKIE SYSTEM
 ============================================================ */
@@ -160,19 +166,18 @@ function setCookie(name, value, days = 365) {
     const d = new Date();
     d.setTime(d.getTime() + (days * 86400000));
     document.cookie =
-        `${name}=${value};expires=${d.toUTCString()};path=/;SameSite=None;Secure`;
+        `${name}=${encodeURIComponent(value)};expires=${d.toUTCString()};path=/;SameSite=None;Secure`;
 }
 
 function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
+    return match ? decodeURIComponent(match[2]) : null;
 }
 
-
 /* ============================================================
-   GITHUB REPO LOADER  (CONSTELLATION, FIXED)
+   GITHUB REPO LOADER
 ============================================================ */
-async function loadConstellationRepos(username = "mercwar") {
+async function loadConstellationRepo(username = "mercwar") {
     const container = document.getElementById('constellation-menu');
     if (!container) return;
 
@@ -180,21 +185,15 @@ async function loadConstellationRepos(username = "mercwar") {
         const response = await fetch(
             `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
         );
-
         if (!response.ok) throw new Error("GitHub API error");
 
         const repos = await response.json();
-        const clean = repos
-            .filter(r => !r.fork)
-            .sort((a, b) => a.name.localeCompare(b.name));
+        const clean = repos.filter(r => !r.fork).sort((a, b) => a.name.localeCompare(b.name));
 
         container.innerHTML = "";
-
         clean.forEach(repo => {
             const repoName = repo.name;
-
-            const pagesUrl =
-                `https://${username}.github.io/${repoName}/index.html?index=${repoName}`;
+            const pagesUrl = `https://${username}.github.io/${repoName}/index.html?index=${repoName}`;
 
             const block = document.createElement("div");
             block.className = "repo-block";
@@ -202,8 +201,7 @@ async function loadConstellationRepos(username = "mercwar") {
             const btnTool = document.createElement("button");
             btnTool.className = "sub-btn repo-tool";
             btnTool.textContent = `${repoName.toUpperCase()} [com.Fire-Win]`;
-            btnTool.onclick = () =>
-                launchPortal(`${repo.html_url}?index=${repoName}`);
+            btnTool.onclick = () => launchPortal(`${repo.html_url}?index=${repoName}`);
 
             const btnPagesTool = document.createElement("button");
             btnPagesTool.className = "sub-btn repo-pages-tool";
@@ -214,13 +212,10 @@ async function loadConstellationRepos(username = "mercwar") {
             block.appendChild(btnPagesTool);
             container.appendChild(block);
         });
-
     } catch (err) {
-        container.innerHTML =
-            `<p style="color:red;padding:8px;">Error loading repos: ${err.message}</p>`;
+        container.innerHTML = `<p style="color:red;padding:8px;">Error loading repos: ${err.message}</p>`;
     }
 }
-
 
 /* ============================================================
    CUSTOM GIT USER SAVE/LOAD
@@ -228,7 +223,6 @@ async function loadConstellationRepos(username = "mercwar") {
 function saveCustomGitUser(name) {
     setCookie("customGitUser", name, 365);
 }
-
 function loadCustomGitUser() {
     const saved = getCookie("customGitUser");
     if (saved) {
@@ -237,38 +231,108 @@ function loadCustomGitUser() {
     }
 }
 
+/* ============================================================
+   DROPDOWN + COOKIE MANAGEMENT
+============================================================ */
+function clearBox() {
+    const sel = document.getElementById("github-username");
+    
+    // 1. Remove all dynamic options
+    if (sel) {
+        Array.from(sel.options).forEach(opt => {
+            if (opt.dataset.dynamic === "1") {
+                opt.remove();
+            }
+        });
+    }
+    
+    // 2. Clear the cookie by setting an expiration date in the past
+    document.cookie = "user_cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+    // 3. Clear the UI repo container
+    const repoContainer = document.getElementById('constellation-menu');
+    if (repoContainer) {
+        repoContainer.innerHTML = "";
+    }
+}
+
+function SaveToCookie() {
+    const sel = document.getElementById("github-username");
+    if (!sel) return;
+    const users = [...sel.options].filter(opt => opt.dataset.dynamic === "1").map(opt => opt.value);
+    setCookie("user_cookie", users.join(","), 365);
+}
+
+
+function ImportFromCookie(is_refresh = false) {
+    const sel = document.getElementById("github-username");
+    if (!sel) return;
+
+    const csv = getCookie("user_cookie") || "";
+   
+
+    // 1. If manual (button click), show prompt
+    let input = csv;
+    if (!is_refresh) {
+        input = prompt("Enter or edit your repo list (comma separated):", csv);
+        if (!input) return; // Exit if user cancels
+        setCookie("user_cookie", input, 365);
+    }
+
+    // 2. Clear existing dynamic options
+    Array.from(sel.options).forEach(opt => {
+        if (opt.dataset.dynamic === "1") opt.remove();
+    });
+
+    // 3. Populate dropdown only (no repo loading here)
+    const users = input.split(",").map(u => u.trim()).filter(u => u.length > 0);
+
+    users.forEach(u => {
+        let opt = document.createElement("option");
+        opt.value = u;
+        opt.textContent = u;
+        opt.dataset.dynamic = "1";
+        sel.appendChild(opt);
+    });
+}
+
+
+function ExportFromCookie() {
+    const csv = getCookie("user_cookie");
+    if (!csv) {
+        alert("No repo CSV saved");
+        return;
+    }
+
+    // Split into usernames
+    const users = csv.split(",").map(u => u.trim()).filter(u => u.length > 0);
+
+    // Copy raw CSV string to clipboard
+    navigator.clipboard.writeText(csv).then(() => {
+        // Show count only, not the actual CSV
+        alert(users.length + " usernames copied to clipboard");
+    }).catch(err => {
+        alert("Clipboard copy failed: " + err);
+    });
+}
 
 /* ============================================================
-   FRAME DETECTION + AUTO‑LOCK SYSTEM
+   FRAME DETECTION
 ============================================================ */
 function enforceFrameRulesOnLoad() {
-
     const uplink = document.getElementById("keepInFrame");
     const pinBox = document.getElementById("pinSidebarChk");
     const gatewayBox = document.getElementById("keepGatewayActive");
-
     const inFrame = (window !== window.top);
 
     if (inFrame) {
-        if (uplink) {
-            uplink.checked = true;
-            uplink.disabled = true;
-        }
-
-        if (pinBox) {
-            pinBox.checked = false;
-            pinBox.disabled = true;
-        }
+        if (uplink) { uplink.checked = true; uplink.disabled = true; }
+        if (pinBox) { pinBox.checked = false; pinBox.disabled = true; }
         sidebarPinned = false;
         closeSidebar();
-
-        if (gatewayBox) {
-            gatewayBox.checked = false;
-            gatewayBox.disabled = true;
-        }
+        if (gatewayBox) { gatewayBox.checked = false; gatewayBox.disabled = true; }
         keepGatewayActive = false;
         stopGatewayWatcher();
-
     } else {
         if (uplink) uplink.disabled = false;
         if (pinBox) pinBox.disabled = false;
@@ -279,16 +343,15 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => enforceFrameRulesOnLoad(), 50);
     initDropdowns();
 
-    // Wait for AJAX-loaded elements
+    // Toggle custom input visibility
     waitForElement("#github-username", (userDropdown) => {
         const customInput = document.getElementById("custom-username");
-
         userDropdown.onchange = () => {
-            customInput.style.display =
-                (userDropdown.value === "custom") ? "block" : "none";
+            customInput.style.display = (userDropdown.value === "custom") ? "block" : "none";
         };
     });
 
+    // LOAD button
     waitForElement("#load-user-repos", (loadBtn) => {
         const userDropdown = document.getElementById("github-username");
         const customInput = document.getElementById("custom-username");
@@ -298,17 +361,44 @@ document.addEventListener("DOMContentLoaded", () => {
             if (username === "custom") {
                 username = customInput.value.trim();
                 if (!username) return alert("Enter a GitHub username");
+                // add to cookie list
+                let current = getCookie("user_cookie") || "";
+                let arr = current ? current.split(",") : [];
+                if (!arr.includes(username)) arr.push(username);
+                setCookie("user_cookie", arr.join(","), 365);
+				 ImportFromCookie(true);
             }
-            loadConstellationRepos(username);
+            loadConstellationRepo(username);
         };
     });
 
+    // IMPORT button
+    waitForElement("#import-user-repos", (importBtn) => {
+        importBtn.onclick = () => {
+            ImportFromCookie();
+        };
+    });
+
+    // EXPORT button
+    waitForElement("#export-user-repos", (exportBtn) => {
+        exportBtn.onclick = () => {
+            ExportFromCookie();
+        };
+    });
+
+    // CLEAR button
+    waitForElement("#clear-user-repos", (clearBtn) => {
+        clearBtn.onclick = () => {
+            clearBox();
+        };
+    });
+
+    // Restore uplink checkbox state
     waitForElement("input[type='checkbox'][id*='frame']", (uplink) => {
         const saved = getCookie("uplinkState");
         uplink.checked = (saved === "checked");
     });
 
     loadCustomGitUser();
-    loadConstellationRepos("mercwar");
+    loadConstellationRepo("mercwar");
 });
-
