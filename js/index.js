@@ -366,12 +366,7 @@ function enforceFrameRulesOnLoad() {
         if (gatewayBox) gatewayBox.disabled = false;
 
         // Reset .screen back to centered
-        const screenEl = document.querySelector(".screen");
-        if (screenEl) {
-            screenEl.style.left = "50%";
-            screenEl.style.top = "50%";
-            screenEl.style.transform = "translate(-50%, -50%)";
-        }
+
     }
 }
 
