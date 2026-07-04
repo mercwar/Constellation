@@ -242,12 +242,6 @@ overflow:hidden;
 }
 
 /* GITHUB INTERNAL PORTAL ENGINE */
-#github-browser {
-	 background: transparent;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2px 0;
-}
 
 #user-input-area {
 	 background: transparent;
@@ -494,24 +488,48 @@ body.sidebar-pinned #sidebar {
     padding: 6px 10px;
     font-size: 14px;
 }
-
-
-/* Force dropdown to show fewer visible rows */
+/* UNCONSTRAINED GITHUB OVERRIDE LAYERS */
 #github-username {
-    background: #000 !important;
-    color: #ffd700 ;
-    border: 1px solid #ffd700;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 4px 10px;
-    height: 1000px;
-    border-radius: 6px;
-    cursor: pointer;
-	
+  background: #000000 !important;
+  color: #ffd700 !important;
+  border: 1px solid #ffd700 !important;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+    overflow: visible !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
 
-    /* remove blur */
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+#github-browser {
+  background: transparent;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px;
+  height: 100%; /* Changed from 500px fixed to allow flexible stretching */
+  overflow-y: visible;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+#repo-drop {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    margin-top: 10px;
+    background: transparent;
+    
+    /* Allow the container to grow to fit content */
+    height: auto !important; 
+    max-height: none !important;
+    overflow: visible !important; 
+    border: 1px solid var(--line);
+    border-radius: 6px;
 }
 
 /* Dropdown list items */
