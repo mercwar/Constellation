@@ -472,3 +472,58 @@ function loadGatewayActiveState() {
         handleGatewayActiveChange(gatewayBox.checked);
     });
 }
+
+
+// Sync textarea with cookie on load
+document.addEventListener("DOMContentLoaded", () => {
+    const saved = getCookie("linkBox");
+    if (saved) document.getElementById("link-box").value = saved;
+});
+
+// Down-Link → copy textarea to clipboard + save cookie
+function LinksToClip() {
+    const ta = document.getElementById("link-box");
+    const text = ta.value.trim();
+    if (!text) return;
+
+    setCookie("linkBox", text);
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text);
+    } else {
+        ta.select();
+        document.execCommand("copy");
+    }
+
+    document.getElementById("button-display").textContent = "Links copied to clipboard and cookie!";
+}
+
+// Clear → wipe textarea + cookie
+function LinksClear() {
+    document.getElementById("link-box").value = "";
+    setCookie("linkBox", "");
+    document.getElementById("button-display").textContent = "Links cleared!";
+}
+
+// Up-link → read textarea, split into buttons, open with launchPortal()
+function LinksFromText() {
+    const text = document.getElementById("link-box").value.trim();
+    if (!text) return;
+
+    setCookie("linkBox", text);
+
+    const links = text.split(",");
+    const display = document.getElementById("button-display");
+    display.innerHTML = "";
+
+    links.forEach(link => {
+        const btn = document.createElement("button");
+        btn.className = "sub-btn";
+        btn.textContent = link;
+        btn.onclick = () => {
+            // Use your existing uplink-aware function
+            launchPortal("https://" + link);
+        };
+        display.appendChild(btn);
+    });
+}
