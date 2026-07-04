@@ -60,6 +60,10 @@ function startGatewayWatcher() {
                 activeEl.id === "export-user-repos" ||    // Export button
                 activeEl.id === "clear-user-repos" ||     // Clear button
                 activeEl.id === "custom-username"         // custom input
+				activeEl.id === "link-box"         // custom input
+				activeEl.id === "link-btn1"         // custom input
+				activeEl.id === "link-btn2"         // custom input
+				activeEl.id === "link-btn3"         // custom input
             );
 
         // Only focus if the gate is active, pinned, not navigating, and user is not editing/clicking repo drop
