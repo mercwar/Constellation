@@ -602,3 +602,29 @@ body.sidebar-pinned #sidebar {
     background: #3dff8a !important; /* green */
     box-shadow: 0 0 12px #3dff8a !important;
 }
+#link-box {
+  background: #000000;            /* black background */
+  color: #ffd700;                 /* gold text */
+  border: 1px solid #ffd700;      /* gold border */
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: 6px;
+  width: 100%;
+
+  /* Behavior */
+  min-height: 80px;               /* baseline height */
+  max-height: 240px;              /* cap height */
+  resize: vertical;               /* allow vertical resize only */
+  overflow-y: auto;               /* scroll if content exceeds max-height */
+
+  /* Effects */
+  outline: none;                  /* remove default focus outline */
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.6); /* subtle glow */
+}
+
+#link-box:focus {
+  border-color: #ff4500;          /* fire orange when active */
+  box-shadow: 0 0 8px rgba(255, 69, 0, 0.8);
+}
