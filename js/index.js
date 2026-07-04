@@ -353,7 +353,7 @@ function enforceFrameRulesOnLoad() {
         // 🔥 Shift the .screen object left by 200px when in frame
         const screenEl = document.querySelector(".screen");
         if (screenEl) {
-            screenEl.style.left = " 20px";
+            screenEl.style.left = "calc(50% - 20px)";
             screenEl.style.transform = "translate(-50%, -50%)";
         }
 
