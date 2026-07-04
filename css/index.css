@@ -24,7 +24,7 @@ html, body {
 
 body {
 
-  background-image: url('https://raw.githubusercontent.com/mercwar/Robo-Knight-Gallery/main/Version%206/holo-glass-tile.png');
+  background-image: url('../images/new-star-bg.png');
   background-repeat: repeat;
   overflow: hidden;
   font-family: 'Rajdhani', sans-serif;
