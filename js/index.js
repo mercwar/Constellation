@@ -228,8 +228,14 @@ async function loadConstellationRepo(username = "mercwar") {
             btnPagesTool.textContent = `${repoName.toUpperCase()} [io.Fire-Win]`;
             btnPagesTool.onclick = () => launchPortal(pagesUrl);
 
+            const btnPagesTra = document.createElement("button");
+            btnPagesTra.className = "sub-btn repo-pages-tool";
+            btnPagesTra.textContent = `${repoName.toUpperCase()} [github.Traffic]`;
+            btnPagesTra.onclick = () => launchPortal(pagesUrl);
+			
             block.appendChild(btnTool);
             block.appendChild(btnPagesTool);
+			 block.appendChild(btnPagesTra);
             container.appendChild(block);
         });
     } catch (err) {
