@@ -870,4 +870,7 @@
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/sitemap.xml</loc>
   </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/index.js</loc>
+  </url>
 </urlset>
