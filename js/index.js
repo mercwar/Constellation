@@ -214,8 +214,8 @@ async function loadConstellationRepo(username = "mercwar") {
         clean.forEach(repo => {
             const repoName = repo.name;
             const pagesUrl = `https://${username}.github.io/${repoName}/index.html?index=${repoName}`;
-            const GithubTra = `https://github.com/${username}/${repoName}/graphs/traffic`;
-			
+            const GithubTra = `https://github.com{username}/${repoName}/graphs/traffic`;
+
             const block = document.createElement("div");
             block.className = "repo-block";
 
@@ -229,18 +229,19 @@ async function loadConstellationRepo(username = "mercwar") {
             btnPagesTool.textContent = `${repoName.toUpperCase()} [io.Fire-Win]`;
             btnPagesTool.onclick = () => launchPortal(pagesUrl);
 
+            // Traffic analytics button setup
             const btnPagesTra = document.createElement("button");
             btnPagesTra.className = "sub-btn repo-pages-tool";
             btnPagesTra.textContent = `${repoName.toUpperCase()} [github.Traffic]`;
             btnPagesTra.onclick = () => launchPortal(GithubTra);
-			
+
             block.appendChild(btnTool);
             block.appendChild(btnPagesTool);
             block.appendChild(btnPagesTra);
             container.appendChild(block);
         });
-    } catch (error) {
-        console.error("Error loading repositories:", error);
+    } catch (err) {
+        container.innerHTML = `<p style="color:red;padding:8px;">Error loading repos: ${err.message}</p>`;
     }
 }
 
