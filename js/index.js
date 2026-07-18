@@ -214,7 +214,7 @@ async function loadConstellationRepo(username = "mercwar") {
         clean.forEach(repo => {
             const repoName = repo.name;
             const pagesUrl = `https://${username}.github.io/${repoName}/index.html?index=${repoName}`;
-            const GithubTra = `https://github.com{username}/${repoName}/graphs/traffic`;
+            const GithubTra = `https://github.com/${username}/${repoName}/graphs/traffic`;
 
             const block = document.createElement("div");
             block.className = "repo-block";
