@@ -135,12 +135,7 @@ function openPortal() {
   <script src="index.js?v=8"></script>
 <script>
 window.addEventListener("load", () => {
-    // If the splash is inside an iframe, target its document instead of window
-    const iframe = document.getElementById("rk-frame-splash"); // adjust to your splash iframe id
-    const doc = iframe ? iframe.contentWindow : window;
-
-    const anchor = (iframe ? iframe.contentDocument.getElementById("jump_scroll")
-                           : document.getElementById("jump_scroll"));
+    const anchor = document.getElementById("jump_scroll");
     if (!anchor) return;
 
     anchor.scrollIntoView({
@@ -152,33 +147,28 @@ window.addEventListener("load", () => {
     let sameCount = 0;
 
     function trackScroll() {
-        const currentPos = doc.scrollY;
+        const currentPos = window.scrollY;
 
         if (currentPos === lastPos) {
             sameCount++;
             if (sameCount >= 3) {
-                doc.scrollBy({
+                window.scrollBy({
                     top: 140,
                     behavior: "smooth"
                 });
-                sameCount = 0; // reset so it keeps nudging until bottom
+                return;
             }
         } else {
             sameCount = 0;
         }
 
         lastPos = currentPos;
-
-        // keep tracking until we reach the bottom
-        if (currentPos + doc.innerHeight < doc.document.body.scrollHeight) {
-            requestAnimationFrame(trackScroll);
-        }
+        requestAnimationFrame(trackScroll);
     }
 
     requestAnimationFrame(trackScroll);
 });
 </script>
-
 
 </body>
 </html>
