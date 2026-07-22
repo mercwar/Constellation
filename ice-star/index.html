@@ -3,17 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Mercwar Ice Star</title>
-
-<script>
-  // Generates "YYYY-MM-DD"
-  const d = new Date();
-  const v = d.toISOString().split('T')[0]; 
-
-  document.write(`<link rel="stylesheet" href="index.css?v=${v}">`);
-  document.write(`<link rel="stylesheet" href="ui.css?v=${v}">`);
-  document.write(`<link rel="stylesheet" href="fire-gem-orb.css?v=${v}">`);
-</script>
-
+<link rel="stylesheet" href="index.css?v=124">
+<link rel="stylesheet" href="ui.css?v=123">
+<link rel="stylesheet" href="fire-gem-orb.css?123">
   <!-- ===== AVIS / CONSTELLATION META CORE ===== -->
   <meta name="meta" content="AVIS-CONSTELLATION">
   <meta name="ACK" content="core,system,viewer,rru,avis26">
@@ -135,38 +127,43 @@ function openPortal() {
   <script src="index.js?v=8"></script>
 
 <script>
-(function () {
-    const OFFSET = 170;
-    const TARGET_ID = "topDivider";
+window.addEventListener("load", () => {
+    const anchor = document.getElementById("jump_scroll");
+    if (!anchor) return;
 
-    window.addEventListener("load", () => {
+    // First scroll into view
+    anchor.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 
-        // Don't auto-scroll inside an iframe.
-        if (window.self !== window.top) {
-            return;
-        }
+    let lastPos = -1;
+    let stableCount = 0;
 
-        // Wait until layout settles.
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
+    function validateScroll() {
+        const currentPos = window.scrollY;
 
-                const target = document.getElementById(TARGET_ID);
-                if (!target) return;
-
-                const y = target.getBoundingClientRect().top +
-                          window.pageYOffset +
-                          OFFSET;
-
-                window.scrollTo({
-                    top: y,
+        if (currentPos === lastPos) {
+            stableCount++;
+            // Require stability for ~20 frames (~300ms at 60fps)
+            if (stableCount >= 20) {
+                // Apply final offset once validated
+                window.scrollBy({
+                    top: 136,
                     behavior: "smooth"
                 });
+                return; // stop loop after final scroll
+            }
+        } else {
+            stableCount = 0; // reset if movement detected
+        }
 
-            });
-        });
+        lastPos = currentPos;
+        requestAnimationFrame(validateScroll);
+    }
 
-    }, { once: true });
-})();
+    requestAnimationFrame(validateScroll);
+});
 </script>
 
 
