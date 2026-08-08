@@ -595,7 +595,7 @@ These define:
 
 ---
 
-## 2. Sentinel Ingest
+## 2. Sentinel
 Located in `/Sentinel`.
 
 Sentinel handles:
