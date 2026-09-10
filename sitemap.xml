@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/cyhy/EditorIntegration.java</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/cyhy/syntax_parser.php</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/cyhy/comments.fl</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/ice-star/desktop.css</loc>
   </url>
   <url>
@@ -178,7 +187,28 @@
     <loc>https://github.com/mercwar/Constellation/blob/main/void-star/favi-con.ico</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/tools/manifest.json</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/tools/AIBridge.java</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/tools/bridge.c</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/tools/universal_hook.fl</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/tools/bridge.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/tools/bridge.php</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/repo.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/manifest.json</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/fire-star/desktop.css</loc>
@@ -401,6 +431,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/index.js</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/robot_directives.fl</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/portal.html</loc>
@@ -646,6 +679,9 @@
     <loc>https://github.com/mercwar/Constellation/blob/main/Constellation/ROBOT.boot</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/RobotValidator.java</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/sitemap.xml</loc>
   </url>
   <url>
@@ -778,6 +814,9 @@
     <loc>https://github.com/mercwar/Constellation/blob/main/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/universal_hook.fl</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/CSV/constellation.csv</loc>
   </url>
   <url>
@@ -809,6 +848,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/sample.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/README.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/google77a4b19e8f99751c.html</loc>
@@ -914,6 +956,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/CVBOD</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/environment_state.fl</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/.github/workflows/sitemap.yml</loc>
