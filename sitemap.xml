@@ -733,9 +733,6 @@
     <loc>https://github.com/mercwar/Constellation/blob/main/CSV/constellation.csv</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/Constellation/blob/main/readme.md</loc>
-  </url>
-  <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/hub.html</loc>
   </url>
   <url>
@@ -758,6 +755,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/robot_directives.fl</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/Constellation/blob/main/README.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/Constellation/blob/main/ice-star/desktop.html</loc>
